@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENS Africa Foundation · Our Story</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --gold: #C9973A;
+      --gold-light: #E8B84B;
+      --gold-pale: #F5D98B;
+      --amber: #D4821A;
+      --rust: #8B3A10;
+      --earth: #5C3317;
+      --cream: #FDF6E8;
+      --sand: #F0DEB0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0a08;
+      color: var(--cream);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, background 0.3s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(201,151,58,0.6);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: all 0.15s ease;
+    }
+
+    /* GRAIN */
+    .grain {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 100; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      height: 100vh; min-height: 700px;
+      overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(160deg, rgba(10,10,8,0.92) 0%, rgba(10,10,8,0.3) 55%, rgba(10,10,8,0.88) 100%),
+        url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1800&q=80&fit=crop') center/cover no-repeat;
+    }
+    .hero-rays {
+      position: absolute; inset: 0;
+      background: conic-gradient(from 220deg at 75% 25%, transparent 0deg, rgba(201,151,58,0.05) 12deg, transparent 22deg);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      width: 100%; padding: 0 5vw 8vh;
+    }
+    .hero-eyebrow {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 30px; height: 1px; background: var(--gold);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 9vw, 8.5rem);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.02em;
+      opacity: 0; animation: fadeUp 1s 0.5s forwards; max-width: 900px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+    .hero-title strong { font-weight: 700; display: block; }
+    .hero-sub {
+      font-size: 1rem; font-weight: 300;
+      color: rgba(253,246,232,0.55); margin-top: 1.8rem;
+      max-width: 500px; line-height: 1.7;
+      opacity: 0; animation: fadeUp 1s 0.8s forwards;
+    }
+    .hero-scroll {
+      position: absolute; right: 5vw; bottom: 8vh; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; animation: fadeIn 1s 1.5s forwards;
+    }
+    .hero-scroll span {
+      font-family: 'Syne', sans-serif; font-size: 0.6rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(201,151,58,0.7); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ========== NAV (with hamburger) ========== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.5rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,8,0.85);
+      backdrop-filter: blur(20px);
+      padding: 1rem 5vw;
+      border-bottom: 1px solid rgba(201,151,58,0.1);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--gold), var(--amber));
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.05em; color: #0a0a08;
+    }
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;
+      font-weight: 600; color: var(--cream); letter-spacing: 0.02em;
+    }
+    .nav-logo-text span { font-weight: 300; color: var(--gold); }
+
+    /* desktop links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(253,246,232,0.6); text-decoration: none;
+      padding: 0.5rem 1rem; border-radius: 100px; transition: all 0.3s;
+    }
+    .nav-links a:hover { color: var(--cream); background: rgba(201,151,58,0.12); }
+    .nav-links a.active { color: var(--gold); border: 1px solid rgba(201,151,58,0.3); background: rgba(201,151,58,0.08); }
+
+    /* hamburger (hidden on desktop) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 0;
+    }
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transition: all 0.3s ease;
+    }
+
+    /* mobile styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(15, 15, 12, 0.98);
+        backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.4s cubic-bezier(0.2, 0, 0, 1);
+        border-left: 1px solid rgba(201,151,58,0.15);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+        z-index: 1000;
+        padding: 2rem;
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links a {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        text-align: center;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+      }
+    }
+
+    /* ========== PAGE WRAPPER ========== */
+    .page-wrapper {
+      background: linear-gradient(180deg,#0a0a08 0%,#0f0e0a 20%,#110f0a 40%,#0d0c09 80%,#0a0a08 100%);
+      position: relative;
+    }
+    .ambient-1 {
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,151,58,0.06) 0%, transparent 70%);
+      top: 5%; left: -200px; pointer-events: none;
+    }
+    .ambient-2 {
+      position: absolute; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(139,58,16,0.07) 0%, transparent 70%);
+      top: 40%; right: -150px; pointer-events: none;
+    }
+    .ambient-3 {
+      position: absolute; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,151,58,0.05) 0%, transparent 70%);
+      bottom: 20%; left: 30%; pointer-events: none;
+    }
+
+    /* ========== SHARED TOKENS ========== */
+    .section-label {
+      font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+      display: inline-flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+    }
+    .section-label::after {
+      content: ''; display: block; width: 40px; height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 3rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-number {
+      font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 700;
+      position: absolute; right: 5vw; top: 4vh;
+      color: rgba(201,151,58,0.04); pointer-events: none; line-height: 1;
+    }
+    .divider {
+      height: 1px; margin: 0 5vw;
+      background: linear-gradient(to right, transparent, rgba(201,151,58,0.15), transparent);
+    }
+    .pattern-border {
+      width: 100%; height: 4px;
+      background: repeating-linear-gradient(90deg,
+        var(--gold) 0px,var(--gold) 4px,transparent 4px,transparent 12px,
+        var(--amber) 12px,var(--amber) 16px,transparent 16px,transparent 24px
+      );
+      opacity: 0.35;
+    }
+
+    /* ========== GLASS PANEL ========== */
+    .glass-panel {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(201,151,58,0.12);
+      backdrop-filter: blur(24px);
+      border-radius: 24px; padding: 3rem;
+      position: relative; overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.2,0,0,1);
+    }
+    .glass-panel::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,151,58,0.06) 0%, transparent 50%, rgba(201,151,58,0.03) 100%);
+      pointer-events: none;
+    }
+    .glass-panel::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle at top right, rgba(201,151,58,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .glass-panel:hover {
+      border-color: rgba(201,151,58,0.25);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-4px);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,151,58,0.1), inset 0 1px 0 rgba(201,151,58,0.08);
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,151,58,0.08);
+      border-radius: 20px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2,0,0,1);
+    }
+    .glass-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(201,151,58,0.07) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .glass-card:hover::before { opacity: 1; }
+    .glass-card:hover {
+      border-color: rgba(201,151,58,0.25);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,151,58,0.12);
+    }
+
+    /* ========== FUTURE STORY QUOTE ========== */
+    .quote-block {
+      position: relative; padding: 3rem 3rem 3rem 4rem;
+    }
+    .quote-block::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12rem; line-height: 1; font-weight: 700;
+      color: rgba(201,151,58,0.08);
+      position: absolute; top: -1rem; left: 1rem;
+      pointer-events: none;
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 400; font-style: italic;
+      line-height: 1.4; color: var(--cream);
+      position: relative; z-index: 1;
+    }
+    .quote-text strong { color: var(--gold); font-style: normal; font-weight: 600; }
+    .quote-attr {
+      font-family: 'Syne', sans-serif; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(201,151,58,0.7); margin-top: 1.5rem;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .quote-attr::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+
+    /* ========== STAT CARDS ========== */
+    .stat-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,151,58,0.08);
+      border-radius: 20px; padding: 2rem 1.75rem;
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2,0,0,1);
+    }
+    .stat-card::after {
+      content: ''; position: absolute;
+      bottom: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, rgba(201,151,58,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .stat-card:hover {
+      border-color: rgba(201,151,58,0.3);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,151,58,0.15);
+    }
+    .stat-card:hover .stat-number { color: var(--gold-light); }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 700; line-height: 1;
+      color: var(--gold); transition: color 0.3s;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(201,151,58,0.6); margin-top: 0.5rem; margin-bottom: 0.75rem;
+    }
+    .stat-desc { font-size: 0.82rem; font-weight: 300; color: rgba(253,246,232,0.45); line-height: 1.6; }
+
+    /* ========== TIMELINE ========== */
+    .timeline {
+      position: relative; padding-left: 2rem;
+    }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), rgba(201,151,58,0.2), transparent);
+    }
+    .timeline-item {
+      position: relative; padding-bottom: 2.5rem;
+      opacity: 0; transform: translateX(-20px);
+      transition: all 0.6s cubic-bezier(0.2,0,0,1);
+    }
+    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+    .timeline-dot {
+      position: absolute; left: -2.4rem; top: 0.2rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,151,58,0.12), 0 0 12px rgba(201,151,58,0.3);
+      transition: all 0.3s;
+    }
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.4);
+      box-shadow: 0 0 0 6px rgba(201,151,58,0.15), 0 0 20px rgba(201,151,58,0.4);
+    }
+    .timeline-year {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700;
+      color: var(--gold); margin-bottom: 0.3rem;
+    }
+    .timeline-text { font-size: 0.85rem; font-weight: 300; color: rgba(253,246,232,0.55); line-height: 1.6; }
+
+    /* ========== BELIEFS ========== */
+    .belief-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,151,58,0.07);
+      border-radius: 20px; padding: 2rem;
+      text-align: center; position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2,0,0,1);
+      cursor: default;
+    }
+    .belief-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      transform: scaleX(0); transition: transform 0.4s ease;
+    }
+    .belief-card:hover::before { transform: scaleX(1); }
+    .belief-card:hover {
+      border-color: rgba(201,151,58,0.22);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .belief-icon {
+      font-size: 2.5rem; display: block; margin-bottom: 1rem;
+      transition: transform 0.5s cubic-bezier(0.2,0,0,1);
+    }
+    .belief-card:hover .belief-icon { transform: scale(1.18) rotate(-5deg); }
+    .belief-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .belief-desc { font-size: 0.8rem; font-weight: 300; color: rgba(253,246,232,0.4); line-height: 1.7; }
+
+    /* ========== TEAM CARDS ========== */
+    .team-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,151,58,0.08);
+      border-radius: 20px; padding: 2rem 1.5rem;
+      text-align: center; position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2,0,0,1);
+    }
+    .team-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      transform: scaleX(0); transition: transform 0.4s ease;
+    }
+    .team-card:hover::after { transform: scaleX(1); }
+    .team-card:hover {
+      border-color: rgba(201,151,58,0.28);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,151,58,0.12);
+    }
+    .team-avatar {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,151,58,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; margin: 0 auto 1.25rem;
+      transition: all 0.4s;
+    }
+    .team-card:hover .team-avatar {
+      border-color: rgba(201,151,58,0.4);
+      box-shadow: 0 0 30px rgba(201,151,58,0.15);
+      transform: scale(1.06);
+    }
+    .team-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 0.25rem;
+    }
+    .team-role {
+      font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .team-origin { font-size: 0.75rem; color: rgba(253,246,232,0.3); font-weight: 300; }
+    .team-socials {
+      display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem;
+      opacity: 0; transform: translateY(8px);
+      transition: all 0.3s;
+    }
+    .team-card:hover .team-socials { opacity: 1; transform: translateY(0); }
+    .team-social-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(201,151,58,0.1);
+      border: 1px solid rgba(201,151,58,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--gold); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .team-social-btn:hover { background: rgba(201,151,58,0.25); transform: scale(1.1); }
+
+    /* ========== PARTNERS ========== */
+    .partner-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.65rem 1.4rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,151,58,0.1);
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.08em; color: rgba(253,246,232,0.6);
+      transition: all 0.3s cubic-bezier(0.2,0,0,1);
+      cursor: default; position: relative; overflow: hidden;
+    }
+    .partner-chip::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,151,58,0.12), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .partner-chip:hover::before { opacity: 1; }
+    .partner-chip:hover {
+      border-color: rgba(201,151,58,0.4);
+      color: var(--gold-pale);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,151,58,0.15);
+    }
+
+    /* ========== SOCIAL ========== */
+    .social-btn {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,151,58,0.12); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(253,246,232,0.6); font-size: 1rem;
+      transition: all 0.3s ease; cursor: pointer;
+    }
+    .social-btn:hover {
+      background: linear-gradient(135deg, rgba(201,151,58,0.25), rgba(201,151,58,0.05));
+      border-color: rgba(201,151,58,0.5); color: var(--gold);
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 24px rgba(201,151,58,0.2);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid rgba(201,151,58,0.08);
+      padding: 5vh 5vw;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    }
+    @media (max-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { footer { grid-template-columns: 1fr; } }
+    .footer-brand p { font-size: 0.82rem; font-weight: 300; color: rgba(253,246,232,0.35); line-height: 1.8; margin-top: 1rem; max-width: 280px; }
+    .footer-col-title { font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.6rem; }
+    .footer-col a { font-size: 0.82rem; font-weight: 300; color: rgba(253,246,232,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(201,151,58,0.06);
+      padding: 1.5rem 5vw;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.72rem; color: rgba(253,246,232,0.2);
+    }
+
+    /* ========== REVEAL ========== */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.2,0,0,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ========== IMAGE STRIP ========== */
+    .strip-track { display: flex; gap: 1.5rem; animation: stripScroll 40s linear infinite; width: max-content; }
+    .strip-track:hover { animation-play-state: paused; }
+    .strip-item { position: relative; flex-shrink: 0; }
+    .strip-img {
+      width: 280px; height: 180px; border-radius: 16px; object-fit: cover;
+      filter: saturate(0.5) brightness(0.65);
+      border: 1px solid rgba(201,151,58,0.1);
+      transition: all 0.5s ease; cursor: pointer;
+    }
+    .strip-img:hover {
+      filter: saturate(1) brightness(0.85);
+      transform: scale(1.05) translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,151,58,0.3);
+    }
+    .strip-label {
+      position: absolute; bottom: 10px; left: 10px;
+      font-family: 'Syne', sans-serif; font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+      padding: 3px 10px; border-radius: 100px;
+      border: 1px solid rgba(201,151,58,0.2);
+    }
+
+    /* ========== BTN ========== */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 0.9rem 2.2rem; border-radius: 100px;
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #0a0a08;
+      border: none; cursor: pointer; overflow: hidden; text-decoration: none;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--amber));
+      background-size: 200% 200%; animation: gradientShift 4s ease infinite;
+      transition: all 0.4s cubic-bezier(0.2,0,0,1); position: relative;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.1));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 40px -10px rgba(201,151,58,0.5);
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.9rem 2.2rem; border-radius: 100px;
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+      background: transparent; border: 1px solid rgba(201,151,58,0.3);
+      cursor: pointer; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover {
+      background: rgba(201,151,58,0.08);
+      border-color: rgba(201,151,58,0.6);
+      transform: translateY(-2px);
+    }
+
+    /* ========== KEYFRAMES ========== */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes scrollPulse { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:0.4;transform:scaleY(0.6)} }
+    @keyframes gradientShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+    @keyframes stripScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.6)} }
+    @keyframes countUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ===== NAV (with hamburger) ===== -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">ENS</div>
+      <div class="nav-logo-text">Africa <span>Foundation</span></div>
+    </a>
+    <button class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="initiatives.html">Initiatives</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-rays"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,0.97) 0%,rgba(10,10,8,0.25) 55%,rgba(10,10,8,0.05) 100%);z-index:5;pointer-events:none;"></div>
+
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">ENS Africa Foundation · Our Story</div>
+      <h1 class="hero-title">
+        <em>From legacy</em>
+        <strong>to lasting</strong>
+        change.
+      </h1>
+      <p class="hero-sub">A century of legal expertise, now channelled into the communities that need it most — across a continent of one billion futures.</p>
+    </div>
+  </section>
+
+  <div class="pattern-border"></div>
+
+  <!-- ===== PAGE WRAPPER ===== -->
+  <div class="page-wrapper">
+    <div class="ambient-1"></div>
+    <div class="ambient-2"></div>
+    <div class="ambient-3"></div>
+
+    <!-- ============================================================
+         FUTURE STORY QUOTE
+    ============================================================= -->
+    <section style="padding:10vh 5vw 8vh;position:relative;">
+      <div class="section-number">01</div>
+
+      <div class="reveal">
+        <div class="section-label">Our Vision</div>
+      </div>
+
+      <div class="glass-panel reveal" style="border-left:3px solid rgba(201,151,58,0.4);padding:0;">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,151,58,0.4),transparent);"></div>
+        <div class="quote-block">
+          <p class="quote-text">
+            "We envision a future where <strong>every African community</strong> has the legal empowerment to thrive — where the law is not a barrier, but a bridge to opportunity, dignity, and sustainable prosperity."
+          </p>
+          <div class="quote-attr">Mzi Mgudlwa, Chair of ENS Africa Foundation</div>
+        </div>
+        <!-- Decorative right panel -->
+        <div style="position:absolute;top:0;right:0;bottom:0;width:280px;background:linear-gradient(to left,rgba(201,151,58,0.04),transparent);display:flex;align-items:center;justify-content:center;pointer-events:none;" class="hidden-mobile">
+          <div style="text-align:center;opacity:0.5;">
+            <div style="font-size:5rem;margin-bottom:0.5rem;">🌍⚖️</div>
+            <div style="font-family:'Syne',sans-serif;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);">pan-african impact</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAT GRID -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem;" class="stat-grid reveal">
+        <div class="stat-card">
+          <div class="stat-number" data-target="50">50</div>
+          <div class="stat-label">Justice Hubs by 2030</div>
+          <div class="stat-desc">Community legal access points across every African sub-region</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="10000">10k+</div>
+          <div class="stat-label">Future Lawyers</div>
+          <div class="stat-desc">Scholarships and mentorship for aspiring legal professionals by 2035</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="50">50%</div>
+          <div class="stat-label">Gender Parity</div>
+          <div class="stat-desc">Accelerating women's leadership in law and social enterprise</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         IMAGE STRIP
+    ============================================================= -->
+    <div style="padding:5vh 0;overflow:hidden;">
+      <div class="strip-track">
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Africa</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1611348586655-f2a8f2e15d2e?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="People" loading="lazy"><span class="strip-label">People</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label">Impact</span></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Africa</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1611348586655-f2a8f2e15d2e?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="People" loading="lazy"><span class="strip-label">People</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label">Impact</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         OUR STORY + TIMELINE
+    ============================================================= -->
+    <section style="padding:10vh 5vw 10vh;position:relative;">
+      <div class="section-number" style="left:5vw;right:auto;">02</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;" class="story-grid reveal">
+        <!-- LEFT: Story text -->
+        <div>
+          <div class="section-label">Origin Story</div>
+          <h2 class="section-title" style="margin-bottom:2rem;">
+            From <em>ENSafrica's</em><br>century of legacy
+          </h2>
+          <div style="space-y:1rem;">
+            <p style="font-size:0.95rem;font-weight:300;color:rgba(253,246,232,0.55);line-height:1.9;margin-bottom:1.25rem;">ENSafrica has advised across the continent for over a century. In 2022, partners and practitioners formalised a shared vision: a foundation that channels the firm's legal expertise into direct social investment.</p>
+            <p style="font-size:0.95rem;font-weight:300;color:rgba(253,246,232,0.55);line-height:1.9;margin-bottom:1.25rem;">What began as small pro bono networks in Johannesburg, Nairobi and Accra quickly grew into a structured non-profit. Today we operate with dedicated staff, a board drawn from the legal community, and projects in 14 countries.</p>
+            <p style="font-size:0.95rem;font-weight:300;color:rgba(253,246,232,0.55);line-height:1.9;margin-bottom:2rem;">Our name carries the reputation of Africa's largest law firm — but our heart beats for the communities behind the cases.</p>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="#" class="btn-primary">Our Initiatives <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+            <a href="#" class="btn-ghost">Meet the Team <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Timeline -->
+        <div class="glass-card" style="padding:2.5rem;">
+          <div style="position:absolute;top:0;right:0;left:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,151,58,0.3),transparent);"></div>
+          <div style="font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,151,58,0.7);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
+            <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 10px var(--gold);animation:dotPulse 2s ease-in-out infinite;"></div>
+            Key Milestones
+          </div>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2022</div>
+              <div class="timeline-text">Foundation established, first legal aid clinic in Soweto opened to the community</div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-1">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2023</div>
+              <div class="timeline-text">Expanded to Ghana & Rwanda; 500 women entrepreneurs received legal toolkits</div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-2">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2024</div>
+              <div class="timeline-text">Launched Future Lawyers scholarship programme — first cohort of 120 recipients</div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-3">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2025</div>
+              <div class="timeline-text">Opened dedicated climate justice desk in Mozambique; 600+ pro bono hours logged</div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-4" style="padding-bottom:0;">
+              <div class="timeline-dot" style="background:var(--gold-light);box-shadow:0 0 0 4px rgba(201,151,58,0.2),0 0 20px rgba(201,151,58,0.4);"></div>
+              <div class="timeline-year" style="display:flex;align-items:center;gap:8px;">2026 <span style="font-family:'Syne',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);background:rgba(201,151,58,0.1);border:1px solid rgba(201,151,58,0.2);padding:2px 8px;border-radius:100px;">Now</span></div>
+              <div class="timeline-text">10th country office opened in Uganda; 200+ active volunteers, 14 nations</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         BELIEFS
+    ============================================================= -->
+    <section style="padding:10vh 5vw 10vh;position:relative;">
+      <div class="section-number">03</div>
+
+      <div class="reveal" style="text-align:center;margin-bottom:1rem;">
+        <div class="section-label" style="justify-content:center;">Driving Beliefs</div>
+        <h2 class="section-title" style="text-align:center;margin-bottom:0.5rem;">
+          Law can heal.<br><em>We put it to work.</em>
+        </h2>
+        <p style="font-size:0.9rem;font-weight:300;color:rgba(253,246,232,0.4);max-width:480px;margin:0 auto 3.5rem;line-height:1.7;">Four principles that guide every programme, partnership, and pro bono hour we give.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;" class="beliefs-grid reveal">
+        <div class="belief-card">
+          <span class="belief-icon">⚖️</span>
+          <div class="belief-title">Justice is not optional</div>
+          <div class="belief-desc">Legal empowerment is the foundation of dignity and fair opportunity for every person.</div>
+        </div>
+        <div class="belief-card">
+          <span class="belief-icon">🌍</span>
+          <div class="belief-title">African solutions</div>
+          <div class="belief-desc">We partner with local organisations, respecting context, culture, and deep community diversity.</div>
+        </div>
+        <div class="belief-card">
+          <span class="belief-icon">🤝</span>
+          <div class="belief-title">Collective expertise</div>
+          <div class="belief-desc">600+ ENSafrica practitioners contribute their time and knowledge entirely pro bono.</div>
+        </div>
+        <div class="belief-card">
+          <span class="belief-icon">🌱</span>
+          <div class="belief-title">Sustainable impact</div>
+          <div class="belief-desc">We measure long-term systemic change, never short-term outputs or vanity metrics.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         TEAM
+    ============================================================= -->
+    <section style="padding:10vh 5vw 10vh;position:relative;">
+      <div class="section-number" style="left:5vw;right:auto;">04</div>
+
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem;" class="reveal">
+        <div>
+          <div class="section-label">Leadership</div>
+          <h2 class="section-title" style="margin-bottom:0;">
+            Guardians of the<br><em>future story</em>
+          </h2>
+        </div>
+        <a href="#" class="btn-ghost" style="white-space:nowrap;">Full Board <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;" class="team-grid">
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-avatar">👩🏿‍⚖️</div>
+          <div class="team-name">Fatima Ndoye</div>
+          <div class="team-role">Executive Director</div>
+          <div class="team-origin">Former legal aid attorney, Dakar</div>
+          <div class="team-socials">
+            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-avatar">👨🏿‍💼</div>
+          <div class="team-name">James Omondi</div>
+          <div class="team-role">Programmes Director</div>
+          <div class="team-origin">Ex-UN Legal Officer, Nairobi</div>
+          <div class="team-socials">
+            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-avatar">👩🏽‍🎓</div>
+          <div class="team-name">Thandi Mbeki</div>
+          <div class="team-role">Scholarship Lead</div>
+          <div class="team-origin">ENSafrica Partner, Johannesburg</div>
+          <div class="team-socials">
+            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-4">
+          <div class="team-avatar">👨🏿‍🌾</div>
+          <div class="team-name">Kwame Asare</div>
+          <div class="team-role">Community Liaison</div>
+          <div class="team-origin">Former Magistrate, Accra</div>
+          <div class="team-socials">
+            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         PARTNERS
+    ============================================================= -->
+    <section style="padding:8vh 5vw 10vh;text-align:center;position:relative;" class="reveal">
+      <div class="section-label" style="justify-content:center;">Trusted By</div>
+      <h2 class="section-title" style="text-align:center;margin-bottom:3rem;">
+        In <em>partnership</em><br>with the continent
+      </h2>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
+        <div class="partner-chip">ENSafrica</div>
+        <div class="partner-chip">UN African Legal Group</div>
+        <div class="partner-chip">Ford Foundation</div>
+        <div class="partner-chip">Pan-African Bar Association</div>
+        <div class="partner-chip">Africa Legal Aid</div>
+        <div class="partner-chip">UNHCR Africa</div>
+        <div class="partner-chip">AU Development Agency</div>
+      </div>
+    </section>
+
+    <div class="pattern-border"></div>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================= -->
+    <footer>
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-mark">ENS</div>
+          <div class="nav-logo-text">Africa <span>Foundation</span></div>
+        </a>
+        <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
+        <div style="display:flex;gap:1rem;margin-top:1.5rem;">
+          <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
+          <div class="social-btn"><i class="fab fa-x-twitter"></i></div>
+          <div class="social-btn"><i class="fab fa-instagram"></i></div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Foundation</div>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Financials</a></li>
+          <li><a href="#">Governance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Initiatives</div>
+        <ul>
+          <li><a href="#">Access to Justice</a></li>
+          <li><a href="#">Future Lawyers</a></li>
+          <li><a href="#">Women Empowerment</a></li>
+          <li><a href="#">Climate &amp; Rights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul>
+          <li style="color:rgba(253,246,232,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
+          <li style="color:rgba(253,246,232,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
+          <li style="color:rgba(253,246,232,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
+          <li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <span>© 2026 ENS Africa Foundation</span>
+      <span>A non-profit initiative supported by <span style="color:var(--gold);opacity:0.8;">ENSafrica</span></span>
+    </div>
+  </div>
+
+  <script>
+    // ── Cursor ────────────────────────────────────────────────
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+    document.querySelectorAll('a,button,.partner-chip,.belief-card,.team-card,.stat-card,.strip-img').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width='20px'; cursor.style.height='20px'; cursorRing.style.width='60px'; cursorRing.style.height='60px'; });
+      el.addEventListener('mouseleave', () => { cursor.style.width='12px'; cursor.style.height='12px'; cursorRing.style.width='40px'; cursorRing.style.height='40px'; });
+    });
+
+    // ── Nav scroll ────────────────────────────────────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // ── Scroll Reveal ─────────────────────────────────────────
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+
+    // ── Parallax Hero ─────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY;
+      const bg = document.querySelector('.hero-bg');
+      const hc = document.querySelector('.hero-content');
+      if (bg) bg.style.transform = `translateY(${s * 0.3}px)`;
+      if (hc) hc.style.transform = `translateY(${s * 0.15}px)`;
+    });
+
+    // ── Responsive grid ───────────────────────────────────────
+    function handleResize() {
+      const w = window.innerWidth;
+      const storyGrid = document.querySelector('.story-grid');
+      const beliefsGrid = document.querySelector('.beliefs-grid');
+      const teamGrid = document.querySelector('.team-grid');
+      const statGrid = document.querySelector('.stat-grid');
+      if (storyGrid) storyGrid.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
+      if (beliefsGrid) beliefsGrid.style.gridTemplateColumns = w < 700 ? '1fr 1fr' : w < 500 ? '1fr' : 'repeat(4,1fr)';
+      if (teamGrid) teamGrid.style.gridTemplateColumns = w < 700 ? '1fr 1fr' : w < 500 ? '1fr' : 'repeat(4,1fr)';
+      if (statGrid) statGrid.style.gridTemplateColumns = w < 600 ? '1fr' : 'repeat(3,1fr)';
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    // ── HAMBURGER MENU TOGGLE ─────────────────────────────────
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside (optional)
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
