@@ -4,1172 +4,968 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENS Africa Foundation · Connect With Us</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     :root {
-      /* Yellow-White gradient palette */
-      --gold: #D4A017;
-      --gold-light: #F0C040;
-      --gold-pale: #FDE98A;
-      --gold-bright: #FFE066;
-      --amber: #C8860A;
+      --banana: #FFE135;
+      --banana-bright: #FFD700;
+      --banana-vivid: #FFC800;
+      --banana-hot: #FFB300;
+      --banana-deep: #E6A000;
+      --banana-pale: #FFF5B0;
+      --banana-glow: #FFEC5C;
+      --sun: #FF9E00;
+      --earth: #2C1810;
+      --earth-mid: #4A2C1A;
+      --earth-light: #7A4F35;
+      --cream: #FFFBEB;
       --white: #FFFFFF;
-      --white-soft: #FFFDF5;
-      --white-warm: #FFF9E8;
-      --cream: #FFFCF0;
-      --yellow-glow: #FFD700;
-      --yellow-mid: #F5C518;
-      --text-dark: #1A1400;
-      --text-mid: #3D2E00;
-      --text-light: #7A6200;
+      --green-africa: #1A3A2A;
+      --text-on-yellow: #1A0E00;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(160deg, #FFFEF8 0%, #FFF8D6 25%, #FFFBEA 50%, #FFF5C0 75%, #FFFFFF 100%);
-      background-attachment: fixed;
-      color: var(--text-dark);
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
       overflow-x: hidden;
       cursor: none;
     }
 
-    /* CUSTOM CURSOR */
-    .cursor {
-      width: 12px; height: 12px;
-      background: var(--gold);
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: multiply;
+    }
+
+    /* ─── CURSOR ─── */
+    .cursor-dot {
+      width: 10px; height: 10px;
+      background: var(--banana);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 100000;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s;
+      box-shadow: 0 0 20px var(--banana), 0 0 40px rgba(255,225,53,0.4);
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 2px solid rgba(255,225,53,0.7);
       border-radius: 50%;
       position: fixed;
       pointer-events: none;
       z-index: 99999;
       transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, width 0.3s, height 0.3s, background 0.3s;
-      mix-blend-mode: multiply;
+      transition: all 0.12s ease;
     }
-    .cursor-ring {
-      width: 40px; height: 40px;
-      border: 1.5px solid rgba(212,160,23,0.5);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 99998;
-      transform: translate(-50%, -50%);
-      transition: all 0.15s ease;
+    body:has(a:hover) .cursor-dot,
+    body:has(button:hover) .cursor-dot {
+      width: 18px; height: 18px;
     }
 
-    /* ========================================================
-       HERO SECTION – MODIFIED: CAROUSEL + BRIGHT GLASSMORPHISM
-    ======================================================== */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 700px;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    /* CAROUSEL BACKGROUND (replaces video/mosaic) */
-    .hero-carousel {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-    .carousel-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    .carousel-slide.active {
-      opacity: 1;
-      z-index: 2;
-    }
-
-    /* Bright yellow-white glassmorphism overlay */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 220, 0.45) 0%,
-        rgba(255, 240, 150, 0.5) 30%,
-        rgba(255, 230, 100, 0.4) 60%,
-        rgba(255, 250, 200, 0.35) 100%);
-      backdrop-filter: blur(5px) saturate(200%);
-      -webkit-backdrop-filter: blur(5px) saturate(200%);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* Extra brightness layer */
-    .hero-brightness {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(255, 255, 180, 0.3), transparent 70%);
-      z-index: 3;
-      pointer-events: none;
-      mix-blend-mode: overlay;
-    }
-
-    /* Keep rays for sparkle */
-    .hero-rays {
-      position: absolute;
-      inset: 0;
-      background:
-        conic-gradient(from 200deg at 80% 20%, transparent 0deg, rgba(255,240,120,0.25) 10deg, transparent 20deg),
-        conic-gradient(from 180deg at 60% 40%, transparent 0deg, rgba(255,245,140,0.2) 8deg, transparent 18deg);
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    /* Slight darkening at very bottom for text contrast */
-    .hero-gradient-layer {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,8,0,0.3) 0%, rgba(10,8,0,0.05) 50%, transparent 100%);
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      padding: 0 5vw 8vh;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold-bright);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.3s forwards;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 30px;
-      height: 1px;
-      background: var(--gold-bright);
-    }
-
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 9vw, 8.5rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      opacity: 0;
-      animation: fadeUp 1s 0.5s forwards;
-      max-width: 900px;
-      color: var(--white);
-    }
-    .hero-title em {
-      font-style: italic;
-      background: linear-gradient(135deg, var(--gold-bright), var(--gold-pale), #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 400;
-    }
-    .hero-title strong {
-      font-weight: 700;
-      display: block;
-    }
-
-    .hero-sub {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(255,252,240,0.7);
-      margin-top: 1.8rem;
-      max-width: 480px;
-      line-height: 1.7;
-      opacity: 0;
-      animation: fadeUp 1s 0.8s forwards;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      right: 5vw;
-      bottom: 8vh;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      animation: fadeIn 1s 1.5s forwards;
-    }
-    .hero-scroll span {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,215,0,0.7);
-      writing-mode: vertical-rl;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, var(--gold-bright), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    /* Carousel navigation dots */
-    .carousel-dots {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      display: flex;
-      gap: 16px;
-    }
-    .carousel-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: rgba(255, 255, 200, 0.8);
-      backdrop-filter: blur(4px);
-      border: 2px solid rgba(255, 215, 80, 0.9);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px #FFD966, 0 0 40px #FFE68F;
-    }
-    .carousel-dot.active {
-      background: #FFE55C;
-      transform: scale(1.6);
-      border-color: white;
-      box-shadow: 0 0 30px #FFD966, 0 0 60px #FFE55C;
-    }
-
-    /* Hide old video/mosaic elements */
-    .hero-video, .hero-bg-mosaic { display: none; }
-
-    /* ========================================================
-       NAV (unchanged from original, but updated to match bright theme)
-    ======================================================== */
+    /* ─── NAV (with new logo styles) ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      padding: 1.5rem 5vw;
+      padding: 1rem 5vw;  /* slightly adjusted for larger logo */
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: all 0.4s;
+      transition: all 0.5s;
     }
     nav.scrolled {
-      background: rgba(255, 252, 230, 0.88);
+      background: rgba(255, 251, 230, 0.92);
       backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      padding: 1rem 5vw;
-      border-bottom: 1px solid rgba(212,160,23,0.18);
-      box-shadow: 0 4px 30px rgba(212,160,23,0.08);
+      padding: 0.5rem 5vw; /* smaller padding when scrolled */
+      border-bottom: 2px solid var(--banana);
+      box-shadow: 0 4px 30px rgba(255,193,0,0.15);
     }
 
     .nav-logo {
-      display: flex;
-      align-items: center;
+      display: flex; 
+      align-items: center; 
       gap: 12px;
       text-decoration: none;
     }
-    .nav-logo-mark {
-      width: 44px; height: 44px;
-      background: linear-gradient(135deg, var(--gold-bright), var(--gold), var(--amber));
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      color: var(--white);
+    
+    /* New image‑based logo – width & height set to 80 */
+    .nav-logo-image {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;  /* keeps the full logo visible without distortion */
+      display: block;
     }
-    .nav-logo-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      letter-spacing: 0.02em;
+    
+    /* original text logo – hidden because we now use an image */
+    .logo-mark, .logo-text {
+      display: none;
     }
-    .nav-logo-text span {
-      font-weight: 300;
-      color: var(--amber);
-    }
-    /* On hero (not scrolled), logo text should be white */
-    nav:not(.scrolled) .nav-logo-text { color: var(--white); }
-    nav:not(.scrolled) .nav-logo-text span { color: var(--gold-bright); }
+    
+    /* optional: if you ever want to keep the text as fallback, 
+       but we hide it to match request "add a logo path … with height and width of 80" */
 
+    /* Adjust the rest of nav links for better alignment with taller logo */
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      list-style: none;
+      display: flex; align-items: center; gap: 0.25rem; list-style: none;
     }
     .nav-links a {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,252,240,0.7);
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 100px;
-      transition: all 0.3s;
+      font-family: 'Outfit', sans-serif; font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,0.75);
+      text-decoration: none; padding: 0.5rem 1rem;
+      border-radius: 100px; transition: all 0.3s;
     }
-    nav.scrolled .nav-links a { color: var(--text-mid); }
-    .nav-links a:hover {
-      color: var(--text-dark);
-      background: rgba(212,160,23,0.12);
+    nav.scrolled .nav-links a { color: var(--earth-mid); }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--earth);
+      background: var(--banana);
+      box-shadow: 0 4px 20px rgba(255,193,0,0.5);
     }
-    .nav-links a.active {
-      color: var(--amber);
-      border: 1px solid rgba(212,160,23,0.35);
-      background: rgba(255,215,0,0.08);
-    }
-    nav:not(.scrolled) .nav-links a.active { color: var(--gold-bright); }
 
     .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 24px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 1001;
-      padding: 0;
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 28px; height: 22px; background: transparent; border: none; cursor: pointer; z-index: 1001;
     }
-    .hamburger span {
-      width: 100%;
-      height: 2px;
-      background: var(--gold);
-      transition: all 0.3s ease;
-    }
+    .hamburger span { width: 100%; height: 2px; background: var(--banana); transition: all 0.3s; border-radius: 2px; }
 
     @media (max-width: 768px) {
       .hamburger { display: flex; }
       .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        max-width: 320px;
-        height: 100vh;
-        background: rgba(255, 253, 235, 0.97);
-        backdrop-filter: blur(24px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        transition: right 0.4s cubic-bezier(0.2, 0, 0, 1);
-        border-left: 1px solid rgba(212,160,23,0.2);
-        box-shadow: -10px 0 40px rgba(212,160,23,0.1);
-        z-index: 1000;
-        padding: 2rem;
+        position: fixed; top: 0; right: -100%; width: 75%; max-width: 300px; height: 100vh;
+        background: rgba(255,251,230,0.98); backdrop-filter: blur(24px);
+        flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
+        transition: right 0.4s ease; border-left: 3px solid var(--banana);
+        box-shadow: -10px 0 40px rgba(255,193,0,0.2); z-index: 1000;
       }
       .nav-links.active { right: 0; }
-      .nav-links a {
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
-        width: 100%;
-        text-align: center;
-        color: var(--text-mid) !important;
-      }
-      .hamburger.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+      .nav-links a { font-size: 1rem; color: var(--earth-mid) !important; width: 100%; text-align: center; }
+      .hamburger.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
-      .hamburger.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+      .hamburger.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
     }
 
-    /* ========================================================
-       ALL OTHER SECTIONS (COMPLETELY UNCHANGED)
-       Keeping everything exactly as original
-    ======================================================== */
-    .page-wrapper {
-      background: linear-gradient(180deg,
-        #FFFEF5 0%,
-        #FFFBDF 15%,
-        #FFF8CC 30%,
-        #FFFCE8 55%,
-        #FFF9D5 75%,
-        #FFFFFF 100%
-      );
-      position: relative;
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      overflow: hidden; display: flex; align-items: flex-end;
     }
 
-    .ambient-1 {
+    .hero-carousel { position: absolute; inset: 0; z-index: 1; }
+    .carousel-slide {
+      position: absolute; inset: 0; opacity: 0;
+      transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+      background-size: cover; background-position: center;
+    }
+    .carousel-slide.active { opacity: 1; z-index: 2; }
+
+    /* The signature banana-yellow glow overlay */
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: 
+        linear-gradient(to top, rgba(26,14,0,0.75) 0%, rgba(26,14,0,0.2) 40%, transparent 70%),
+        linear-gradient(135deg, rgba(255,225,53,0.18) 0%, transparent 50%);
+    }
+
+    /* MASSIVE banana sun burst in corner */
+    .hero-sunburst {
       position: absolute;
+      top: -20%; right: -10%;
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
-      top: 5%; left: -250px;
-      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,225,53,0.55) 0%, rgba(255,193,0,0.3) 30%, transparent 70%);
+      z-index: 3; pointer-events: none;
+      animation: sunPulse 4s ease-in-out infinite;
     }
-    .ambient-2 {
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255,200,0,0.1) 0%, transparent 70%);
-      top: 35%; right: -200px;
-      pointer-events: none;
+    @keyframes sunPulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.1); opacity: 1; }
     }
 
-    .contact-section {
-      padding: 10vh 5vw 12vh;
+    /* Radiating lines from sun */
+    .hero-rays {
+      position: absolute; top: -20%; right: -10%;
+      width: 700px; height: 700px;
+      background: conic-gradient(from 0deg,
+        transparent 0deg, rgba(255,225,53,0.12) 5deg, transparent 10deg,
+        transparent 25deg, rgba(255,193,0,0.1) 30deg, transparent 35deg,
+        transparent 50deg, rgba(255,225,53,0.12) 55deg, transparent 60deg,
+        transparent 75deg, rgba(255,193,0,0.08) 80deg, transparent 85deg,
+        transparent 100deg, rgba(255,225,53,0.1) 105deg, transparent 110deg,
+        transparent 125deg, rgba(255,193,0,0.12) 130deg, transparent 135deg,
+        transparent 150deg, rgba(255,225,53,0.08) 155deg, transparent 160deg,
+        transparent 175deg, rgba(255,193,0,0.1) 180deg, transparent 185deg,
+        transparent 200deg, rgba(255,225,53,0.12) 205deg, transparent 210deg,
+        transparent 225deg, rgba(255,193,0,0.08) 230deg, transparent 235deg,
+        transparent 250deg, rgba(255,225,53,0.1) 255deg, transparent 260deg,
+        transparent 275deg, rgba(255,193,0,0.12) 280deg, transparent 285deg,
+        transparent 300deg, rgba(255,225,53,0.08) 305deg, transparent 310deg,
+        transparent 325deg, rgba(255,193,0,0.1) 330deg, transparent 335deg,
+        transparent 350deg, rgba(255,225,53,0.12) 355deg, transparent 360deg
+      );
+      z-index: 3; pointer-events: none;
+      animation: raysRotate 30s linear infinite;
+    }
+    @keyframes raysRotate { to { transform: rotate(360deg); } }
+
+    .hero-content {
+      position: relative; z-index: 10;
+      width: 100%; padding: 0 5vw 8vh;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--banana); color: var(--earth);
+      padding: 0.5rem 1.25rem; border-radius: 100px;
+      font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: badgePop 0.6s 0.3s cubic-bezier(0.2,0,0,1) forwards;
+      box-shadow: 0 0 40px rgba(255,225,53,0.6), 0 4px 20px rgba(255,193,0,0.4);
+    }
+    @keyframes badgePop {
+      from { opacity: 0; transform: translateY(20px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .badge-dot {
+      width: 8px; height: 8px; background: var(--earth);
+      border-radius: 50%; animation: dotBlink 1.5s ease-in-out infinite;
+    }
+    @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.8rem, 10vw, 9rem);
+      font-weight: 900; line-height: 0.9;
+      letter-spacing: -0.03em;
+      max-width: 850px;
+      opacity: 0; animation: titleSlide 1s 0.5s cubic-bezier(0.2,0,0,1) forwards;
+    }
+    @keyframes titleSlide {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-title .line-white { color: var(--white); display: block; }
+    .hero-title .line-yellow {
+      color: var(--banana);
+      display: block;
+      text-shadow: 0 0 80px rgba(255,225,53,0.8), 0 0 160px rgba(255,193,0,0.4);
+      -webkit-text-stroke: 1px rgba(255,193,0,0.3);
+    }
+    .hero-title .line-outline {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255,255,255,0.5);
+    }
+
+    .hero-sub {
+      font-size: 1rem; font-weight: 300; color: rgba(255,252,235,0.75);
+      margin-top: 1.5rem; max-width: 440px; line-height: 1.8;
+      opacity: 0; animation: fadeUp 1s 0.8s forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--banana); color: var(--earth);
+      padding: 1rem 2rem; border-radius: 100px; margin-top: 2rem;
+      font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: none; cursor: pointer;
+      opacity: 0; animation: fadeUp 1s 1s forwards;
+      transition: all 0.3s; text-decoration: none;
+      box-shadow: 0 8px 40px rgba(255,193,0,0.5);
+    }
+    .hero-cta:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 20px 60px rgba(255,193,0,0.7);
+      background: var(--banana-bright);
+    }
+
+    /* Floating stat bubbles */
+    .hero-stats {
+      position: absolute; right: 5vw; bottom: 20vh; z-index: 10;
+      display: flex; flex-direction: column; gap: 1rem;
+      opacity: 0; animation: fadeIn 1s 1.2s forwards;
+    }
+    @media (max-width: 768px) { .hero-stats { display: none; } }
+    .stat-bubble {
+      background: rgba(255,225,53,0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,225,53,0.4);
+      border-radius: 20px; padding: 1rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .stat-bubble:hover {
+      background: var(--banana);
+      border-color: var(--banana);
+      transform: scale(1.05);
+    }
+    .stat-bubble:hover .stat-num,
+    .stat-bubble:hover .stat-label { color: var(--earth); }
+    .stat-num {
+      font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900;
+      color: var(--banana); display: block; line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,240,180,0.65); margin-top: 4px;
+    }
+
+    /* Scroll indicator */
+    .hero-scroll-ind {
+      position: absolute; left: 5vw; bottom: 8vh; z-index: 10;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeIn 1s 1.5s forwards;
+    }
+    .scroll-line-v {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--banana), transparent);
+      animation: scrollBeat 2s ease-in-out infinite;
+    }
+    @keyframes scrollBeat {
+      0%, 100% { opacity: 1; height: 50px; }
+      50% { opacity: 0.3; height: 25px; }
+    }
+    .scroll-text {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em;
+      text-transform: uppercase; color: rgba(255,225,53,0.7);
+      writing-mode: vertical-rl;
+    }
+
+    /* Carousel dots */
+    .carousel-dots {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      z-index: 20; display: flex; gap: 12px;
+    }
+    .c-dot {
+      width: 8px; height: 8px; border-radius: 100px;
+      background: rgba(255,225,53,0.4); border: 1.5px solid rgba(255,225,53,0.7);
+      cursor: pointer; transition: all 0.4s;
+    }
+    .c-dot.active {
+      width: 32px; background: var(--banana);
+      box-shadow: 0 0 20px rgba(255,225,53,0.8);
+    }
+
+    /* ─── TICKER BAND ─── */
+    .ticker-band {
+      background: var(--banana);
+      padding: 0.85rem 0;
+      overflow: hidden;
+      position: relative;
+      border-top: 0; border-bottom: 0;
+      box-shadow: 0 4px 40px rgba(255,193,0,0.4);
+    }
+    .ticker-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: tickerScroll 30s linear infinite;
+    }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 0 2rem;
+      font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--earth);
+    }
+    .ticker-sep { color: var(--earth-mid); opacity: 0.4; font-size: 1.2rem; }
+
+    /* ─── PAGE WRAPPER ─── */
+    .page-wrapper {
+      background: linear-gradient(180deg, #FFFBEB 0%, #FFFCE8 30%, #FFF8D5 60%, #FFFBEB 100%);
       position: relative;
     }
 
-    .section-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--amber);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 1.5rem;
+    /* Floating yellow orbs */
+    .orb {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(255,225,53,0.12) 0%, transparent 70%);
     }
-    .section-label::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(to right, var(--gold), transparent);
+    .orb-1 { width: 600px; height: 600px; top: 5%; left: -200px; }
+    .orb-2 { width: 500px; height: 500px; top: 40%; right: -150px; }
+    .orb-3 { width: 400px; height: 400px; bottom: 20%; left: 30%; }
+
+    /* ─── CONTACT SECTION ─── */
+    .contact-section { padding: 10vh 5vw 10vh; position: relative; }
+
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--banana-deep);
+      margin-bottom: 1rem;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block; width: 36px; height: 3px;
+      background: var(--banana); border-radius: 2px;
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 5vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -0.03em; color: var(--earth);
       margin-bottom: 4rem;
-      color: var(--text-dark);
     }
     .section-title em {
       font-style: italic;
-      background: linear-gradient(135deg, var(--gold), var(--amber));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      background: linear-gradient(135deg, var(--banana), var(--sun));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
     .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 3rem;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start;
     }
     @media (max-width: 1100px) { .contact-grid { grid-template-columns: 1fr; } }
 
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(212,160,23,0.22);
-      backdrop-filter: blur(32px);
-      -webkit-backdrop-filter: blur(32px);
-      border-radius: 28px;
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.2,0,0,1);
-      box-shadow:
-        0 8px 32px rgba(212,160,23,0.08),
-        0 2px 8px rgba(255,255,255,0.9) inset,
-        0 -1px 0 rgba(212,160,23,0.1) inset;
+    /* Form panel */
+    .form-panel {
+      background: rgba(255,255,255,0.7);
+      border: 2px solid rgba(255,193,0,0.25);
+      border-radius: 30px; padding: 3rem;
+      backdrop-filter: blur(30px);
+      box-shadow: 0 20px 80px rgba(255,193,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+      position: relative; overflow: hidden;
+      transition: all 0.5s;
     }
-    .glass-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg,
-        rgba(255,250,200,0.4) 0%,
-        rgba(255,255,255,0.2) 50%,
-        rgba(255,240,150,0.15) 100%
-      );
+    .form-panel:hover {
+      border-color: rgba(255,193,0,0.5);
+      box-shadow: 0 30px 100px rgba(255,193,0,0.15);
+    }
+    .form-panel::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--banana), var(--sun), var(--banana));
+      background-size: 200% 100%;
+      animation: shimmerBar 3s linear infinite;
+    }
+    @keyframes shimmerBar {
+      from { background-position: 0% 0%; }
+      to { background-position: 200% 0%; }
+    }
+    .form-panel::after {
+      content: ''; position: absolute;
+      bottom: -40px; right: -40px; width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(255,225,53,0.15), transparent 70%);
       pointer-events: none;
     }
-    .glass-panel:hover {
-      border-color: rgba(212,160,23,0.38);
-      background: rgba(255, 255, 255, 0.7);
-      transform: translateY(-6px);
-      box-shadow:
-        0 40px 80px -20px rgba(212,160,23,0.15),
-        0 0 0 1px rgba(212,160,23,0.12),
-        0 2px 12px rgba(255,255,255,0.95) inset;
+
+    .form-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 2.5rem;
     }
-    .glass-panel::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 120px; height: 120px;
-      background: radial-gradient(circle at top right, rgba(255,215,0,0.15), transparent 70%);
-      pointer-events: none;
+    .live-dot {
+      width: 10px; height: 10px; background: #2ECC71;
+      border-radius: 50%; box-shadow: 0 0 12px rgba(46,204,113,0.6);
+      animation: dotBlink 1.5s ease-in-out infinite;
+    }
+    .form-header-text {
+      font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--banana-deep);
     }
 
     .form-group { margin-bottom: 1.75rem; }
     .form-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      display: block;
-      margin-bottom: 0.6rem;
+      font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--earth-light);
+      display: block; margin-bottom: 0.6rem;
     }
     .form-input {
       width: 100%;
-      background: rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(212,160,23,0.2);
-      border-radius: 14px;
-      padding: 1rem 1.25rem;
-      color: var(--text-dark);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      transition: all 0.3s;
-      outline: none;
-      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1.5px solid rgba(255,193,0,0.2);
+      border-radius: 14px; padding: 0.95rem 1.25rem;
+      color: var(--earth); font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem; font-weight: 400;
+      transition: all 0.3s; outline: none;
     }
-    .form-input::placeholder { color: rgba(60,40,0,0.3); }
+    .form-input::placeholder { color: rgba(74,44,26,0.3); }
     .form-input:focus {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(212,160,23,0.1), 0 0 20px rgba(255,215,0,0.08);
+      background: rgba(255,255,255,0.95);
+      border-color: var(--banana);
+      box-shadow: 0 0 0 4px rgba(255,225,53,0.2), 0 0 30px rgba(255,193,0,0.08);
     }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
     @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
-
-    textarea.form-input {
-      resize: none;
-      min-height: 140px;
-    }
-
+    textarea.form-input { resize: none; min-height: 130px; }
     select.form-input {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C8860A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-color: rgba(255,255,255,0.6);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E6A000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 1rem center;
     }
-    select.form-input option { background: #fffdf0; color: var(--text-dark); }
+    select.form-input option { background: #fffbeb; color: var(--earth); }
 
     .btn-submit {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 1rem 2.5rem;
-      border-radius: 100px;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.2,0,0,1);
-      background: linear-gradient(135deg, var(--gold-bright), var(--gold), var(--amber));
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--earth); border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--banana) 0%, var(--banana-vivid) 50%, var(--sun) 100%);
       background-size: 200% 200%;
-      animation: gradientShift 4s ease infinite;
-      box-shadow: 0 4px 20px rgba(212,160,23,0.3);
+      box-shadow: 0 8px 40px rgba(255,193,0,0.5);
+      transition: all 0.4s; position: relative; overflow: hidden;
     }
     .btn-submit::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.35), transparent, rgba(255,255,255,0.15));
-      opacity: 0;
-      transition: opacity 0.3s;
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
+      opacity: 0; transition: opacity 0.3s;
     }
     .btn-submit:hover::before { opacity: 1; }
     .btn-submit:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 20px 40px -10px rgba(212,160,23,0.45), 0 0 0 1px rgba(255,215,0,0.4);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 20px 60px rgba(255,193,0,0.7);
     }
-    .btn-submit:active { transform: translateY(0) scale(0.99); }
     .btn-arrow {
-      width: 28px; height: 28px;
-      background: rgba(255,255,255,0.25);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s;
+      width: 30px; height: 30px; background: rgba(26,14,0,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s; font-size: 0.7rem;
     }
-    .btn-submit:hover .btn-arrow { transform: translateX(4px); }
+    .btn-submit:hover .btn-arrow { transform: translateX(5px); }
 
-    .info-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
+    /* Info cards */
+    .info-stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .info-card {
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid rgba(212,160,23,0.18);
-      border-radius: 22px;
-      padding: 1.75rem;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
+      background: rgba(255,255,255,0.6);
+      border: 1.5px solid rgba(255,193,0,0.2);
+      border-radius: 22px; padding: 1.6rem 1.75rem;
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 4px 20px rgba(212,160,23,0.06), 0 1px 4px rgba(255,255,255,0.8) inset;
+      transition: all 0.4s cubic-bezier(0.2,0,0,1);
+      position: relative; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(255,193,0,0.06);
     }
     .info-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,248,180,0.3) 0%, rgba(255,255,255,0.2) 100%);
-      pointer-events: none;
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 0;
+      background: linear-gradient(to bottom, var(--banana), var(--banana-vivid));
+      border-radius: 22px 0 0 22px;
+      transition: width 0.3s ease;
     }
-    .info-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 90px; height: 90px;
-      background: radial-gradient(circle, rgba(255,215,0,0.1), transparent 70%);
-    }
+    .info-card:hover::before { width: 4px; }
     .info-card:hover {
-      border-color: rgba(212,160,23,0.38);
-      background: rgba(255, 255, 255, 0.72);
       transform: translateX(8px);
-      box-shadow: 0 8px 30px rgba(212,160,23,0.12);
+      border-color: rgba(255,193,0,0.5);
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 12px 40px rgba(255,193,0,0.12);
     }
-
     .info-icon {
-      width: 40px; height: 40px;
-      background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(212,160,23,0.1));
-      border: 1px solid rgba(212,160,23,0.25);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--amber);
-      font-size: 1rem;
-      margin-bottom: 1rem;
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, rgba(255,225,53,0.3), rgba(255,193,0,0.15));
+      border: 1.5px solid rgba(255,193,0,0.3);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      color: var(--banana-deep); font-size: 1rem; margin-bottom: 0.9rem;
       transition: all 0.3s;
     }
     .info-card:hover .info-icon {
-      background: linear-gradient(135deg, rgba(255,215,0,0.45), rgba(212,160,23,0.2));
-      box-shadow: 0 0 20px rgba(255,215,0,0.25);
+      background: var(--banana);
+      border-color: var(--banana);
+      color: var(--earth);
+      box-shadow: 0 4px 20px rgba(255,193,0,0.4);
     }
-
-    .info-card-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 0.4rem;
+    .info-card-label {
+      font-family: 'Outfit', sans-serif; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--banana-deep);
+      margin-bottom: 0.3rem;
     }
     .info-card-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      line-height: 1.3;
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+      color: var(--earth); line-height: 1.3;
     }
-    .info-card-sub {
-      font-size: 0.8rem;
-      color: rgba(60,46,0,0.5);
-      margin-top: 0.25rem;
-      line-height: 1.5;
+    .info-card-sub { font-size: 0.78rem; color: rgba(74,44,26,0.5); margin-top: 0.2rem; line-height: 1.5; }
+
+    .social-row { display: flex; gap: 0.75rem; margin-top: 1rem; }
+    .social-btn {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.6);
+      border: 1.5px solid rgba(255,193,0,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: rgba(74,44,26,0.5); font-size: 0.9rem;
+      transition: all 0.3s; cursor: pointer; backdrop-filter: blur(12px);
+    }
+    .social-btn:hover {
+      background: var(--banana); border-color: var(--banana);
+      color: var(--earth); transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 24px rgba(255,193,0,0.4);
     }
 
-    .globe-section {
-      padding: 6vh 5vw 10vh;
-      position: relative;
-      text-align: center;
-    }
-
-    .globe-wrapper {
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .globe-3d {
-      width: 180px; height: 180px;
-      margin: 0 auto 2rem;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: all 0.5s ease;
-    }
-    .globe-wrapper:hover .globe-3d {
-      animation: globe360 8s linear infinite;
-    }
-
-    .globe-sphere {
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 35%, rgba(255,240,100,0.5) 0%, transparent 60%),
-        radial-gradient(circle at 65% 65%, rgba(255,200,0,0.3) 0%, transparent 60%),
-        conic-gradient(from 0deg,
-          rgba(212,160,23,0.6) 0deg,
-          rgba(255,220,50,0.5) 40deg,
-          rgba(255,255,200,0.7) 80deg,
-          rgba(255,215,0,0.6) 120deg,
-          rgba(212,160,23,0.5) 160deg,
-          rgba(255,230,80,0.6) 200deg,
-          rgba(255,255,220,0.65) 240deg,
-          rgba(212,160,23,0.55) 280deg,
-          rgba(255,220,50,0.6) 320deg,
-          rgba(212,160,23,0.6) 360deg
-        );
-      border: 1px solid rgba(212,160,23,0.3);
-      box-shadow:
-        inset -20px -20px 60px rgba(180,120,0,0.3),
-        inset 10px 10px 30px rgba(255,255,200,0.4),
-        0 0 60px rgba(255,215,0,0.2),
-        0 0 120px rgba(212,160,23,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .globe-shine {
-      position: absolute;
-      top: 12%; left: 20%;
-      width: 35%; height: 25%;
-      background: radial-gradient(ellipse, rgba(255,255,255,0.55) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .globe-ring {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%) rotateX(75deg);
-      border-radius: 50%;
-      border: 1px solid rgba(212,160,23,0.3);
-      pointer-events: none;
-    }
-    .globe-ring-1 { width: 220px; height: 220px; animation: rotateSlow 12s linear infinite; }
-    .globe-ring-2 { width: 260px; height: 260px; animation: rotateSlow 18s linear infinite reverse; border-style: dashed; opacity: 0.5; }
-    .globe-dot {
-      position: absolute;
-      width: 6px; height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--gold);
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-
-    .globe-cities {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-top: 3rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .city-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0.6rem 1.2rem;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(212,160,23,0.2);
-      border-radius: 100px;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--text-mid);
-      transition: all 0.35s cubic-bezier(0.2,0,0,1);
-      cursor: default;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 2px 10px rgba(212,160,23,0.06);
-    }
-    .city-chip::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,220,50,0.2), rgba(255,255,255,0.3));
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .city-chip:hover::before { opacity: 1; }
-    .city-chip:hover {
-      border-color: rgba(212,160,23,0.5);
-      color: var(--amber);
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(212,160,23,0.15), 0 0 0 1px rgba(212,160,23,0.15);
-      background: rgba(255, 255, 255, 0.8);
-    }
-    .city-flag { font-size: 1rem; }
-
-    .img-strip {
-      padding: 2vh 0 8vh;
-      position: relative;
-      overflow: hidden;
-    }
+    /* ─── IMAGE STRIP ─── */
+    .img-strip { padding: 5vh 0; overflow: hidden; height: 500px; }
     .strip-track {
-      display: flex;
-      gap: 1.5rem;
-      animation: stripScroll 40s linear infinite;
+      display: flex; gap: 1.25rem;
+      animation: stripRoll 50s linear infinite;
       width: max-content;
     }
     .strip-track:hover { animation-play-state: paused; }
-    .strip-img {
-      width: 280px;
-      height: 200px;
-      border-radius: 18px;
-      object-fit: cover;
-      flex-shrink: 0;
-      filter: saturate(0.7) brightness(0.85) sepia(0.15);
-      border: 1px solid rgba(212,160,23,0.15);
-      transition: all 0.5s ease;
-      cursor: pointer;
-    }
-    .strip-img:hover {
-      filter: saturate(1) brightness(1) sepia(0);
-      transform: scale(1.05) translateY(-8px);
-      box-shadow: 0 20px 40px rgba(212,160,23,0.2), 0 0 0 1px rgba(212,160,23,0.3);
-      border-color: rgba(212,160,23,0.5);
+    @keyframes stripRoll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
     .strip-item { position: relative; flex-shrink: 0; }
-    .strip-item-label {
+    .strip-img {
+      width: 300px; height: 210px; border-radius: 20px;
+      object-fit: cover; display: block;
+      filter: saturate(0.8) brightness(0.9);
+      border: 2px solid rgba(255,193,0,0.15);
+      transition: all 0.5s;
+    }
+    .strip-item:hover .strip-img {
+      filter: saturate(1.1) brightness(1.05);
+      transform: scale(1.04) translateY(-8px);
+      border-color: var(--banana);
+      box-shadow: 0 20px 50px rgba(255,193,0,0.3);
+    }
+    .strip-label {
+      position: absolute; bottom: 12px; left: 12px;
+      font-family: 'Outfit', sans-serif; font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--earth);
+      background: var(--banana); backdrop-filter: blur(8px);
+      padding: 4px 12px; border-radius: 100px;
+    }
+
+    /* ─── GLOBE / PRESENCE ─── */
+    .globe-section { padding: 8vh 5vw; text-align: center; position: relative; }
+
+    /* ═══════════════════════════════════════════
+       AFRICA CONTINENT GLOBE — only changed block
+       ═══════════════════════════════════════════ */
+    .globe-container {
+      position: relative;
+      width: 260px; height: 260px;
+      margin: 4rem auto 3rem;
+      perspective: 900px;
+    }
+
+    /* Orbital rings stay outside the sphere */
+    .globe-ring {
+      position: absolute; top: 50%; left: 50%;
+      border-radius: 50%; border: 1.5px solid rgba(255,193,0,0.4);
+      pointer-events: none;
+    }
+    .globe-ring-1 {
+      width: 320px; height: 320px;
+      transform: translate(-50%, -50%) rotateX(72deg);
+      animation: ringRotate 10s linear infinite;
+    }
+    .globe-ring-2 {
+      width: 380px; height: 380px;
+      transform: translate(-50%, -50%) rotateX(72deg) rotateY(45deg);
+      border-style: dashed; opacity: 0.4;
+      animation: ringRotate 15s linear infinite reverse;
+    }
+    @keyframes ringRotate {
+      from { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(0deg); }
+      to   { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg); }
+    }
+
+    /* The sphere ball */
+    .africa-sphere {
       position: absolute;
-      bottom: 12px; left: 12px;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      background: rgba(255,252,220,0.85);
-      backdrop-filter: blur(8px);
-      padding: 4px 10px;
-      border-radius: 100px;
-      border: 1px solid rgba(212,160,23,0.25);
-    }
-
-    .faq-section {
-      padding: 8vh 5vw 10vh;
-      position: relative;
-    }
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 4rem;
-    }
-    @media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
-
-    .faq-card {
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid rgba(212,160,23,0.12);
-      border-radius: 22px;
-      padding: 2rem;
-      transition: all 0.4s ease;
-      position: relative;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%,
+        rgba(255,245,120,0.6) 0%,
+        rgba(255,200,0,0.3) 35%,
+        rgba(180,100,0,0.35) 65%,
+        rgba(90,45,0,0.55) 100%
+      );
+      border: 2px solid rgba(255,193,0,0.45);
+      box-shadow:
+        inset -28px -28px 55px rgba(140,80,0,0.45),
+        inset 14px 14px 38px rgba(255,255,200,0.45),
+        0 0 80px rgba(255,193,0,0.3),
+        0 0 160px rgba(255,225,53,0.15);
       overflow: hidden;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 2px 16px rgba(212,160,23,0.05);
+      cursor: pointer;
+      transition: box-shadow 0.4s;
+      /* idle gentle breathe */
+      animation: africaBreathe 4s ease-in-out infinite;
     }
-    .faq-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 0;
-      background: linear-gradient(to bottom, var(--gold-bright), var(--gold), transparent);
-      transition: height 0.4s ease;
-    }
-    .faq-card:hover::after { height: 100%; }
-    .faq-card:hover {
-      border-color: rgba(212,160,23,0.3);
-      background: rgba(255, 255, 255, 0.75);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(212,160,23,0.1);
-    }
-    .faq-icon {
-      font-size: 1.5rem;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .faq-q {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-    .faq-a {
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: rgba(60,46,0,0.55);
-      line-height: 1.7;
-    }
-    .faq-email {
-      color: var(--amber);
-      font-weight: 500;
+    @keyframes africaBreathe {
+      0%, 100% { filter: brightness(1); }
+      50%       { filter: brightness(1.1); }
     }
 
-    .regions-section { padding: 4vh 5vw 10vh; }
+    /* Hover → 360° Y-spin */
+    .globe-container:hover .africa-sphere {
+      animation: africaSpin360 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+      box-shadow:
+        inset -28px -28px 55px rgba(140,80,0,0.45),
+        inset 14px 14px 38px rgba(255,255,200,0.45),
+        0 0 130px rgba(255,193,0,0.6),
+        0 0 260px rgba(255,225,53,0.3);
+    }
+    @keyframes africaSpin360 {
+      0%   { transform: translate(-50%, -50%) rotateY(0deg); }
+      100% { transform: translate(-50%, -50%) rotateY(360deg); }
+    }
+
+    /* The Africa SVG sits inside the sphere */
+    .africa-continent {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 130px; height: 140px;
+      z-index: 2;
+      filter:
+        drop-shadow(0 3px 14px rgba(160,90,0,0.55))
+        drop-shadow(0 0 28px rgba(255,200,0,0.4));
+    }
+    .globe-container:hover .africa-continent {
+      filter:
+        drop-shadow(0 4px 22px rgba(160,90,0,0.7))
+        drop-shadow(0 0 50px rgba(255,230,50,0.6));
+    }
+
+    /* Glass shine on top of sphere */
+    .africa-shine {
+      position: absolute;
+      top: 10%; left: 18%;
+      width: 35%; height: 22%;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.58) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none; z-index: 3;
+    }
+    /* ═══════════════════════════════════════════ */
+
+    .city-chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;
+      max-width: 750px; margin: 0 auto;
+    }
+    .city-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255,255,255,0.6);
+      border: 1.5px solid rgba(255,193,0,0.2);
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.05em; color: var(--earth-mid);
+      transition: all 0.35s; cursor: default; backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px rgba(255,193,0,0.06);
+    }
+    .city-chip:hover {
+      background: var(--banana); border-color: var(--banana);
+      color: var(--earth); transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 12px 30px rgba(255,193,0,0.35);
+    }
+
+    /* ─── REGIONS ─── */
+    .regions-section { padding: 6vh 5vw 8vh; }
     .regions-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-      margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem;
     }
     @media (max-width: 900px) { .regions-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 500px) { .regions-grid { grid-template-columns: 1fr; } }
 
     .region-card {
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid rgba(212,160,23,0.14);
-      border-radius: 22px;
-      padding: 1.75rem 1.5rem;
+      background: rgba(255,255,255,0.55);
+      border: 1.5px solid rgba(255,193,0,0.15);
+      border-radius: 24px; padding: 2rem 1.5rem;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.2,0,0,1);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
+      position: relative; overflow: hidden; cursor: pointer;
       backdrop-filter: blur(16px);
-      box-shadow: 0 2px 12px rgba(212,160,23,0.06);
     }
-    .region-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.18) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.4s;
+    .region-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,225,53,0.2) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.4s;
     }
-    .region-card:hover::before { opacity: 1; }
+    .region-card:hover::after { opacity: 1; }
     .region-card:hover {
-      border-color: rgba(212,160,23,0.4);
-      transform: translateY(-8px) scale(1.03);
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 20px 50px rgba(212,160,23,0.15), 0 0 0 1px rgba(212,160,23,0.15);
+      border-color: var(--banana);
+      transform: translateY(-10px) scale(1.03);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 25px 60px rgba(255,193,0,0.2), 0 0 0 1px rgba(255,193,0,0.2);
     }
-    .region-flag { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+    .region-flag { font-size: 2.8rem; display: block; margin-bottom: 0.75rem; }
     .region-city {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 0.3rem;
+      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
+      color: var(--earth); margin-bottom: 0.4rem;
     }
-    .region-email {
-      font-size: 0.7rem;
-      color: rgba(180,120,0,0.65);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      word-break: break-all;
+    .region-email { font-size: 0.68rem; color: rgba(180,120,0,0.6); word-break: break-all; }
+
+    /* ─── FAQ ─── */
+    .faq-section { padding: 6vh 5vw 8vh; }
+    .faq-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 4rem;
+    }
+    @media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
+
+    .faq-card {
+      background: rgba(255,255,255,0.55);
+      border: 1.5px solid rgba(255,193,0,0.12);
+      border-radius: 24px; padding: 2.25rem;
+      transition: all 0.4s; position: relative; overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+    .faq-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 0;
+      background: linear-gradient(180deg, rgba(255,225,53,0.15), transparent);
+      transition: height 0.4s;
+    }
+    .faq-card:hover::before { height: 100%; }
+    .faq-card:hover {
+      border-color: rgba(255,193,0,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(255,193,0,0.12);
+    }
+    .faq-icon { font-size: 1.6rem; color: var(--banana-vivid); margin-bottom: 1rem; display: block; }
+    .faq-q {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      color: var(--earth); margin-bottom: 0.6rem; line-height: 1.3;
+    }
+    .faq-a { font-size: 0.84rem; font-weight: 300; color: rgba(74,44,26,0.55); line-height: 1.75; }
+    .faq-email { color: var(--banana-deep); font-weight: 600; }
+
+    /* ─── IMPACT BANNER ─── */
+    .impact-banner {
+      margin: 4vh 5vw;
+      background: linear-gradient(135deg, var(--banana) 0%, var(--banana-vivid) 40%, var(--sun) 100%);
+      border-radius: 30px; padding: 4rem 3rem;
+      position: relative; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(255,193,0,0.4);
+    }
+    .impact-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: conic-gradient(from 200deg at 80% 50%,
+        transparent 0deg, rgba(255,255,255,0.12) 10deg, transparent 20deg,
+        transparent 40deg, rgba(255,255,255,0.08) 50deg, transparent 60deg
+      );
+    }
+    .impact-text {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900; color: var(--earth); line-height: 1.15;
+      max-width: 700px; position: relative; z-index: 1;
+    }
+    .impact-text em { font-style: italic; color: var(--white); }
+    .impact-stats {
+      display: flex; gap: 3rem; margin-top: 2.5rem;
+      position: relative; z-index: 1; flex-wrap: wrap;
+    }
+    .impact-stat-num {
+      font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900;
+      color: var(--white); line-height: 1; display: block;
+    }
+    .impact-stat-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(26,14,0,0.55); margin-top: 4px;
     }
 
-    .social-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
+    /* ─── DIVIDERS ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,193,0,0.25), transparent);
+      margin: 0 5vw;
     }
-    .social-btn {
-      width: 48px; height: 48px;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(212,160,23,0.18);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(60,46,0,0.55);
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      backdrop-filter: blur(12px);
-    }
-    .social-btn:hover {
-      background: linear-gradient(135deg, rgba(255,220,50,0.35), rgba(255,255,255,0.7));
-      border-color: rgba(212,160,23,0.5);
-      color: var(--amber);
-      transform: translateY(-4px) scale(1.1);
-      box-shadow: 0 8px 24px rgba(212,160,23,0.2);
+    .pattern-border {
+      height: 5px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--banana) 0px, var(--banana) 6px,
+        transparent 6px, transparent 14px,
+        var(--banana-vivid) 14px, var(--banana-vivid) 20px,
+        transparent 20px, transparent 28px
+      );
+      opacity: 0.6;
     }
 
+    /* ─── FOOTER ─── */
     footer {
-      border-top: 1px solid rgba(212,160,23,0.15);
+      border-top: 2px solid rgba(255,193,0,0.2);
       padding: 5vh 5vw;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
-      background: rgba(255,252,225,0.5);
+      background: rgba(255,252,220,0.5);
     }
     @media (max-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 500px) { footer { grid-template-columns: 1fr; } }
 
     .footer-brand p {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: rgba(60,46,0,0.45);
-      line-height: 1.8;
-      margin-top: 1rem;
-      max-width: 280px;
+      font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5);
+      line-height: 1.8; margin-top: 1rem; max-width: 280px;
     }
     .footer-col-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
+      font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--banana-deep);
       margin-bottom: 1.2rem;
     }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
     .footer-col a {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: rgba(60,46,0,0.45);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5);
+      text-decoration: none; transition: color 0.2s;
     }
-    .footer-col a:hover { color: var(--amber); }
-
+    .footer-col a:hover { color: var(--banana-deep); }
     .footer-bottom {
-      border-top: 1px solid rgba(212,160,23,0.1);
-      padding: 1.5rem 5vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.72rem;
-      color: rgba(60,46,0,0.3);
-      background: rgba(255,252,225,0.3);
+      border-top: 1px solid rgba(255,193,0,0.12); padding: 1.5rem 5vw;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.72rem; color: rgba(74,44,26,0.35);
+      background: rgba(255,252,220,0.3);
     }
-    .footer-bottom span { color: var(--amber); opacity: 0.7; }
 
+    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 1; transform: scaleY(1); }
-      50% { opacity: 0.4; transform: scaleY(0.6); }
-    }
-    @keyframes rotateSlow {
-      from { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(0deg); }
-      to { transform: translate(-50%, -50%) rotateX(75deg) rotateZ(360deg); }
-    }
-    @keyframes globe360 {
-      from { transform: rotateY(0deg); }
-      to { transform: rotateY(360deg); }
-    }
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    @keyframes stripScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    @keyframes dotPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.6); }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.9s cubic-bezier(0.2,0,0,1);
+      opacity: 0; transform: translateY(28px);
+      transition: all 0.85s cubic-bezier(0.2,0,0,1);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(212,160,23,0.2), transparent);
-      margin: 0 5vw;
-    }
-
-    .section-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 8rem;
-      font-weight: 700;
-      position: absolute;
-      right: 5vw;
-      top: 4vh;
-      color: rgba(212,160,23,0.07);
-      pointer-events: none;
-      line-height: 1;
-    }
-
-    .pattern-border {
-      width: 100%;
-      height: 4px;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--gold-bright) 0px, var(--gold-bright) 4px,
-        transparent 4px, transparent 12px,
-        var(--gold) 12px, var(--gold) 16px,
-        transparent 16px, transparent 24px
-      );
-      opacity: 0.45;
+    /* Scroll reveal number */
+    .section-num {
+      font-family: 'Playfair Display', serif; font-size: 10rem; font-weight: 900;
+      position: absolute; right: 5vw; top: 4vh;
+      color: rgba(255,193,0,0.07); pointer-events: none; line-height: 1;
+      -webkit-text-stroke: 1px rgba(255,193,0,0.1);
     }
   </style>
 </head>
 <body>
-  <div class="grain"></div>
 
   <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- =========================================================
-       NAVIGATION
-  ========================================================== -->
+  <!-- ═══ NAV (with new 80x80 image logo) ═══ -->
   <nav id="mainNav">
-    <a href="#" class="nav-logo">
-      <div class="nav-logo-mark">ENS</div>
-      <div class="nav-logo-text">Africa <span>Foundation</span></div>
+    <a href="index.html" class="nav-logo">
+      <!-- New image logo – width & height 80, using a placeholder SVG of Africa / ENS style.
+           Replace 'logo.svg' with your actual logo path. -->
+      <img src="./assets/ENS Africa logo final-04.png" 
+           alt="ENS Africa Foundation Logo" 
+           class="nav-logo-image"
+           width="200%" height="200%">
+      <!-- The old text logo is hidden by CSS -->
+      <div class="logo-mark">ENS</div>
+      <div class="logo-text">Africa <span>Foundation</span></div>
     </a>
     <button class="hamburger" id="hamburgerBtn">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="" class="active">Home</a></li>
@@ -1179,62 +975,102 @@
     </ul>
   </nav>
 
-  <!-- =========================================================
-       HERO – UPDATED WITH CAROUSEL AND BRIGHT GLASSMORPHISM
-    ========================================================== -->
+  <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <!-- Carousel with African foundation images -->
     <div class="hero-carousel">
-      <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85&fit=crop');"></div>
-      <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1600&q=85&fit=crop');"></div>
-      <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1530099486328-e021101a494a?w=1600&q=85&fit=crop');"></div>
-      <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85&fit=crop');"></div>
+      <!-- African children & community images from Unsplash -->
+      <div class="carousel-slide active" style="background-image:url('./assets/hero1.png');"></div>
+      <div class="carousel-slide" style="background-image:url('./assets/home.jpg');"></div>
+      <div class="carousel-slide" style="background-image:url('./assets/home2.jpg');"></div>
+      <div class="carousel-slide" style="background-image:url('./assets/hero5.png');"></div>
+      <div class="carousel-slide" style="background-image:url('./assets/hero4.png');"></div>
     </div>
-    <!-- Bright yellow-white glassmorphism overlay -->
+
     <div class="hero-overlay"></div>
-    <div class="hero-brightness"></div>
+    <div class="hero-sunburst"></div>
     <div class="hero-rays"></div>
-    <div class="hero-gradient-layer"></div>
 
-    <!-- Carousel navigation dots -->
+    <!-- Floating stat bubbles -->
+    <div class="hero-stats">
+      <div class="stat-bubble">
+        <span class="stat-num">12K+</span>
+        <div class="stat-label">Lives Touched</div>
+      </div>
+      <div class="stat-bubble">
+        <span class="stat-num">8</span>
+        <div class="stat-label">African Nations</div>
+      </div>
+      <div class="stat-bubble">
+        <span class="stat-num">20+</span>
+        <div class="stat-label">Years Impact</div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-ind">
+      <div class="scroll-line-v"></div>
+      <span class="scroll-text">Scroll</span>
+    </div>
+
     <div class="carousel-dots">
-      <div class="carousel-dot active" data-index="0"></div>
-      <div class="carousel-dot" data-index="1"></div>
-      <div class="carousel-dot" data-index="2"></div>
-      <div class="carousel-dot" data-index="3"></div>
+      <div class="c-dot active" data-index="0"></div>
+      <div class="c-dot" data-index="1"></div>
+      <div class="c-dot" data-index="2"></div>
+      <div class="c-dot" data-index="3"></div>
+      <div class="c-dot" data-index="4"></div>
     </div>
 
-    <div class="hero-scroll">
-      <span>scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-
-    <div class="hero-content">
-      <div class="hero-eyebrow">ENS Africa Foundation · Connect</div>
+     <div class="hero-content">
+      <div class="hero-badge">
+        <!--<div class="badge-dot"></div>-->
+        ENS Africa Foundation · Connect With Us
+      </div>
       <h1 class="hero-title">
-        <em>Let's build</em>
-        <strong>Africa</strong>
-        together.
+        <span class="line-white">What's Your</span>
+        <span class="line-yellow">Future</span>
+        <span class="line-outline">Story.</span>
       </h1>
       <p class="hero-sub">We believe in the transformative power of community, justice, and opportunity. Reach out — every conversation plants a seed.</p>
+      <a href="contact.html" class="hero-cta">
+        Start a Conversation
+        <div class="btn-arrow"><i class="fas fa-arrow-down"></i></div>
+      </a>
     </div>
   </section>
 
+  <!-- ═══ TICKER ═══ -->
+  <div class="ticker-band">
+    <div class="ticker-track">
+      <!-- Two copies for seamless loop -->
+      <span class="ticker-item"><span></span> Access to Justice <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Empowering Communities <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Future Lawyers Programme <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Building Africa Together <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Women Empowerment <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Climate &amp; Rights <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Pro Bono Volunteering <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Access to Justice <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Empowering Communities <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Future Lawyers Programme <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Building Africa Together <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Women Empowerment <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Climate &amp; Rights <span class="ticker-sep">·</span></span>
+      <span class="ticker-item"><span></span> Pro Bono Volunteering <span class="ticker-sep">·</span></span>
+    </div>
+  </div>
+
   <div class="pattern-border"></div>
 
-  <!-- =========================================================
-       PAGE WRAPPER (EVERYTHING ELSE UNCHANGED)
-  ========================================================== -->
-  <div class="page-wrapper">
-    <div class="ambient-1"></div>
-    <div class="ambient-2"></div>
+  <!-- ═══ PAGE WRAPPER ═══ -->
+  <div class="page-wrapper" id="contact">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-    <!-- CONTACT FORM + INFO (unchanged) -->
+    <!-- ── CONTACT FORM ── -->
     <section class="contact-section">
-      <div class="section-number">01</div>
-
+      <div class="section-num">01</div>
       <div class="reveal">
-        <div class="section-label">get in touch</div>
+        <div class="section-eyebrow">Get In Touch</div>
         <h2 class="section-title">
           <em>Send us</em><br>a message
         </h2>
@@ -1242,12 +1078,10 @@
 
       <div class="contact-grid">
         <!-- FORM -->
-        <div class="glass-panel reveal">
-          <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(255,215,0,0.5),transparent);"></div>
-
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:2.5rem;">
-            <div style="width:8px;height:8px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px rgba(212,160,23,0.6);animation:dotPulse 2s ease-in-out infinite;"></div>
-            <span style="font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);">Direct Message</span>
+        <div class="form-panel reveal">
+          <div class="form-header">
+            <div class="live-dot"></div>
+            <span class="form-header-text">Direct Message · We respond within 2 business days</span>
           </div>
 
           <form id="contactForm" onsubmit="handleSubmit(event)">
@@ -1258,14 +1092,13 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="you@example.com">
+                <input type="email" class="form-input" placeholder="ens@foundation.com">
               </div>
             </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Organisation</label>
-                <input type="text" class="form-input" placeholder="optional">
+                <input type="text" class="form-input" placeholder="Optional">
               </div>
               <div class="form-group">
                 <label class="form-label">Enquiry Type</label>
@@ -1279,63 +1112,56 @@
                 </select>
               </div>
             </div>
-
             <div class="form-group">
               <label class="form-label">Subject</label>
               <input type="text" class="form-input" placeholder="Brief subject…">
             </div>
-
             <div class="form-group">
               <label class="form-label">Your Message</label>
               <textarea class="form-input" placeholder="Tell us how we can help or collaborate. Every message is read with care…"></textarea>
             </div>
-
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
               <button type="submit" class="btn-submit">
                 Send Message
-                <div class="btn-arrow"><i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
+                <div class="btn-arrow"><i class="fas fa-arrow-right"></i></div>
               </button>
-              <p style="font-size:0.72rem;color:rgba(60,46,0,0.4);display:flex;align-items:center;gap:6px;">
-                <i class="fas fa-lock" style="color:rgba(212,160,23,0.5);"></i>
-                Responds within 2 business days
+              <p style="font-size:0.72rem;color:rgba(74,44,26,0.4);display:flex;align-items:center;gap:6px;">
+                <i class="fas fa-lock" style="color:rgba(255,193,0,0.6);"></i>
+                All correspondence is confidential
               </p>
             </div>
           </form>
 
-          <!-- SUCCESS STATE -->
           <div id="formSuccess" style="display:none;text-align:center;padding:2rem 0;">
-            <div style="font-size:3rem;margin-bottom:1rem;">🌍</div>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;background:linear-gradient(135deg,var(--gold),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Message sent!</p>
-            <p style="font-size:0.85rem;color:rgba(60,46,0,0.5);margin-top:0.5rem;">We'll be in touch within 2 business days.</p>
+            <div style="font-size:4rem;margin-bottom:1rem;">🌍</div>
+            <p style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--banana),var(--sun));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Message received!</p>
+            <p style="font-size:0.85rem;color:rgba(74,44,26,0.5);margin-top:0.6rem;line-height:1.6;">Thank you for reaching out. We'll be in touch<br>within 2 business days.</p>
           </div>
         </div>
 
-        <!-- RIGHT INFO STACK (unchanged) -->
+        <!-- INFO STACK -->
         <div class="info-stack">
           <div class="info-card reveal reveal-delay-1">
             <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="info-card-title">Head Office</div>
+            <div class="info-card-label">Head Office</div>
             <div class="info-card-main">Johannesburg</div>
             <div class="info-card-sub">150 West Street, Sandton<br>2196, South Africa</div>
           </div>
-
           <div class="info-card reveal reveal-delay-2">
             <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-            <div class="info-card-title">Direct Line</div>
+            <div class="info-card-label">Direct Line</div>
             <div class="info-card-main">+27 11 269 7600</div>
             <div class="info-card-sub">Mon – Fri, 08:00 – 17:00 SAST</div>
           </div>
-
           <div class="info-card reveal reveal-delay-3">
             <div class="info-icon"><i class="fas fa-envelope"></i></div>
-            <div class="info-card-title">Email</div>
+            <div class="info-card-label">Email</div>
             <div class="info-card-main" style="font-size:1.05rem;">foundation@ensafrica.com</div>
             <div class="info-card-sub">All correspondence is confidential</div>
           </div>
-
-          <div class="info-card reveal reveal-delay-4" style="padding:1.5rem;">
-            <div class="info-card-title" style="margin-bottom:0.2rem;">Follow Our Work</div>
-            <p style="font-size:0.75rem;color:rgba(60,46,0,0.35);margin-bottom:1rem;">#ENSafricaFoundation</p>
+          <div class="info-card reveal reveal-delay-4">
+            <div class="info-card-label">Follow Our Work</div>
+            <p style="font-size:0.75rem;color:rgba(74,44,26,0.35);margin-bottom:0.5rem;">#ENSafricaFoundation</p>
             <div class="social-row">
               <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
               <div class="social-btn"><i class="fab fa-x-twitter"></i></div>
@@ -1349,197 +1175,326 @@
 
     <div class="divider"></div>
 
-    <!-- IMAGE STRIP (unchanged) -->
-    <div class="img-strip" style="padding:6vh 0 6vh;">
+    <!-- ── IMAGE STRIP ── -->
+    <div class="img-strip">
       <div class="strip-track" id="stripTrack">
-        <!-- all images as original -->
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1611348586655-f2a8f2e15d2e?w=600&q=80&fit=crop" alt="African community" loading="lazy"><span class="strip-item-label">Community</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="African village" loading="lazy"><span class="strip-item-label">Village Life</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="African landscape" loading="lazy"><span class="strip-item-label">Landscape</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Africa outreach" loading="lazy"><span class="strip-item-label">Outreach</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Township" loading="lazy"><span class="strip-item-label">Township</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-item-label">Foundation Work</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop&crop=top" alt="People" loading="lazy"><span class="strip-item-label">People</span></div>
-        <!-- duplicates -->
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1611348586655-f2a8f2e15d2e?w=600&q=80&fit=crop" alt="African community" loading="lazy"><span class="strip-item-label">Community</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="African village" loading="lazy"><span class="strip-item-label">Village Life</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="African landscape" loading="lazy"><span class="strip-item-label">Landscape</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Africa outreach" loading="lazy"><span class="strip-item-label">Outreach</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Township" loading="lazy"><span class="strip-item-label">Township</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-item-label">Foundation Work</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label" >Education</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
+        <!-- Duplicates -->
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
+        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- GLOBE + CITIES (unchanged) -->
-    <section class="globe-section" style="position:relative;">
-      <div class="section-number">02</div>
-      <div class="reveal"><div class="section-label" style="justify-content:center;">Our Presence</div><h2 class="section-title" style="text-align:center;">Active <em>across</em> the<br>continent</h2></div>
-      <div class="globe-wrapper reveal" style="margin:3rem auto;"><div class="globe-3d"><div class="globe-ring globe-ring-1"><div class="globe-dot" style="top:-3px;left:50%;margin-left:-3px;"></div></div><div class="globe-ring globe-ring-2"><div class="globe-dot" style="top:50%;right:-3px;margin-top:-3px;animation-delay:1s;"></div></div><div class="globe-sphere"><div class="globe-shine"></div></div></div><p style="font-family:'Syne',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(180,120,0,0.55);text-align:center;margin-top:1rem;">hover to spin · 360°</p></div>
-      <div class="globe-cities reveal"><div class="city-chip"><span class="city-flag">🇿🇦</span>Johannesburg</div><div class="city-chip"><span class="city-flag">🇬🇭</span>Accra</div><div class="city-chip"><span class="city-flag">🇰🇪</span>Nairobi</div><div class="city-chip"><span class="city-flag">🇷🇼</span>Kigali</div><div class="city-chip"><span class="city-flag">🇺🇬</span>Kampala</div><div class="city-chip"><span class="city-flag">🇲🇺</span>Port Louis</div><div class="city-chip"><span class="city-flag">🇳🇦</span>Windhoek</div><div class="city-chip"><span class="city-flag">🇲🇿</span>Maputo</div></div>
-      <p style="font-size:0.72rem;color:rgba(60,46,0,0.3);text-align:center;margin-top:2rem;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
+    <!-- ── IMPACT BANNER ── -->
+    <div class="impact-banner reveal">
+      <div class="impact-text">
+        Every partnership,<br>every conversation<br><em>changes a life.</em>
+      </div>
+      <div class="impact-stats">
+        <div>
+          <span class="impact-stat-num">12,400+</span>
+          <div class="impact-stat-label">Beneficiaries</div>
+        </div>
+        <div>
+          <span class="impact-stat-num">380+</span>
+          <div class="impact-stat-label">Pro Bono Hours</div>
+        </div>
+        <div>
+          <span class="impact-stat-num">56</span>
+          <div class="impact-stat-label">Scholars Funded</div>
+        </div>
+        <div>
+          <span class="impact-stat-num">8</span>
+          <div class="impact-stat-label">Countries Active</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider" style="margin-top:4vh;"></div>
+
+    <!-- ── GLOBE ── -->
+    <section class="globe-section">
+      <div class="section-num">02</div>
+      <div class="reveal">
+        <div class="section-eyebrow" style="justify-content:center;">Our Presence</div>
+        <h2 class="section-title" style="text-align:center;">Active <em>across</em> the<br>continent</h2>
+      </div>
+
+      <!-- ═══ AFRICA CONTINENT GLOBE (only changed element) ═══ -->
+      <div class="globe-container reveal">
+        <!-- Orbital rings -->
+        <div class="globe-ring globe-ring-1"></div>
+        <div class="globe-ring globe-ring-2"></div>
+
+        <!-- Sphere ball with Africa SVG inside -->
+        <div class="africa-sphere">
+          <div class="africa-shine"></div>
+          <!-- Detailed Africa continent SVG path -->
+          <svg class="africa-continent" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-label="African continent">
+            <path d="
+              M 185 10
+              C 195 8, 215 10, 230 18
+              C 250 28, 268 22, 278 30
+              C 292 40, 295 58, 288 72
+              C 280 88, 282 105, 275 118
+              C 268 132, 272 148, 280 160
+              C 292 178, 298 198, 295 215
+              C 292 232, 300 248, 310 260
+              C 322 275, 328 292, 325 308
+              C 322 325, 330 340, 335 355
+              C 340 372, 338 390, 330 404
+              C 318 422, 305 435, 288 442
+              C 268 450, 248 458, 228 462
+              C 208 466, 188 468, 170 462
+              C 150 456, 132 445, 118 432
+              C 100 416, 88 398, 80 378
+              C 72 358, 68 338, 70 318
+              C 72 298, 65 280, 58 262
+              C 50 242, 48 222, 52 202
+              C 56 182, 68 165, 72 145
+              C 76 125, 70 105, 75 88
+              C 80 70, 92 55, 108 45
+              C 125 34, 148 18, 165 12
+              Z
+            " fill="url(#africaGold)" opacity="0.95"/>
+            <!-- Madagascar island -->
+            <path d="
+              M 345 240
+              C 352 235, 362 238, 366 248
+              C 370 260, 368 278, 362 290
+              C 356 302, 348 308, 340 304
+              C 332 300, 330 288, 333 276
+              C 336 262, 340 248, 345 240
+              Z
+            " fill="url(#africaGold)" opacity="0.8"/>
+            <!-- Highlight overlay for depth -->
+            <path d="
+              M 185 10
+              C 195 8, 215 10, 230 18
+              C 250 28, 268 22, 278 30
+              C 270 45, 255 52, 240 60
+              C 220 70, 200 68, 182 58
+              C 165 48, 155 32, 165 18
+              Z
+            " fill="rgba(255,255,255,0.18)" />
+            <defs>
+              <linearGradient id="africaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#FFE135"/>
+                <stop offset="35%"  stop-color="#FFC800"/>
+                <stop offset="70%"  stop-color="#E6A000"/>
+                <stop offset="100%" stop-color="#B87000"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <!-- ═══ END AFRICA CONTINENT GLOBE ═══ -->
+
+      <div class="city-chips reveal">
+        <div class="city-chip"><span>🇿🇦</span> Johannesburg</div>
+        <div class="city-chip"><span>🇬🇭</span> Accra</div>
+        <div class="city-chip"><span>🇰🇪</span> Nairobi</div>
+        <div class="city-chip"><span>🇷🇼</span> Kigali</div>
+        <div class="city-chip"><span>🇺🇬</span> Kampala</div>
+        <div class="city-chip"><span>🇲🇺</span> Port Louis</div>
+        <div class="city-chip"><span>🇳🇦</span> Windhoek</div>
+        <div class="city-chip"><span>🇲🇿</span> Maputo</div>
+      </div>
+      <p style="font-size:0.72rem;color:rgba(74,44,26,0.3);text-align:center;margin-top:1.5rem;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
     </section>
 
     <div class="divider"></div>
 
-    <!-- REGIONAL LIAISONS (unchanged) -->
+    <!-- ── REGIONAL LIAISONS ── -->
     <section class="regions-section">
-      <div class="section-number" style="left:5vw;right:auto;">03</div>
-      <div class="reveal"><div class="section-label">Regional Network</div><h2 class="section-title">Find your<br><em>local liaison</em></h2></div>
+      <div class="section-num" style="left:5vw;right:auto;">03</div>
+      <div class="reveal">
+        <div class="section-eyebrow">Regional Network</div>
+        <h2 class="section-title">Find your<br><em>local liaison</em></h2>
+      </div>
       <div class="regions-grid">
-        <div class="region-card reveal reveal-delay-1"><span class="region-flag">🇬🇭</span><div class="region-city">Accra</div><div class="region-email">ghana@ensafrica.foundation</div></div>
-        <div class="region-card reveal reveal-delay-2"><span class="region-flag">🇰🇪</span><div class="region-city">Nairobi</div><div class="region-email">kenya@ensafrica.foundation</div></div>
-        <div class="region-card reveal reveal-delay-3"><span class="region-flag">🇷🇼</span><div class="region-city">Kigali</div><div class="region-email">rwanda@ensafrica.foundation</div></div>
-        <div class="region-card reveal reveal-delay-4"><span class="region-flag">🇺🇬</span><div class="region-city">Kampala</div><div class="region-email">uganda@ensafrica.foundation</div></div>
+        <div class="region-card reveal reveal-delay-1">
+          <span class="region-flag">🇬🇭</span>
+          <div class="region-city">Accra</div>
+          <div class="region-email">ghana@ensafrica.foundation</div>
+        </div>
+        <div class="region-card reveal reveal-delay-2">
+          <span class="region-flag">🇰🇪</span>
+          <div class="region-city">Nairobi</div>
+          <div class="region-email">kenya@ensafrica.foundation</div>
+        </div>
+        <div class="region-card reveal reveal-delay-3">
+          <span class="region-flag">🇷🇼</span>
+          <div class="region-city">Kigali</div>
+          <div class="region-email">rwanda@ensafrica.foundation</div>
+        </div>
+        <div class="region-card reveal reveal-delay-4">
+          <span class="region-flag">🇺🇬</span>
+          <div class="region-city">Kampala</div>
+          <div class="region-email">uganda@ensafrica.foundation</div>
+        </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- FAQ (unchanged) -->
+    <!-- ── FAQ ── -->
     <section class="faq-section">
-      <div class="section-number">04</div>
-      <div class="reveal"><div class="section-label">Common Questions</div><h2 class="section-title">What brings<br><em>people to us</em></h2></div>
+      <div class="section-num">04</div>
+      <div class="reveal">
+        <div class="section-eyebrow">Common Questions</div>
+        <h2 class="section-title">What brings<br><em>people to us</em></h2>
+      </div>
       <div class="faq-grid">
-        <div class="faq-card reveal reveal-delay-1"><div class="faq-icon"><i class="fas fa-handshake"></i></div><div class="faq-q">I want to partner or sponsor</div><div class="faq-a">Email <span class="faq-email">partnerships@ensafrica.foundation</span> or use the contact form above.</div></div>
-        <div class="faq-card reveal reveal-delay-2"><div class="faq-icon"><i class="fas fa-gavel"></i></div><div class="faq-q">I'm a lawyer — can I volunteer?</div><div class="faq-a">Absolutely. Write to <span class="faq-email">probono@ensafrica.foundation</span>.</div></div>
-        <div class="faq-card reveal reveal-delay-3"><div class="faq-icon"><i class="fas fa-graduation-cap"></i></div><div class="faq-q">Scholarship inquiries</div><div class="faq-a">For the Future Lawyers Programme, contact <span class="faq-email">future@ensafrica.foundation</span>.</div></div>
-        <div class="faq-card reveal reveal-delay-4"><div class="faq-icon"><i class="fas fa-newspaper"></i></div><div class="faq-q">Media &amp; press</div><div class="faq-a">Our communications team is available at <span class="faq-email">press@ensafrica.foundation</span>.</div></div>
+        <div class="faq-card reveal reveal-delay-1">
+          <span class="faq-icon"><i class="fas fa-handshake"></i></span>
+          <div class="faq-q">I want to partner or sponsor</div>
+          <div class="faq-a">Email <span class="faq-email">partnerships@ensafrica.foundation</span> or use the contact form above. We love new collaborations that create lasting impact.</div>
+        </div>
+        <div class="faq-card reveal reveal-delay-2">
+          <span class="faq-icon"><i class="fas fa-gavel"></i></span>
+          <div class="faq-q">I'm a lawyer — can I volunteer?</div>
+          <div class="faq-a">Absolutely. Write to <span class="faq-email">probono@ensafrica.foundation</span>. Your skills can change lives through our Access to Justice programme.</div>
+        </div>
+        <div class="faq-card reveal reveal-delay-3">
+          <span class="faq-icon"><i class="fas fa-graduation-cap"></i></span>
+          <div class="faq-q">Scholarship inquiries</div>
+          <div class="faq-a">For the Future Lawyers Programme, contact <span class="faq-email">future@ensafrica.foundation</span>. We support Africa's next generation of legal changemakers.</div>
+        </div>
+        <div class="faq-card reveal reveal-delay-4">
+          <span class="faq-icon"><i class="fas fa-newspaper"></i></span>
+          <div class="faq-q">Media &amp; press</div>
+          <div class="faq-a">Our communications team is available at <span class="faq-email">press@ensafrica.foundation</span>. We welcome coverage that amplifies our mission.</div>
+        </div>
       </div>
     </section>
 
     <div class="pattern-border"></div>
 
-    <!-- FOOTER (unchanged) -->
+    <!-- ── FOOTER ── -->
     <footer>
-      <div class="footer-brand"><a href="#" class="nav-logo"><div class="nav-logo-mark">ENS</div><div class="nav-logo-text">Africa <span>Foundation</span></div></a><p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p><div class="social-row" style="margin-top:1.5rem;"><div class="social-btn"><i class="fab fa-linkedin-in"></i></div><div class="social-btn"><i class="fab fa-x-twitter"></i></div><div class="social-btn"><i class="fab fa-instagram"></i></div></div></div>
-      <div class="footer-col"><div class="footer-col-title">Foundation</div><ul><li><a href="#">About Us</a></li><li><a href="#">Our Team</a></li><li><a href="#">Financials</a></li><li><a href="#">Governance</a></li></ul></div>
-      <div class="footer-col"><div class="footer-col-title">Initiatives</div><ul><li><a href="#">Access to Justice</a></li><li><a href="#">Future Lawyers</a></li><li><a href="#">Women Empowerment</a></li><li><a href="#">Climate &amp; Rights</a></li></ul></div>
-      <div class="footer-col"><div class="footer-col-title">Contact</div><ul><li style="color:rgba(60,46,0,0.4);font-size:0.8rem;">150 West Street, Sandton</li><li style="color:rgba(60,46,0,0.4);font-size:0.8rem;">Johannesburg, 2196</li><li style="color:rgba(60,46,0,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li><li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li></ul></div>
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <div class="logo-mark">ENS</div>
+          <div class="logo-text" style="color:var(--earth);">Africa <span>Foundation</span></div>
+        </a>
+        <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
+        <div class="social-row" style="margin-top:1.5rem;">
+          <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
+          <div class="social-btn"><i class="fab fa-x-twitter"></i></div>
+          <div class="social-btn"><i class="fab fa-instagram"></i></div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Foundation</div>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Financials</a></li>
+          <li><a href="#">Governance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Initiatives</div>
+        <ul>
+          <li><a href="#">Access to Justice</a></li>
+          <li><a href="#">Future Lawyers</a></li>
+          <li><a href="#">Women Empowerment</a></li>
+          <li><a href="#">Climate &amp; Rights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul>
+          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
+          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
+          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
+          <li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li>
+        </ul>
+      </div>
     </footer>
 
     <div class="footer-bottom">
       <span>© 2026 ENS Africa Foundation</span>
-      <span>A non-profit initiative supported by <span>ENSafrica</span></span>
+      <span>A non-profit initiative supported by ENSafrica</span>
     </div>
   </div>
 
   <script>
-    // Custom Cursor
-    const cursor = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
-
+    // ── Cursor ──
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    });
+    (function animRing() {
+      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animRing);
+    })();
+    document.querySelectorAll('a, button, .city-chip, .region-card, .social-btn, .info-card, .faq-card, .stat-bubble').forEach(el => {
+      el.addEventListener('mouseenter', () => { dot.style.width = '20px'; dot.style.height = '20px'; ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(255,225,53,0.9)'; });
+      el.addEventListener('mouseleave', () => { dot.style.width = '10px'; dot.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(255,225,53,0.7)'; });
     });
 
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      cursorRing.style.left = ringX + 'px';
-      cursorRing.style.top = ringY + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    // Hover effects
-    document.querySelectorAll('a, button, .city-chip, .region-card, .social-btn, .info-card, .strip-img, .globe-wrapper').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        cursorRing.style.width = '60px';
-        cursorRing.style.height = '60px';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width = '12px';
-        cursor.style.height = '12px';
-        cursorRing.style.width = '40px';
-        cursorRing.style.height = '40px';
-      });
-    });
-
-    // Nav scroll
+    // ── Nav scroll ──
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
+      nav.classList.toggle('scrolled', window.scrollY > 80);
     });
 
-    // Scroll reveal
+    // ── Reveal on scroll ──
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Carousel
+    // ── Carousel ──
     const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dot');
-    let currentSlide = 0;
-    function showSlide(index) {
-      slides.forEach((s, i) => s.classList.toggle('active', i === index));
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-      currentSlide = index;
+    const cdots = document.querySelectorAll('.c-dot');
+    let cur = 0;
+    function goSlide(i) {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      cdots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+      cur = i;
     }
-    dots.forEach(dot => {
-      dot.addEventListener('click', e => {
-        const idx = parseInt(e.target.dataset.index);
-        showSlide(idx);
-      });
-    });
-    setInterval(() => {
-      let next = (currentSlide + 1) % slides.length;
-      showSlide(next);
-    }, 5000);
+    cdots.forEach(d => d.addEventListener('click', () => goSlide(+d.dataset.index)));
+    setInterval(() => goSlide((cur + 1) % slides.length), 5500);
 
-    // Form submit
+    // ── Form ──
     function handleSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('contactForm');
       const success = document.getElementById('formSuccess');
-      form.style.opacity = '0';
-      form.style.transform = 'translateY(20px)';
-      form.style.transition = 'all 0.4s ease';
+      form.style.opacity = '0'; form.style.transform = 'translateY(20px)'; form.style.transition = 'all 0.4s';
       setTimeout(() => {
         form.style.display = 'none';
-        success.style.display = 'block';
-        success.style.opacity = '0';
-        success.style.transition = 'opacity 0.4s ease';
+        success.style.display = 'block'; success.style.opacity = '0'; success.style.transition = 'opacity 0.4s';
         requestAnimationFrame(() => success.style.opacity = '1');
       }, 400);
     }
 
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburgerBtn');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('active');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('active');
-      });
-    });
-    document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('active');
-      }
-    });
+    // ── Hamburger ──
+    const hb = document.getElementById('hamburgerBtn');
+    const nl = document.getElementById('navLinks');
+    hb.addEventListener('click', () => { hb.classList.toggle('open'); nl.classList.toggle('active'); });
+    nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hb.classList.remove('open'); nl.classList.remove('active'); }));
+    document.addEventListener('click', e => { if (!nav.contains(e.target) && nl.classList.contains('active')) { hb.classList.remove('open'); nl.classList.remove('active'); } });
   </script>
 </body>
 </html>
