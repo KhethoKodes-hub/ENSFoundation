@@ -673,6 +673,23 @@
       object-fit: contain;  /* keeps the full logo visible without distortion */
       display: block;
     }
+
+  /* Video Background - ADDED */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Keep the original .hero-bg as a fallback */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('./assets/abouther.png') center/cover no-repeat;
+  transform-origin: center;
+}
   </style>
 </head>
 <body>
@@ -700,37 +717,43 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-  <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <div class="hero-bg" id="heroBg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-sunburst"></div>
-    <div class="hero-rays"></div>
+ <!-- ═══ HERO ═══ -->
+<section class="hero">
+  <!-- Video Background - ADDED -->
+  <video class="hero-video-bg" autoplay muted loop playsinline>
+    <source src="./assets/Future story3.mp4" type="video/mp4">
+    <!-- Fallback image in case video doesn't load -->
+  </video>
+  
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-sunburst"></div>
+  <div class="hero-rays"></div>
 
-    <div class="hero-stats">
-      <div class="stat-bubble"><span class="sb-num">14</span><div class="sb-label">Countries</div></div>
-      <div class="stat-bubble"><span class="sb-num">600+</span><div class="sb-label">Volunteers</div></div>
-      <div class="stat-bubble"><span class="sb-num">2022</span><div class="sb-label">Founded</div></div>
-    </div>
+  <div class="hero-stats">
+    <div class="stat-bubble"><span class="sb-num">14</span><div class="sb-label">Countries</div></div>
+    <div class="stat-bubble"><span class="sb-num">600+</span><div class="sb-label">Volunteers</div></div>
+    <div class="stat-bubble"><span class="sb-num">2022</span><div class="sb-label">Founded</div></div>
+  </div>
 
-    <div class="hero-scroll-ind">
-      <div class="scroll-line-v"></div>
-      <span class="scroll-text">Scroll</span>
-    </div>
+  <div class="hero-scroll-ind">
+    <div class="scroll-line-v"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
 
-    <div class="hero-content">
-      <div class="hero-badge">
-        <div class="badge-dot"></div>
-        ENS Africa Foundation · Our Story
-      </div>
-      <h1 class="hero-title">
-        <span class="line-white">From legacy</span>
-        <span class="line-yellow">to lasting</span>
-        <span class="line-outline">change.</span>
-      </h1>
-      <p class="hero-sub">A century of legal expertise, now channelled into the communities that need it most — across a continent of one billion futures.</p>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      ENS Africa Foundation · Our Story
     </div>
-  </section>
+    <h1 class="hero-title">
+      <span class="line-white">From legacy</span>
+      <span class="line-yellow">to lasting</span>
+      <span class="line-outline">change.</span>
+    </h1>
+    <p class="hero-sub">A century of legal expertise, now channelled into the communities that need it most — across a continent of one billion futures.</p>
+  </div>
+</section>
 
   <!-- ═══ TICKER ═══ -->
   <div class="ticker-band">
@@ -752,7 +775,7 @@
     </div>
   </div>
 
-  <div class="pattern-border"></div>
+  <!--<div class="pattern-border"></div>-->
 
   <!-- ═══ PAGE WRAPPER ═══ -->
   <div class="page-wrapper">
