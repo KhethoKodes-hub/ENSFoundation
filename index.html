@@ -244,9 +244,10 @@
     }
     @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+    /* HERO TITLE – REDUCED FONT SIZE as requested */
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3.8rem, 10vw, 9rem);
+      font-size: clamp(3.2rem, 8vw, 7rem);   /* was clamp(3.8rem, 10vw, 9rem) — reduced */
       font-weight: 900; line-height: 0.9;
       letter-spacing: -0.03em;
       max-width: 850px;
@@ -982,7 +983,7 @@
       <div class="carousel-slide active" style="background-image:url('./assets/hero1.png');"></div>
       <div class="carousel-slide" style="background-image:url('./assets/home.jpg');"></div>
       <div class="carousel-slide" style="background-image:url('./assets/home2.jpg');"></div>
-      <div class="carousel-slide" style="background-image:url('./assets/profgroup.png');"></div>
+      <div class="carousel-slide" style="background-image:url('./assets/femalelawyer.png');"></div>
       <div class="carousel-slide" style="background-image:url('./assets/ladyteach.png');"></div>
     </div>
 
@@ -1020,8 +1021,8 @@
     </div>
 
      <div class="hero-content">
-     
-      <h1 class="hero-title">
+      <!-- hero-badge can stay optional -->
+      <h1 class="hero-title">   <!-- font size reduced via clamp -->
         <span class="line-white">What's Your</span>
         <span class="line-yellow">Future</span>
         <span class="line-outline">Story?</span>
@@ -1161,9 +1162,9 @@
             <p style="font-size:0.75rem;color:rgba(74,44,26,0.35);margin-bottom:0.5rem;">#ENSafricaFoundation</p>
             <div class="social-row">
               <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
-              <div class="social-btn"><i class="fab fa-x-twitter"></i></div>
+              <div class="social-btn"><i class="fab fa-twitter"></i></div>
               <div class="social-btn"><i class="fab fa-instagram"></i></div>
-              <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+              <div href="https://www.facebook.com/ENSlaw" class="social-btn"><i class="fab fa-facebook-f"></i></div>
             </div>
           </div>
         </div>
@@ -1178,9 +1179,9 @@
         <div class="strip-item"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label" >Education</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
         <div class="strip-item"><img class="strip-img" src="assets/hero5.png" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
+        <div class="strip-item"><img class="strip-img" src="assets/commteach.png" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
+        <div class="strip-item"><img class="strip-img" src="assets/femalelawyer.png" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
         <!-- Duplicates -->
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
@@ -1397,7 +1398,7 @@
         <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
         <div class="social-row" style="margin-top:1.5rem;">
           <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
-          <div class="social-btn"><i class="fab fa-x-twitter"></i></div>
+          <div class="social-btn"><i class="fab fa-twitter"></i></div>
           <div class="social-btn"><i class="fab fa-instagram"></i></div>
         </div>
       </div>
