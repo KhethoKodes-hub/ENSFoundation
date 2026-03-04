@@ -73,13 +73,117 @@
     @keyframes scrollBeat{0%,100%{opacity:1;height:50px}50%{opacity:.3;height:25px}}
     .scroll-text{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,225,53,.7);writing-mode:vertical-rl;}
 
-    .hero-stats{position:absolute;right:5vw;bottom:18vh;z-index:10;display:flex;flex-direction:column;gap:1rem;opacity:0;animation:fadeIn 1s 1.2s forwards;}
+    .hero-stats{position:absolute;right:5vw;bottom:28vh;z-index:10;display:flex;flex-direction:column;gap:1rem;opacity:0;animation:fadeIn 1s 1.2s forwards;}
     @media(max-width:768px){.hero-stats{display:none;}}
     .stat-bubble{background:rgba(255,225,53,.12);backdrop-filter:blur(20px);border:1px solid rgba(255,225,53,.4);border-radius:20px;padding:.9rem 1.3rem;text-align:center;transition:all .3s;}
     .stat-bubble:hover{background:var(--banana);border-color:var(--banana);}
     .stat-bubble:hover .sb-num,.stat-bubble:hover .sb-label{color:var(--earth);}
     .sb-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--banana);display:block;line-height:1;}
     .sb-label{font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,240,180,.65);margin-top:3px;}
+
+    /* ── HERO SOCIAL ICONS ── */
+    .hero-social{
+      position:absolute;
+      right:5vw;
+      bottom:10vh;
+      z-index:10;
+      display:flex;
+      flex-direction:row;
+      gap:.65rem;
+      opacity:0;
+      animation:fadeIn 1s 1.55s forwards;
+      align-items:center;
+    }
+    @media(max-width:768px){.hero-social{display:none;}}
+
+    /* thin label line to the left */
+    .hero-social::before{
+      content:'FOLLOW';
+      font-family:'Outfit',sans-serif;
+      font-size:.48rem;
+      font-weight:800;
+      letter-spacing:.25em;
+      color:rgba(255,225,53,.4);
+      writing-mode:vertical-rl;
+      transform:rotate(180deg);
+      margin-right:.2rem;
+    }
+
+    .hs-btn{
+      position:relative;
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.88rem;
+      color:rgba(255,240,180,.65);
+      border-radius:12px;
+      cursor:pointer;
+      overflow:hidden;
+      border:1.5px solid rgba(255,225,53,.18);
+      background:rgba(255,225,53,.06);
+      backdrop-filter:blur(14px);
+      transition:color .3s, border-color .3s, box-shadow .3s, transform .35s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    /* coloured fill layer */
+    .hs-btn::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity .3s ease;
+      border-radius:10px;
+    }
+
+    .hs-btn i{position:relative;z-index:1;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+
+    /* icon bounce + scale on hover */
+    .hs-btn:hover{transform:translateY(-6px) scale(1.12);}
+    .hs-btn:hover i{transform:scale(1.2) rotate(-10deg);}
+
+    /* ripple ping */
+    .hs-btn::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      border-radius:12px;
+      border:2px solid rgba(255,255,255,.5);
+      opacity:0;
+      transform:scale(.7);
+    }
+    .hs-btn:hover::after{animation:hsPing .45s ease forwards;}
+    @keyframes hsPing{
+      0%{opacity:.5;transform:scale(.8);}
+      100%{opacity:0;transform:scale(1.5);}
+    }
+
+    /* LinkedIn */
+    .hs-li::before{background:linear-gradient(135deg,#0077b5,#00a0dc);}
+    .hs-li:hover::before{opacity:1;}
+    .hs-li:hover{color:#fff;border-color:#0077b5;box-shadow:0 10px 30px rgba(0,119,181,.6),0 0 0 3px rgba(0,119,181,.2);}
+
+    /* X / Twitter */
+    .hs-x::before{background:linear-gradient(135deg,#0f0f0f,#3a3a3a);}
+    .hs-x:hover::before{opacity:1;}
+    .hs-x:hover{color:#fff;border-color:#555;box-shadow:0 10px 30px rgba(0,0,0,.6),0 0 0 3px rgba(255,255,255,.1);}
+
+    /* Instagram */
+    .hs-ig::before{background:linear-gradient(135deg,#833ab4 0%,#fd1d1d 50%,#fcb045 100%);}
+    .hs-ig:hover::before{opacity:1;}
+    .hs-ig:hover{color:#fff;border-color:#fd1d1d;box-shadow:0 10px 30px rgba(253,29,29,.5),0 0 0 3px rgba(252,176,69,.2);}
+
+    /* Facebook */
+    .hs-fb::before{background:linear-gradient(135deg,#1877f2,#0d5fc3);}
+    .hs-fb:hover::before{opacity:1;}
+    .hs-fb:hover{color:#fff;border-color:#1877f2;box-shadow:0 10px 30px rgba(24,119,242,.6),0 0 0 3px rgba(24,119,242,.2);}
+
+    /* staggered entrance delay */
+    .hs-btn:nth-child(2){animation-delay:.05s;}
+    .hs-btn:nth-child(3){animation-delay:.1s;}
+    .hs-btn:nth-child(4){animation-delay:.15s;}
+    .hs-btn:nth-child(5){animation-delay:.2s;}
 
     /* TICKER */
     .ticker-band{background:var(--banana);padding:.85rem 0;overflow:hidden;box-shadow:0 4px 40px rgba(255,193,0,.4);}
@@ -213,11 +317,9 @@
      .nav-logo-image {
       width: 150px;
       height: 150px;
-      object-fit: contain;  /* keeps the full logo visible without distortion */
+      object-fit: contain;
       display: block;
     }
-
-    
   </style>
 </head>
 <body>
@@ -226,13 +328,10 @@
 
   <nav id="mainNav">
     <a href="index.html" class="nav-logo">
-      <!-- New image logo – width & height 80, using a placeholder SVG of Africa / ENS style.
-           Replace 'logo.svg' with your actual logo path. -->
       <img src="./assets/ENS Africa logo final-04.png" 
            alt="ENS Africa Foundation Logo" 
            class="nav-logo-image"
            width="100" height="100">
-     
     </a>
     <button class="hamburger" id="hamburgerBtn">
       <span></span><span></span><span></span>
@@ -240,7 +339,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="initiatives.html" >Initiatives</a></li>
+      <li><a href="initiatives.html">Initiatives</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
   </nav>
@@ -252,11 +351,22 @@
     <div class="hero-overlay"></div>
     <div class="hero-sunburst"></div>
     <div class="hero-rays"></div>
+
+    <!-- Stats -->
     <div class="hero-stats">
       <div class="stat-bubble"><span class="sb-num">8</span><div class="sb-label">Offices</div></div>
       <div class="stat-bubble"><span class="sb-num">14</span><div class="sb-label">Nations</div></div>
       <div class="stat-bubble"><span class="sb-num">48h</span><div class="sb-label">Response</div></div>
     </div>
+
+    <!-- Social icons — bottom-right, below stats -->
+    <div class="hero-social">
+      <a href="#" class="hs-btn hs-li" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="hs-btn hs-x" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="hs-btn hs-ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/ENSlaw" class="hs-btn hs-fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
     <div class="hero-scroll-ind"><div class="scroll-line-v"></div><span class="scroll-text">Scroll</span></div>
     <div class="hero-content">
       <div class="hero-badge"><div class="badge-dot"></div>ENS Africa Foundation · Connect With Us</div>
@@ -288,8 +398,6 @@
       <span class="ticker-item"><span></span> Every Conversation Matters <span class="ticker-sep">·</span></span>
     </div>
   </div>
-
-  <!--<div class="pattern-border"></div>-->
 
   <div class="page-wrapper">
     <div class="orb orb-1"></div>
@@ -389,35 +497,35 @@
 
       <div class="flags-grid">
         <div class="flag-card reveal reveal-delay-1">
-          <div class="flag-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop');"></div>
+          <div class="flag-bg" style="background-image:url('./assets/protea.png');"></div>
           <div class="flag-overlay"></div><div class="flag-shimmer"></div><div class="flag-ring"></div>
           <div class="flag-emoji-wrap"><span class="flag-emoji">🇿🇦</span></div>
           <span class="flag-badge office">● Head Office</span>
           <div class="flag-content"><div class="flag-city">Johannesburg</div><div class="flag-country">South Africa</div><div class="flag-email">foundation@ensafrica.com<br>+27 11 269 7600</div></div>
         </div>
         <div class="flag-card reveal reveal-delay-2">
-          <div class="flag-bg" style="background-image:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop');"></div>
+          <div class="flag-bg" style="background-image:url('./assets/kenya.png');"></div>
           <div class="flag-overlay"></div><div class="flag-shimmer"></div><div class="flag-ring"></div>
           <div class="flag-emoji-wrap"><span class="flag-emoji">🇰🇪</span></div>
           <span class="flag-badge office">● Office</span>
           <div class="flag-content"><div class="flag-city">Nairobi</div><div class="flag-country">Kenya</div><div class="flag-email">kenya@ensafrica.foundation</div></div>
         </div>
         <div class="flag-card reveal reveal-delay-3">
-          <div class="flag-bg" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80&fit=crop');"></div>
+          <div class="flag-bg" style="background-image:url('./assets/ghana.png');"></div>
           <div class="flag-overlay"></div><div class="flag-shimmer"></div><div class="flag-ring"></div>
           <div class="flag-emoji-wrap"><span class="flag-emoji">🇬🇭</span></div>
           <span class="flag-badge office">● Office</span>
           <div class="flag-content"><div class="flag-city">Accra</div><div class="flag-country">Ghana</div><div class="flag-email">ghana@ensafrica.foundation</div></div>
         </div>
         <div class="flag-card reveal reveal-delay-4">
-          <div class="flag-bg" style="background-image:url('https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop');"></div>
+          <div class="flag-bg" style="background-image:url('./assets/rwanda.png');"></div>
           <div class="flag-overlay"></div><div class="flag-shimmer"></div><div class="flag-ring"></div>
           <div class="flag-emoji-wrap"><span class="flag-emoji">🇷🇼</span></div>
           <span class="flag-badge office">● Office</span>
           <div class="flag-content"><div class="flag-city">Kigali</div><div class="flag-country">Rwanda</div><div class="flag-email">rwanda@ensafrica.foundation</div></div>
         </div>
         <div class="flag-card reveal">
-          <div class="flag-bg" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop');"></div>
+          <div class="flag-bg" style="background-image:url('./assets/rwandaind.png');"></div>
           <div class="flag-overlay"></div><div class="flag-shimmer"></div><div class="flag-ring"></div>
           <div class="flag-emoji-wrap"><span class="flag-emoji">🇺🇬</span></div>
           <span class="flag-badge office">● Office</span>
@@ -431,19 +539,13 @@
           <div class="flag-content"><div class="flag-city">Port Louis</div><div class="flag-country">Mauritius</div><div class="flag-email">mauritius@ensafrica.foundation</div></div>
         </div>
         <div class="flag-card reveal reveal-delay-2">
-          <div class="flag-bg" style="background-image:url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop');"></div>
+          <div class="flag-bg" style="background-image:url('./assets/namibia.jpg');"></div>
           <div class="flag-overlay"></div><div class="flag-shimmer"></div><div class="flag-ring"></div>
           <div class="flag-emoji-wrap"><span class="flag-emoji">🇳🇦</span></div>
           <span class="flag-badge partner">◎ Partner</span>
           <div class="flag-content"><div class="flag-city">Windhoek</div><div class="flag-country">Namibia</div><div class="flag-email">namibia@ensafrica.foundation</div></div>
         </div>
-        <div class="flag-card reveal reveal-delay-3">
-          <div class="flag-bg" style="background-image:url('https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop');"></div>
-          <div class="flag-overlay"></div><div class="flag-shimmer"></div><div class="flag-ring"></div>
-          <div class="flag-emoji-wrap"><span class="flag-emoji">🇲🇿</span></div>
-          <span class="flag-badge partner">◎ Partner</span>
-          <div class="flag-content"><div class="flag-city">Maputo</div><div class="flag-country">Mozambique</div><div class="flag-email">mozambique@ensafrica.foundation</div></div>
-        </div>
+       
       </div>
 
       <div style="display:flex;align-items:center;justify-content:center;gap:2.5rem;margin-top:2.5rem;" class="reveal">
@@ -495,15 +597,11 @@
     <footer>
       <div class="footer-brand">
         <a href="index.html" class="nav-logo">
-      <!-- New image logo – width & height 80, using a placeholder SVG of Africa / ENS style.
-           Replace 'logo.svg' with your actual logo path. -->
-      <img src="./assets/ENS Africa logo final-04.png" 
-           alt="ENS Africa Foundation Logo" 
-           class="nav-logo-image"
-           width="200%" height="200%">
-      <!-- The old text logo is hidden by CSS -->
-      
-    </a>
+          <img src="./assets/ENS Africa logo final-04.png" 
+               alt="ENS Africa Foundation Logo" 
+               class="nav-logo-image"
+               width="200%" height="200%">
+        </a>
         <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
         <div style="display:flex;gap:1rem;margin-top:1.5rem;">
           <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
@@ -540,7 +638,7 @@
     let mx=0,my=0,rx=0,ry=0;
     document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
     (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
-    document.querySelectorAll('a,button,.flag-card,.faq-card,.info-card,.social-btn,.stat-bubble').forEach(el=>{
+    document.querySelectorAll('a,button,.flag-card,.faq-card,.info-card,.social-btn,.stat-bubble,.hs-btn').forEach(el=>{
       el.addEventListener('mouseenter',()=>{dot.style.width='20px';dot.style.height='20px';ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(255,225,53,.9)';});
       el.addEventListener('mouseleave',()=>{dot.style.width='10px';dot.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(255,225,53,.7)';});
     });
