@@ -67,16 +67,18 @@
       transition: all .12s ease;
     }
 
-    /* ─── NAV ─── */
+    /* ─── NAV (MODIFIED: transparent at top, turns yellow on scroll) ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding: 1rem 5vw; display: flex; align-items: center; justify-content: space-between;
       transition: all .5s;
+      background: transparent; /* fully transparent when at top */
     }
     nav.scrolled {
-      background: rgba(255,255,255,.95); backdrop-filter: blur(24px);
-      padding: .5rem 5vw; border-bottom: 2px solid var(--yellow);
-      box-shadow: 0 4px 30px rgba(255,193,0,.15);
+      background: var(--yellow);      /* yellow when scrolled */
+      backdrop-filter: blur(24px);
+      padding: .5rem 5vw; border-bottom: 2px solid var(--black);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.25);
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo-image {
@@ -85,29 +87,59 @@
     .logo-mark, .logo-text { display: none; }
 
     .nav-links { display: flex; align-items: center; gap: .25rem; list-style: none; }
+    /* BUTTON STYLE: black background, white text (always) */
     .nav-links a {
       font-family: 'Montserrat';
       font-size: .78rem; font-weight: 600; letter-spacing: .08em;
-      text-transform: uppercase; color: rgba(255,255,255,.85); text-decoration: none;
+      text-transform: uppercase; color: var(--white); text-decoration: none;
       padding: .5rem 1rem; border-radius: 100px; transition: all .3s;
+      background: var(--black);           /* black background */
+      border: 1.5px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    nav.scrolled .nav-links a { color: var(--black-mid); }
+    nav:not(.scrolled) .nav-links a {
+      background: var(--black); 
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.15);
+    }
+    nav.scrolled .nav-links a {
+      color: var(--white);
+      background: var(--black);           /* keep black even on yellow */
+    }
+    /* glassmorphism hover */
     .nav-links a:hover, .nav-links a.active {
-      color: var(--black); background: var(--yellow);
-      box-shadow: 0 4px 20px rgba(255,193,0,.5);
+      background: rgba(0,0,0,0.75);        /* semi‑transparent black = glass */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
     }
+
     .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 22px; background: transparent; border: none; cursor: pointer; z-index: 1001; }
-    .hamburger span { width: 100%; height: 2px; background: var(--yellow); transition: all .3s; border-radius: 2px; }
+    .hamburger span { width: 100%; height: 2px; background: var(--white); transition: all .3s; border-radius: 2px; }
+    nav.scrolled .hamburger span { background: var(--black); }
+
     @media(max-width:768px) {
       .hamburger { display: flex; }
       .nav-links {
         position: fixed; top: 0; right: -100%; width: 75%; max-width: 300px; height: 100vh;
-        background: rgba(255,255,255,.98); backdrop-filter: blur(24px);
+        background: rgba(0,0,0,0.96);      /* dark glass for mobile menu */
+        backdrop-filter: blur(24px);
         flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
         transition: right .4s ease; border-left: 3px solid var(--yellow); z-index: 1000;
       }
       .nav-links.active { right: 0; }
-      .nav-links a { font-size: 1rem; color: var(--black-mid) !important; width: 100%; text-align: center; }
+      .nav-links a { 
+        font-size: 1rem; color: var(--white) !important; width: 100%; text-align: center; 
+        background: transparent;          /* transparent on mobile panel */
+        border: 1.5px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(4px);
+      }
+      .nav-links a:hover {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+      }
       .hamburger.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
       .hamburger.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
@@ -308,6 +340,44 @@
     .badge-pill-active { background: rgba(255,225,53,0.25); border: 1.5px solid rgba(255,225,53,0.4); color: var(--black); }
     .badge-pill-stat { background: rgba(255,255,255,0.6); border: 1.5px solid rgba(0,0,0,0.08); color: var(--black-light); }
 
+    /* ─── BUTTONS (MODIFIED: black bg, white text + glass hover) ─── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 12px; padding: 1rem 2.25rem; border-radius: 100px;
+ font-family: 'Montserrat';
+       font-size: .82rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      cursor: pointer; text-decoration: none;
+      background: var(--black); color: var(--white);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3); transition: all .4s; position: relative; overflow: hidden;
+    }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent); opacity: 0; transition: opacity .3s; }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2.25rem; border-radius: 100px;
+ font-family: 'Montserrat';
+       font-size: .82rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      background: var(--black); color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(12px); cursor: pointer; transition: all .3s;
+    }
+    .btn-ghost:hover {
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
     /* ─── CUBE SWITCHER ─── */
     .cube-section { padding: 10vh 5vw; position: relative; }
     .cube-stage { perspective: 1200px; perspective-origin: 50% 50%; width: 100%; max-width: 940px; margin: 0 auto; }
@@ -357,7 +427,7 @@
     }
 
     /* Cube controls */
-    .cube-controls { margin-top: 2.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+    .cube-controls { margin-top: 2.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .cube-btn {
       display: flex; flex-direction: column; align-items: center; gap: .5rem;
       cursor: pointer; padding: .9rem 1.4rem; border-radius: 18px;
@@ -478,34 +548,8 @@
       font-size: .65rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--black); margin-top: .4rem;
     }
 
-    /* ─── BUTTONS ─── */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 12px; padding: 1rem 2.25rem; border-radius: 100px;
- font-family: 'Montserrat';
-       font-size: .82rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--black); border: none; cursor: pointer;
-      background: linear-gradient(135deg, var(--black) 0%, #222 40%, var(--black) 100%);
-      color: var(--yellow);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.3); transition: all .4s; position: relative; overflow: hidden;
-    }
-    .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent); opacity: 0; transition: opacity .3s; }
-    .btn-primary:hover::before { opacity: 1; }
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.03);
-      background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-bright) 100%);
-      color: var(--black);
-      box-shadow: 0 20px 60px rgba(255,193,0,0.5);
-    }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2.25rem; border-radius: 100px;
- font-family: 'Montserrat';
-       font-size: .82rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--black); background: rgba(255,255,255,0.8); border: 1.5px solid rgba(0,0,0,0.1);
-      backdrop-filter: blur(12px); cursor: pointer; transition: all .3s;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.95); border-color: rgba(255,193,0,0.4); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-
     /* ─── IMAGE STRIP ─── */
+    .img-strip { padding: 5vh 0; overflow: hidden; height: 500px; }
     .strip-track { display: flex; gap: 1.25rem; animation: stripRoll 50s linear infinite; width: max-content; }
     .strip-track:hover { animation-play-state: paused; }
     @keyframes stripRoll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
@@ -621,10 +665,10 @@
     <div class="video-modal-inner" id="modalInner"></div>
   </div>
 
-  <!-- ═══ NAV ═══ -->
+  <!-- ═══ NAV (transparent at top, turns yellow on scroll) ═══ -->
   <nav id="mainNav" style="font-family: 'Montserrat', sans-serif;">
     <a href="index.html" class="nav-logo" style="font-family: 'Montserrat', sans-serif;">
-      <img src="./assets/ENS Africa logo final-04.png" 
+      <img src="./assets/ENS Africa logo final-03 black.png" 
            alt="ENS Africa Foundation Logo" 
            class="nav-logo-image"
            width="150" height="150">
@@ -699,7 +743,6 @@
 
     <!-- FEATURED INITIATIVE -->
     <section style="padding:10vh 5vw 8vh;position:relative; font-family:'Montserrat',sans-serif;">
-      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">01</div>
 
       <div class="reveal" style="text-align:center;margin-bottom:4rem;">
         <div class="section-eyebrow" style="justify-content:center; font-family:'Montserrat',sans-serif;">Flagship 2026</div>
@@ -759,7 +802,6 @@
 
     <!-- CUBE SWITCHER -->
     <section class="cube-section" style="font-family: 'Montserrat', sans-serif;">
-      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">02</div>
 
       <div class="reveal" style="text-align:center;margin-bottom:3rem;">
         <div class="section-eyebrow" style="justify-content:center; font-family:'Montserrat',sans-serif;">Stories in Motion</div>
@@ -773,7 +815,7 @@
         <div class="cube-wrapper" id="cubeWrapper" style="font-family: 'Montserrat', sans-serif;">
           <div class="cube-panel" id="activePanel" style="font-family: 'Montserrat', sans-serif;">
             <div style="position:absolute;inset:0;">
-              <div id="panelBg" style="position:absolute;inset:0;background:url('./assets/femalelawyer.png') center/cover no-repeat;transition:background .3s;"></div>
+              <div id="panelBg" style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80&fit=crop') center/cover no-repeat;transition:background .3s;"></div>
               <div class="cube-video-overlay"></div>
             </div>
             <div class="panel-fullscreen" onclick="openModal('panel')" style="font-family:'Montserrat',sans-serif;"><i class="fas fa-expand"></i></div>
@@ -808,7 +850,6 @@
 
     <!-- INITIATIVE CARDS GRID -->
     <section style="padding:10vh 5vw 10vh;position:relative; font-family:'Montserrat',sans-serif;">
-      <div class="section-num" style="left:5vw;right:auto; font-family:'Montserrat',sans-serif;">03</div>
 
       <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
         <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">All Initiatives</div>
@@ -925,8 +966,8 @@
         <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:var(--white);margin-bottom:1rem;">Support an <em style="font-style:italic;color:var(--yellow);">initiative</em></h2>
         <p style="font-size:.95rem;font-weight:300;color:rgba(255,255,255,0.65);max-width:500px;margin:0 auto 2.5rem;line-height:1.7; font-family:'Montserrat',sans-serif;">Whether you're a lawyer wanting to volunteer, a company seeking partnership, or a donor — there's a way to contribute.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <button class="btn-primary" style="background:var(--black);color:var(--yellow);box-shadow:0 8px 40px rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif;">Become a Pro Bono Partner <i class="fas fa-handshake" style="font-size:.8rem;"></i></button>
-          <button class="btn-ghost" style="background:rgba(255,255,255,0.7);border-color:rgba(0,0,0,0.25);color:var(--black); font-family:'Montserrat',sans-serif;">Donate to an Initiative <i class="fas fa-heart" style="font-size:.8rem;"></i></button>
+          <button class="btn-primary" style="background:var(--black);color:var(--white);box-shadow:0 8px 40px rgba(0,0,0,0.3); font-family:'Montserrat',sans-serif;">Become a Pro Bono Partner <i class="fas fa-handshake" style="font-size:.8rem;"></i></button>
+          <button class="btn-ghost" style="background:var(--black);border-color:rgba(255,255,255,0.2);color:var(--white); font-family:'Montserrat',sans-serif;">Donate to an Initiative <i class="fas fa-heart" style="font-size:.8rem;"></i></button>
         </div>
       </div>
     </div>
@@ -1086,7 +1127,7 @@
     document.getElementById('videoModal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
     document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 
-    // ── Hamburger ──
+    // ── Hamburger (fully functional) ──
     const hb=document.getElementById('hamburgerBtn'),nl=document.getElementById('navLinks');
     hb.addEventListener('click',()=>{ hb.classList.toggle('open');nl.classList.toggle('active'); });
     nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ hb.classList.remove('open');nl.classList.remove('active'); }));
