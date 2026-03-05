@@ -58,24 +58,29 @@
     .cursor-dot{width:10px;height:10px;background:var(--yellow);border-radius:50%;position:fixed;pointer-events:none;z-index:100000;transform:translate(-50%,-50%);transition:width .2s,height .2s;box-shadow:0 0 20px var(--yellow),0 0 40px rgba(255,225,53,.4);}
     .cursor-ring{width:36px;height:36px;border:2px solid rgba(255,225,53,.7);border-radius:50%;position:fixed;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:all .12s ease;}
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 5vw;display:flex;align-items:center;justify-content:space-between;transition:all .5s;}
-    nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(24px);padding:.5rem 5vw;border-bottom:2px solid var(--yellow);box-shadow:0 4px 30px rgba(255,193,0,.15);}
+    /* NAV (MODIFIED: transparent at top, turns yellow on scroll) */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 5vw;display:flex;align-items:center;justify-content:space-between;transition:all .5s; background: transparent; }
+    nav.scrolled{background:var(--yellow);backdrop-filter:blur(24px);padding:.5rem 5vw;border-bottom:2px solid var(--black);box-shadow:0 4px 30px rgba(0,0,0,0.25);}
     .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
     .nav-logo-image{width:150px;height:150px;object-fit:contain;display:block;}
     .logo-mark, .logo-text{display:none;}
 
     .nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;}
-    .nav-links a{ font-family: 'Montserrat';font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;padding:.5rem 1rem;border-radius:100px;transition:all .3s;}
-    nav.scrolled .nav-links a{color:var(--black-mid);}
-    .nav-links a:hover,.nav-links a.active{color:var(--black);background:var(--yellow);box-shadow:0 4px 20px rgba(255,193,0,.5);}
+    /* BUTTON STYLE: black background, white text */
+    .nav-links a{ font-family: 'Montserrat';font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--white);text-decoration:none;padding:.5rem 1rem;border-radius:100px;transition:all .3s;background:var(--black);border:1.5px solid rgba(255,255,255,0.1);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    nav:not(.scrolled) .nav-links a { background: var(--black); color: var(--white); border:1.5px solid rgba(255,255,255,0.15); }
+    nav.scrolled .nav-links a { color: var(--white); background: var(--black); }
+    .nav-links a:hover,.nav-links a.active{background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.3);color:var(--white);box-shadow:0 8px 28px rgba(0,0,0,0.4);}
+    
     .hamburger{display:none;flex-direction:column;justify-content:space-between;width:28px;height:22px;background:transparent;border:none;cursor:pointer;z-index:1001;}
-    .hamburger span{width:100%;height:2px;background:var(--yellow);transition:all .3s;border-radius:2px;}
+    .hamburger span{width:100%;height:2px;background:var(--white);transition:all .3s;border-radius:2px;}
+    nav.scrolled .hamburger span { background: var(--black); }
     @media(max-width:768px){
       .hamburger{display:flex;}
-      .nav-links{position:fixed;top:0;right:-100%;width:75%;max-width:300px;height:100vh;background:rgba(255,255,255,.98);backdrop-filter:blur(24px);flex-direction:column;justify-content:center;align-items:center;gap:2rem;transition:right .4s ease;border-left:3px solid var(--yellow);z-index:1000;}
+      .nav-links{position:fixed;top:0;right:-100%;width:75%;max-width:300px;height:100vh;background:rgba(0,0,0,0.96);backdrop-filter:blur(24px);flex-direction:column;justify-content:center;align-items:center;gap:2rem;transition:right .4s ease;border-left:3px solid var(--yellow);z-index:1000;}
       .nav-links.active{right:0;}
-      .nav-links a{       font-family: 'Montserrat'; font-size:1rem;color:var(--black-mid) !important;width:100%;text-align:center;}
+      .nav-links a{ font-family: 'Montserrat'; font-size:1rem;color:var(--white) !important;width:100%;text-align:center; background:transparent; border:1.5px solid rgba(255,255,255,0.2); backdrop-filter:blur(4px);}
+      .nav-links a:hover{ background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); }
       .hamburger.open span:nth-child(1){transform:translateY(10px) rotate(45deg);}
       .hamburger.open span:nth-child(2){opacity:0;}
       .hamburger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
@@ -266,10 +271,11 @@
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
     @media(max-width:640px){.form-row{grid-template-columns:1fr;}}
 
-    .btn-submit{position:relative;display:inline-flex;align-items:center;gap:12px;padding:1rem 2.5rem;border-radius:100px;      font-family: 'Montserrat';font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--black);border:none;cursor:pointer;overflow:hidden;background:linear-gradient(135deg,var(--black) 0%,#222 40%,var(--black) 100%);color:var(--yellow);box-shadow:0 8px 40px rgba(0,0,0,0.3);transition:all .4s;}
+    /* BUTTON SUBMIT – MODIFIED: black bg, white text + glass hover */
+    .btn-submit{position:relative;display:inline-flex;align-items:center;gap:12px;padding:1rem 2.5rem;border-radius:100px; font-family: 'Montserrat';font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,0.2);cursor:pointer;overflow:hidden;background:var(--black);color:var(--white);box-shadow:0 8px 40px rgba(0,0,0,0.3);transition:all .4s;}
     .btn-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3),transparent);opacity:0;transition:opacity .3s;}
     .btn-submit:hover::before{opacity:1;}
-    .btn-submit:hover{transform:translateY(-3px) scale(1.03);background:linear-gradient(135deg,var(--yellow) 0%,var(--yellow-bright) 100%);color:var(--black);box-shadow:0 20px 60px rgba(255,193,0,0.5);}
+    .btn-submit:hover{transform:translateY(-3px) scale(1.03);background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,0.4);color:var(--white);box-shadow:0 20px 60px rgba(0,0,0,0.5);}
     .btn-arrow{width:30px;height:30px;background:rgba(255,225,53,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s;}
     .btn-submit:hover .btn-arrow{transform:translateX(5px);}
 
@@ -364,9 +370,10 @@
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
+  <!-- ═══ NAV (transparent at top, turns yellow on scroll) ═══ -->
   <nav id="mainNav" style="font-family: 'Montserrat', sans-serif;">
     <a href="index.html" class="nav-logo" style="font-family: 'Montserrat', sans-serif;">
-      <img src="./assets/ENS Africa logo final-04.png" 
+      <img src="./assets/ENS Africa logo final-03 black.png" 
            alt="ENS Africa Foundation Logo" 
            class="nav-logo-image"
            width="150" height="150">
@@ -405,7 +412,7 @@
       <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="hs-btn hs-fb" aria-label="Facebook" style="font-family:'Montserrat',sans-serif;"><i class="fab fa-facebook-f"></i></a>
     </div>
 
-    <div class="hero-scroll-ind" style="font-family: 'Montserrat', sans-serif;"><div class="scroll-line-v"></div><span class="scroll-text" style="font-family: 'Montserrat', sans-serif;">Scroll</span></div>
+    <!--<div class="hero-scroll-ind" style="font-family: 'Montserrat', sans-serif;"><div class="scroll-line-v"></div><span class="scroll-text" style="font-family: 'Montserrat', sans-serif;">Scroll</span></div>-->
     <div class="hero-content" style="font-family: 'Montserrat', sans-serif;">
       <div class="hero-badge" style="font-family: 'Montserrat', sans-serif;"><div class="badge-dot"></div>ENS Africa Foundation · Connect With Us</div>
       <h1 class="hero-title" style="font-family: 'Montserrat', sans-serif;">
@@ -443,7 +450,6 @@
 
     <!-- CONTACT FORM + INFO -->
     <section style="padding:10vh 5vw 8vh;position:relative; font-family:'Montserrat',sans-serif;">
-      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">01</div>
       <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
         <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Get In Touch</div>
         <h2 class="section-title" style="margin-bottom:3.5rem; font-family:'Montserrat',sans-serif;"><em style="font-family:'Montserrat',sans-serif;">Send us</em><br>a message</h2>
@@ -526,7 +532,6 @@
 
     <!-- FLAG CARDS -->
     <section class="flags-section" style="font-family: 'Montserrat', sans-serif;">
-      <div class="section-num" style="left:5vw;right:auto; font-family:'Montserrat',sans-serif;">02</div>
       <div class="reveal" style="text-align:center;">
         <div class="section-eyebrow" style="justify-content:center; font-family:'Montserrat',sans-serif;">Our Presence</div>
         <h2 class="section-title" style="text-align:center;margin-bottom:.75rem; font-family:'Montserrat',sans-serif;">Active <em style="font-family:'Montserrat',sans-serif;">across</em> the continent</h2>
@@ -601,7 +606,6 @@
 
     <!-- FAQ -->
     <section style="padding:10vh 5vw 10vh;position:relative; font-family:'Montserrat',sans-serif;">
-      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">03</div>
       <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
         <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Common Questions</div>
         <h2 class="section-title" style="margin-bottom:3rem; font-family:'Montserrat',sans-serif;">What brings<br><em style="font-family:'Montserrat',sans-serif;">people to us</em></h2>
