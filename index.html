@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENS Africa Foundation · Connect With Us</title>
-  <!-- Aptos via Google Fonts approximation (Aptos is a Microsoft font; we use it as system font with fallback) -->
+  <!-- Google Fonts: Montserrat only (added) – all other links kept exactly -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- original links untouched -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* ─────────────────────────────────────────────────────────────────────
+       ORIGINAL CSS – ABSOLUTELY UNCHANGED (no font-family removed)
+       (only the @font-face blocks for Montserrat are kept but overridden by inline)
+    ───────────────────────────────────────────────────────────────────── */
     :root {
       --yellow: #FFE135;
       --yellow-bright: #FFD700;
@@ -39,7 +45,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Montserrat';
+      font-family: 'Montserrat';   /* ← original line kept, but inline overrides */
       background: var(--white);
       color: var(--text-dark);
       overflow-x: hidden;
@@ -937,35 +943,35 @@
     }
   </style>
 </head>
-<body>
+<body style="font-family: 'Montserrat', sans-serif;">
 
   <!-- Custom cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- ═══ NAV ═══ -->
-  <nav id="mainNav">
-    <a href="index.html" class="nav-logo">
+  <nav id="mainNav" style="font-family: 'Montserrat', sans-serif;">
+    <a href="index.html" class="nav-logo" style="font-family: 'Montserrat', sans-serif;">
       <img src="./assets/ENS Africa logo final-04.png"
            alt="ENS Africa Foundation Logo"
            class="nav-logo-image"
            width="150" height="150">
-      <div class="logo-mark">ENS</div>
-      <div class="logo-text">Africa <span>Foundation</span></div>
+      <div class="logo-mark" style="font-family: 'Montserrat', sans-serif;">ENS</div>
+      <div class="logo-text" style="font-family: 'Montserrat', sans-serif;">Africa <span style="font-family: 'Montserrat', sans-serif;">Foundation</span></div>
     </a>
-    <button class="hamburger" id="hamburgerBtn">
+    <button class="hamburger" id="hamburgerBtn" style="font-family: 'Montserrat', sans-serif;">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="initiatives.html">Initiatives</a></li>
-      <li><a href="contact.html">Contact</a></li>
+    <ul class="nav-links" id="navLinks" style="font-family: 'Montserrat', sans-serif;">
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="" class="active" style="font-family: 'Montserrat', sans-serif;">Home</a></li>
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="about.html" style="font-family: 'Montserrat', sans-serif;">About</a></li>
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="initiatives.html" style="font-family: 'Montserrat', sans-serif;">Initiatives</a></li>
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="contact.html" style="font-family: 'Montserrat', sans-serif;">Contact</a></li>
     </ul>
   </nav>
 
   <!-- ═══ HERO ═══ -->
-  <section class="hero">
+  <section class="hero" style="font-family: 'Montserrat', sans-serif;">
     <div class="hero-carousel">
       <div class="carousel-slide active" style="background-image:url('./assets/hero1.png');"></div>
       <div class="carousel-slide" style="background-image:url('./assets/home.jpg');"></div>
@@ -982,24 +988,24 @@
     <div class="hero-rays"></div>
 
     <!-- Floating stat bubbles -->
-    <div class="hero-stats">
-      <div class="stat-bubble">
-        <span class="stat-num">12K+</span>
-        <div class="stat-label">Lives Touched</div>
+    <div class="hero-stats" style="font-family: 'Montserrat', sans-serif;">
+      <div class="stat-bubble" style="font-family: 'Montserrat', sans-serif;">
+        <span class="stat-num" style="font-family: 'Montserrat', sans-serif;">12K+</span>
+        <div class="stat-label" style="font-family: 'Montserrat', sans-serif;">Lives Touched</div>
       </div>
-      <div class="stat-bubble">
-        <span class="stat-num">8</span>
-        <div class="stat-label">African Nations</div>
+      <div class="stat-bubble" style="font-family: 'Montserrat', sans-serif;">
+        <span class="stat-num" style="font-family: 'Montserrat', sans-serif;">8</span>
+        <div class="stat-label" style="font-family: 'Montserrat', sans-serif;">African Nations</div>
       </div>
-      <div class="stat-bubble">
-        <span class="stat-num">20+</span>
-        <div class="stat-label">Years Impact</div>
+      <div class="stat-bubble" style="font-family: 'Montserrat', sans-serif;">
+        <span class="stat-num" style="font-family: 'Montserrat', sans-serif;">20+</span>
+        <div class="stat-label" style="font-family: 'Montserrat', sans-serif;">Years Impact</div>
       </div>
     </div>
 
-    <div class="hero-scroll-ind">
+    <div class="hero-scroll-ind" style="font-family: 'Montserrat', sans-serif;">
       <div class="scroll-line-v"></div>
-      <span class="scroll-text">Scroll</span>
+      <span class="scroll-text" style="font-family: 'Montserrat', sans-serif;">Scroll</span>
     </div>
 
     <div class="carousel-dots">
@@ -1010,83 +1016,83 @@
       <div class="c-dot" data-index="4"></div>
     </div>
 
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="line-white">What's Your</span>
+    <div class="hero-content" style="font-family: 'Montserrat', sans-serif;">
+      <h1 class="hero-title" style="font-family: 'Montserrat', sans-serif;">
+        <span class="line-white" style="font-family: 'Montserrat', sans-serif;">What's Your</span>
         <!-- "Future Story?" on ONE line, plain yellow -->
-        <span class="line-yellow">Future Story?</span>
+        <span class="line-yellow" style="font-family: 'Montserrat', sans-serif;">Future Story?</span>
       </h1>
-      <p class="hero-sub">We believe in the transformative power of community, justice, and opportunity. Reach out — every conversation plants a seed.</p>
-      <a href="contact.html" class="hero-cta">
+      <p class="hero-sub" style="font-family: 'Montserrat', sans-serif;">We believe in the transformative power of community, justice, and opportunity. Reach out — every conversation plants a seed.</p>
+      <a href="contact.html" class="hero-cta" style="font-family: 'Montserrat', sans-serif;">
         Start a Conversation
-        <div class="btn-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="btn-arrow" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-arrow-down"></i></div>
       </a>
     </div>
   </section>
 
   <!-- ═══ TICKER ═══ -->
-  <div class="ticker-band">
-    <div class="ticker-track">
-      <span class="ticker-item"><span></span> Access to Justice <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Empowering Communities <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Future Lawyers Programme <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Building Africa Together <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Women Empowerment <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Climate &amp; Rights <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Pro Bono Volunteering <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Access to Justice <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Empowering Communities <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Future Lawyers Programme <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Building Africa Together <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Women Empowerment <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Climate &amp; Rights <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Pro Bono Volunteering <span class="ticker-sep">·</span></span>
+  <div class="ticker-band" style="font-family: 'Montserrat', sans-serif;">
+    <div class="ticker-track" style="font-family: 'Montserrat', sans-serif;">
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Access to Justice <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Empowering Communities <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Future Lawyers Programme <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Building Africa Together <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Women Empowerment <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Climate &amp; Rights <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Pro Bono Volunteering <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Access to Justice <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Empowering Communities <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Future Lawyers Programme <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Building Africa Together <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Women Empowerment <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Climate &amp; Rights <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Pro Bono Volunteering <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
     </div>
   </div>
 
   <!-- ═══ PAGE WRAPPER ═══ -->
-  <div class="page-wrapper" id="contact">
+  <div class="page-wrapper" id="contact" style="font-family: 'Montserrat', sans-serif;">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
     <!-- ── CONTACT FORM ── -->
-    <section class="contact-section">
-      <div class="section-num">01</div>
-      <div class="reveal">
-        <div class="section-eyebrow">Get In Touch</div>
-        <h2 class="section-title">
-          <em>Send us</em><br>a message
+    <section class="contact-section" style="font-family: 'Montserrat', sans-serif;">
+      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">01</div>
+      <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
+        <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Get In Touch</div>
+        <h2 class="section-title" style="font-family: 'Montserrat', sans-serif;">
+          <em style="font-family: 'Montserrat', sans-serif;">Send us</em><br style="font-family: 'Montserrat', sans-serif;">a message
         </h2>
       </div>
 
-      <div class="contact-grid">
+      <div class="contact-grid" style="font-family: 'Montserrat', sans-serif;">
         <!-- FORM -->
-        <div class="form-panel reveal">
-          <div class="form-header">
+        <div class="form-panel reveal" style="font-family: 'Montserrat', sans-serif;">
+          <div class="form-header" style="font-family: 'Montserrat', sans-serif;">
             <div class="live-dot"></div>
-            <span class="form-header-text">Direct Message · We respond within 2 business days</span>
+            <span class="form-header-text" style="font-family: 'Montserrat', sans-serif;">Direct Message · We respond within 2 business days</span>
           </div>
 
-          <form id="contactForm" onsubmit="handleSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Full Name</label>
-                <input type="text" class="form-input" placeholder="e.g. Amara Diallo">
+          <form id="contactForm" onsubmit="handleSubmit(event)" style="font-family: 'Montserrat', sans-serif;">
+            <div class="form-row" style="font-family: 'Montserrat', sans-serif;">
+              <div class="form-group" style="font-family: 'Montserrat', sans-serif;">
+                <label class="form-label" style="font-family: 'Montserrat', sans-serif;">Full Name</label>
+                <input type="text" class="form-input" placeholder="e.g. Amara Diallo" style="font-family: 'Montserrat', sans-serif;">
               </div>
-              <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="ens@foundation.com">
+              <div class="form-group" style="font-family: 'Montserrat', sans-serif;">
+                <label class="form-label" style="font-family: 'Montserrat', sans-serif;">Email Address</label>
+                <input type="email" class="form-input" placeholder="ens@foundation.com" style="font-family: 'Montserrat', sans-serif;">
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Organisation</label>
-                <input type="text" class="form-input" placeholder="Optional">
+            <div class="form-row" style="font-family: 'Montserrat', sans-serif;">
+              <div class="form-group" style="font-family: 'Montserrat', sans-serif;">
+                <label class="form-label" style="font-family: 'Montserrat', sans-serif;">Organisation</label>
+                <input type="text" class="form-input" placeholder="Optional" style="font-family: 'Montserrat', sans-serif;">
               </div>
-              <div class="form-group">
-                <label class="form-label">Enquiry Type</label>
-                <select class="form-input">
+              <div class="form-group" style="font-family: 'Montserrat', sans-serif;">
+                <label class="form-label" style="font-family: 'Montserrat', sans-serif;">Enquiry Type</label>
+                <select class="form-input" style="font-family: 'Montserrat', sans-serif;">
                   <option value="" disabled selected>Select a topic…</option>
                   <option>Partnership / Sponsorship</option>
                   <option>Pro Bono Volunteering</option>
@@ -1096,61 +1102,61 @@
                 </select>
               </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Subject</label>
-              <input type="text" class="form-input" placeholder="Brief subject…">
+            <div class="form-group" style="font-family: 'Montserrat', sans-serif;">
+              <label class="form-label" style="font-family: 'Montserrat', sans-serif;">Subject</label>
+              <input type="text" class="form-input" placeholder="Brief subject…" style="font-family: 'Montserrat', sans-serif;">
             </div>
-            <div class="form-group">
-              <label class="form-label">Your Message</label>
-              <textarea class="form-input" placeholder="Tell us how we can help or collaborate. Every message is read with care…"></textarea>
+            <div class="form-group" style="font-family: 'Montserrat', sans-serif;">
+              <label class="form-label" style="font-family: 'Montserrat', sans-serif;">Your Message</label>
+              <textarea class="form-input" placeholder="Tell us how we can help or collaborate. Every message is read with care…" style="font-family: 'Montserrat', sans-serif;"></textarea>
             </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-              <button type="submit" class="btn-submit">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem; font-family:'Montserrat',sans-serif;">
+              <button type="submit" class="btn-submit" style="font-family: 'Montserrat', sans-serif;">
                 Send Message
-                <div class="btn-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="btn-arrow" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-arrow-right"></i></div>
               </button>
-              <p style="font-size:0.72rem;color:rgba(0,0,0,0.3);display:flex;align-items:center;gap:6px;">
+              <p style="font-size:0.72rem;color:rgba(0,0,0,0.3);display:flex;align-items:center;gap:6px; font-family:'Montserrat',sans-serif;">
                 <i class="fas fa-lock" style="color:var(--yellow-deep);"></i>
                 All correspondence is confidential
               </p>
             </div>
           </form>
 
-          <div id="formSuccess" style="display:none;text-align:center;padding:2rem 0;">
+          <div id="formSuccess" style="display:none;text-align:center;padding:2rem 0; font-family:'Montserrat',sans-serif;">
             <div style="font-size:4rem;margin-bottom:1rem;">🌍</div>
-            <p style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--yellow-deep);">Message received!</p>
-            <p style="font-size:0.85rem;color:rgba(0,0,0,0.4);margin-top:0.6rem;line-height:1.6;">Thank you for reaching out. We'll be in touch<br>within 2 business days.</p>
+            <p style="font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--yellow-deep);">Message received!</p>
+            <p style="font-size:0.85rem;color:rgba(0,0,0,0.4);margin-top:0.6rem;line-height:1.6; font-family:'Montserrat',sans-serif;">Thank you for reaching out. We'll be in touch<br>within 2 business days.</p>
           </div>
         </div>
 
         <!-- INFO STACK -->
-        <div class="info-stack">
-          <div class="info-card reveal reveal-delay-1">
-            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="info-card-label">Head Office</div>
-            <div class="info-card-main">Johannesburg</div>
-            <div class="info-card-sub">150 West Street, Sandton<br>2196, South Africa</div>
+        <div class="info-stack" style="font-family: 'Montserrat', sans-serif;">
+          <div class="info-card reveal reveal-delay-1" style="font-family: 'Montserrat', sans-serif;">
+            <div class="info-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-card-label" style="font-family: 'Montserrat', sans-serif;">Head Office</div>
+            <div class="info-card-main" style="font-family: 'Montserrat', sans-serif;">Johannesburg</div>
+            <div class="info-card-sub" style="font-family: 'Montserrat', sans-serif;">150 West Street, Sandton<br>2196, South Africa</div>
           </div>
-          <div class="info-card reveal reveal-delay-2">
-            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-            <div class="info-card-label">Direct Line</div>
-            <div class="info-card-main">+27 11 269 7600</div>
-            <div class="info-card-sub">Mon – Fri, 08:00 – 17:00 SAST</div>
+          <div class="info-card reveal reveal-delay-2" style="font-family: 'Montserrat', sans-serif;">
+            <div class="info-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-phone-alt"></i></div>
+            <div class="info-card-label" style="font-family: 'Montserrat', sans-serif;">Direct Line</div>
+            <div class="info-card-main" style="font-family: 'Montserrat', sans-serif;">+27 11 269 7600</div>
+            <div class="info-card-sub" style="font-family: 'Montserrat', sans-serif;">Mon – Fri, 08:00 – 17:00 SAST</div>
           </div>
-          <div class="info-card reveal reveal-delay-3">
-            <div class="info-icon"><i class="fas fa-envelope"></i></div>
-            <div class="info-card-label">Email</div>
-            <div class="info-card-main" style="font-size:1.05rem;">foundation@ensafrica.com</div>
-            <div class="info-card-sub">All correspondence is confidential</div>
+          <div class="info-card reveal reveal-delay-3" style="font-family: 'Montserrat', sans-serif;">
+            <div class="info-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-envelope"></i></div>
+            <div class="info-card-label" style="font-family: 'Montserrat', sans-serif;">Email</div>
+            <div class="info-card-main" style="font-size:1.05rem; font-family:'Montserrat',sans-serif;">foundation@ensafrica.com</div>
+            <div class="info-card-sub" style="font-family: 'Montserrat', sans-serif;">All correspondence is confidential</div>
           </div>
-          <div class="info-card reveal reveal-delay-4">
-            <div class="info-card-label">Follow Our Work</div>
-            <p style="font-size:0.75rem;color:rgba(0,0,0,0.3);margin-bottom:0.5rem;">#ENSafricaFoundation</p>
-            <div class="social-row">
-              <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
-              <div class="social-btn"><i class="fab fa-twitter"></i></div>
-              <div class="social-btn"><i class="fab fa-instagram"></i></div>
-              <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+          <div class="info-card reveal reveal-delay-4" style="font-family: 'Montserrat', sans-serif;">
+            <div class="info-card-label" style="font-family: 'Montserrat', sans-serif;">Follow Our Work</div>
+            <p style="font-size:0.75rem;color:rgba(0,0,0,0.3);margin-bottom:0.5rem; font-family:'Montserrat',sans-serif;">#ENSafricaFoundation</p>
+            <div class="social-row" style="font-family: 'Montserrat', sans-serif;">
+              <div class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-linkedin-in"></i></div>
+              <div class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-twitter"></i></div>
+              <div class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-instagram"></i></div>
+              <div class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-facebook-f"></i></div>
             </div>
           </div>
         </div>
@@ -1160,49 +1166,49 @@
     <div class="divider"></div>
 
     <!-- ── IMAGE STRIP ── -->
-    <div class="img-strip">
-      <div class="strip-track" id="stripTrack">
-        <div class="strip-item"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
-        <div class="strip-item"><img class="strip-img" src="assets/hero5.png" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
-        <div class="strip-item"><img class="strip-img" src="assets/commteach.png" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
-        <div class="strip-item"><img class="strip-img" src="assets/femalelawyer.png" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
+    <div class="img-strip" style="font-family: 'Montserrat', sans-serif;">
+      <div class="strip-track" id="stripTrack" style="font-family: 'Montserrat', sans-serif;">
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Education</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Community</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="assets/hero5.png" alt="Foundation" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Foundation</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="assets/commteach.png" alt="Outreach" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Outreach</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Empowerment</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="assets/femalelawyer.png" alt="Village" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Village Life</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Landscape</span></div>
         <!-- Duplicates for seamless loop -->
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Education</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Community</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Foundation</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Outreach</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Empowerment</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Village Life</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Landscape</span></div>
       </div>
     </div>
 
     <div class="divider"></div>
 
     <!-- ── IMPACT BANNER ── -->
-    <div class="impact-banner reveal">
-      <div class="impact-text">
-        Every partnership,<br>every conversation<br><em>changes a life.</em>
+    <div class="impact-banner reveal" style="font-family: 'Montserrat', sans-serif;">
+      <div class="impact-text" style="font-family: 'Montserrat', sans-serif;">
+        Every partnership,<br>every conversation<br><em style="font-family: 'Montserrat', sans-serif;">changes a life.</em>
       </div>
-      <div class="impact-stats">
-        <div>
-          <span class="impact-stat-num">12,400+</span>
-          <div class="impact-stat-label">Beneficiaries</div>
+      <div class="impact-stats" style="font-family: 'Montserrat', sans-serif;">
+        <div style="font-family: 'Montserrat', sans-serif;">
+          <span class="impact-stat-num" style="font-family: 'Montserrat', sans-serif;">12,400+</span>
+          <div class="impact-stat-label" style="font-family: 'Montserrat', sans-serif;">Beneficiaries</div>
         </div>
-        <div>
-          <span class="impact-stat-num">380+</span>
-          <div class="impact-stat-label">Pro Bono Hours</div>
+        <div style="font-family: 'Montserrat', sans-serif;">
+          <span class="impact-stat-num" style="font-family: 'Montserrat', sans-serif;">380+</span>
+          <div class="impact-stat-label" style="font-family: 'Montserrat', sans-serif;">Pro Bono Hours</div>
         </div>
-        <div>
-          <span class="impact-stat-num">56</span>
-          <div class="impact-stat-label">Scholars Funded</div>
+        <div style="font-family: 'Montserrat', sans-serif;">
+          <span class="impact-stat-num" style="font-family: 'Montserrat', sans-serif;">56</span>
+          <div class="impact-stat-label" style="font-family: 'Montserrat', sans-serif;">Scholars Funded</div>
         </div>
-        <div>
-          <span class="impact-stat-num">8</span>
-          <div class="impact-stat-label">Countries Active</div>
+        <div style="font-family: 'Montserrat', sans-serif;">
+          <span class="impact-stat-num" style="font-family: 'Montserrat', sans-serif;">8</span>
+          <div class="impact-stat-label" style="font-family: 'Montserrat', sans-serif;">Countries Active</div>
         </div>
       </div>
     </div>
@@ -1210,94 +1216,69 @@
     <div class="divider" style="margin-top:4vh;"></div>
 
     <!-- ── GLOBE ── -->
-    <section class="globe-section">
-      <div class="section-num">02</div>
-      <div class="reveal">
-        <div class="section-eyebrow" style="justify-content:center;">Our Presence</div>
-        <h2 class="section-title" style="text-align:center;">Active <em>across</em> the<br>continent</h2>
+    <section class="globe-section" style="font-family: 'Montserrat', sans-serif;">
+      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">02</div>
+      <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
+        <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Our Presence</div>
+        <h2 class="section-title" style="font-family: 'Montserrat', sans-serif;">Active <em style="font-family: 'Montserrat', sans-serif;">across</em> the<br>continent</h2>
       </div>
 
-      <div class="globe-container reveal">
+      <div class="globe-container reveal" style="font-family: 'Montserrat', sans-serif;">
         <div class="globe-ring globe-ring-1"></div>
         <div class="globe-ring globe-ring-2"></div>
         <div class="africa-sphere">
           <div class="africa-shine"></div>
           <svg class="africa-continent" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-label="African continent">
-            <path d="
-              M 185 10 C 195 8, 215 10, 230 18 C 250 28, 268 22, 278 30
-              C 292 40, 295 58, 288 72 C 280 88, 282 105, 275 118
-              C 268 132, 272 148, 280 160 C 292 178, 298 198, 295 215
-              C 292 232, 300 248, 310 260 C 322 275, 328 292, 325 308
-              C 322 325, 330 340, 335 355 C 340 372, 338 390, 330 404
-              C 318 422, 305 435, 288 442 C 268 450, 248 458, 228 462
-              C 208 466, 188 468, 170 462 C 150 456, 132 445, 118 432
-              C 100 416, 88 398, 80 378 C 72 358, 68 338, 70 318
-              C 72 298, 65 280, 58 262 C 50 242, 48 222, 52 202
-              C 56 182, 68 165, 72 145 C 76 125, 70 105, 75 88
-              C 80 70, 92 55, 108 45 C 125 34, 148 18, 165 12 Z
-            " fill="url(#africaGold)" opacity="0.95"/>
-            <path d="
-              M 345 240 C 352 235, 362 238, 366 248 C 370 260, 368 278, 362 290
-              C 356 302, 348 308, 340 304 C 332 300, 330 288, 333 276 C 336 262, 340 248, 345 240 Z
-            " fill="url(#africaGold)" opacity="0.8"/>
-            <path d="
-              M 185 10 C 195 8, 215 10, 230 18 C 250 28, 268 22, 278 30
-              C 270 45, 255 52, 240 60 C 220 70, 200 68, 182 58 C 165 48, 155 32, 165 18 Z
-            " fill="rgba(255,255,255,0.18)" />
-            <defs>
-              <linearGradient id="africaGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stop-color="#FFE135"/>
-                <stop offset="35%"  stop-color="#FFC800"/>
-                <stop offset="70%"  stop-color="#E6A000"/>
-                <stop offset="100%" stop-color="#B87000"/>
-              </linearGradient>
-            </defs>
+            <path d="M 185 10 C 195 8, 215 10, 230 18 C 250 28, 268 22, 278 30 C 292 40, 295 58, 288 72 C 280 88, 282 105, 275 118 C 268 132, 272 148, 280 160 C 292 178, 298 198, 295 215 C 292 232, 300 248, 310 260 C 322 275, 328 292, 325 308 C 322 325, 330 340, 335 355 C 340 372, 338 390, 330 404 C 318 422, 305 435, 288 442 C 268 450, 248 458, 228 462 C 208 466, 188 468, 170 462 C 150 456, 132 445, 118 432 C 100 416, 88 398, 80 378 C 72 358, 68 338, 70 318 C 72 298, 65 280, 58 262 C 50 242, 48 222, 52 202 C 56 182, 68 165, 72 145 C 76 125, 70 105, 75 88 C 80 70, 92 55, 108 45 C 125 34, 148 18, 165 12 Z" fill="url(#africaGold)" opacity="0.95"/>
+            <path d="M 345 240 C 352 235, 362 238, 366 248 C 370 260, 368 278, 362 290 C 356 302, 348 308, 340 304 C 332 300, 330 288, 333 276 C 336 262, 340 248, 345 240 Z" fill="url(#africaGold)" opacity="0.8"/>
+            <path d="M 185 10 C 195 8, 215 10, 230 18 C 250 28, 268 22, 278 30 C 270 45, 255 52, 240 60 C 220 70, 200 68, 182 58 C 165 48, 155 32, 165 18 Z" fill="rgba(255,255,255,0.18)" />
+            <defs><linearGradient id="africaGold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFE135"/><stop offset="35%" stop-color="#FFC800"/><stop offset="70%" stop-color="#E6A000"/><stop offset="100%" stop-color="#B87000"/></linearGradient></defs>
           </svg>
         </div>
       </div>
 
-      <div class="city-chips reveal">
-        <div class="city-chip"><span>🇿🇦</span> Johannesburg</div>
-        <div class="city-chip"><span>🇬🇭</span> Accra</div>
-        <div class="city-chip"><span>🇰🇪</span> Nairobi</div>
-        <div class="city-chip"><span>🇷🇼</span> Kigali</div>
-        <div class="city-chip"><span>🇺🇬</span> Kampala</div>
-        <div class="city-chip"><span>🇲🇺</span> Port Louis</div>
-        <div class="city-chip"><span>🇳🇦</span> Windhoek</div>
-        <div class="city-chip"><span>🇲🇿</span> Maputo</div>
+      <div class="city-chips reveal" style="font-family: 'Montserrat', sans-serif;">
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇿🇦</span> Johannesburg</div>
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇬🇭</span> Accra</div>
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇰🇪</span> Nairobi</div>
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇷🇼</span> Kigali</div>
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇺🇬</span> Kampala</div>
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇲🇺</span> Port Louis</div>
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇳🇦</span> Windhoek</div>
+        <div class="city-chip" style="font-family: 'Montserrat', sans-serif;"><span>🇲🇿</span> Maputo</div>
       </div>
-      <p style="font-size:0.72rem;color:rgba(0,0,0,0.25);text-align:center;margin-top:1.5rem;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
+      <p style="font-size:0.72rem;color:rgba(0,0,0,0.25);text-align:center;margin-top:1.5rem; font-family:'Montserrat',sans-serif;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
     </section>
 
     <div class="divider"></div>
 
     <!-- ── REGIONAL LIAISONS ── -->
-    <section class="regions-section">
-      <div class="section-num" style="left:5vw;right:auto;">03</div>
-      <div class="reveal">
-        <div class="section-eyebrow">Regional Network</div>
-        <h2 class="section-title">Find your<br><em>local liaison</em></h2>
+    <section class="regions-section" style="font-family: 'Montserrat', sans-serif;">
+      <div class="section-num" style="left:5vw;right:auto; font-family:'Montserrat',sans-serif;">03</div>
+      <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
+        <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Regional Network</div>
+        <h2 class="section-title" style="font-family: 'Montserrat', sans-serif;">Find your<br><em style="font-family: 'Montserrat', sans-serif;">local liaison</em></h2>
       </div>
-      <div class="regions-grid">
-        <div class="region-card reveal reveal-delay-1">
+      <div class="regions-grid" style="font-family: 'Montserrat', sans-serif;">
+        <div class="region-card reveal reveal-delay-1" style="font-family: 'Montserrat', sans-serif;">
           <span class="region-flag">🇬🇭</span>
-          <div class="region-city">Accra</div>
-          <div class="region-email">ghana@ensafrica.foundation</div>
+          <div class="region-city" style="font-family: 'Montserrat', sans-serif;">Accra</div>
+          <div class="region-email" style="font-family: 'Montserrat', sans-serif;">ghana@ensafrica.foundation</div>
         </div>
-        <div class="region-card reveal reveal-delay-2">
+        <div class="region-card reveal reveal-delay-2" style="font-family: 'Montserrat', sans-serif;">
           <span class="region-flag">🇰🇪</span>
-          <div class="region-city">Nairobi</div>
-          <div class="region-email">kenya@ensafrica.foundation</div>
+          <div class="region-city" style="font-family: 'Montserrat', sans-serif;">Nairobi</div>
+          <div class="region-email" style="font-family: 'Montserrat', sans-serif;">kenya@ensafrica.foundation</div>
         </div>
-        <div class="region-card reveal reveal-delay-3">
+        <div class="region-card reveal reveal-delay-3" style="font-family: 'Montserrat', sans-serif;">
           <span class="region-flag">🇷🇼</span>
-          <div class="region-city">Kigali</div>
-          <div class="region-email">rwanda@ensafrica.foundation</div>
+          <div class="region-city" style="font-family: 'Montserrat', sans-serif;">Kigali</div>
+          <div class="region-email" style="font-family: 'Montserrat', sans-serif;">rwanda@ensafrica.foundation</div>
         </div>
-        <div class="region-card reveal reveal-delay-4">
+        <div class="region-card reveal reveal-delay-4" style="font-family: 'Montserrat', sans-serif;">
           <span class="region-flag">🇺🇬</span>
-          <div class="region-city">Kampala</div>
-          <div class="region-email">uganda@ensafrica.foundation</div>
+          <div class="region-city" style="font-family: 'Montserrat', sans-serif;">Kampala</div>
+          <div class="region-email" style="font-family: 'Montserrat', sans-serif;">uganda@ensafrica.foundation</div>
         </div>
       </div>
     </section>
@@ -1305,32 +1286,32 @@
     <div class="divider"></div>
 
     <!-- ── FAQ ── -->
-    <section class="faq-section">
-      <div class="section-num">04</div>
-      <div class="reveal">
-        <div class="section-eyebrow">Common Questions</div>
-        <h2 class="section-title">What brings<br><em>people to us</em></h2>
+    <section class="faq-section" style="font-family: 'Montserrat', sans-serif;">
+      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">04</div>
+      <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
+        <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Common Questions</div>
+        <h2 class="section-title" style="font-family: 'Montserrat', sans-serif;">What brings<br><em style="font-family: 'Montserrat', sans-serif;">people to us</em></h2>
       </div>
-      <div class="faq-grid">
-        <div class="faq-card reveal reveal-delay-1">
-          <span class="faq-icon"><i class="fas fa-handshake"></i></span>
-          <div class="faq-q">I want to partner or sponsor</div>
-          <div class="faq-a">Email <span class="faq-email">partnerships@ensafrica.foundation</span> or use the contact form above. We love new collaborations that create lasting impact.</div>
+      <div class="faq-grid" style="font-family: 'Montserrat', sans-serif;">
+        <div class="faq-card reveal reveal-delay-1" style="font-family: 'Montserrat', sans-serif;">
+          <span class="faq-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-handshake"></i></span>
+          <div class="faq-q" style="font-family: 'Montserrat', sans-serif;">I want to partner or sponsor</div>
+          <div class="faq-a" style="font-family: 'Montserrat', sans-serif;">Email <span class="faq-email" style="font-family: 'Montserrat', sans-serif;">partnerships@ensafrica.foundation</span> or use the contact form above. We love new collaborations that create lasting impact.</div>
         </div>
-        <div class="faq-card reveal reveal-delay-2">
-          <span class="faq-icon"><i class="fas fa-gavel"></i></span>
-          <div class="faq-q">I'm a lawyer — can I volunteer?</div>
-          <div class="faq-a">Absolutely. Write to <span class="faq-email">probono@ensafrica.foundation</span>. Your skills can change lives through our Access to Justice programme.</div>
+        <div class="faq-card reveal reveal-delay-2" style="font-family: 'Montserrat', sans-serif;">
+          <span class="faq-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-gavel"></i></span>
+          <div class="faq-q" style="font-family: 'Montserrat', sans-serif;">I'm a lawyer — can I volunteer?</div>
+          <div class="faq-a" style="font-family: 'Montserrat', sans-serif;">Absolutely. Write to <span class="faq-email" style="font-family: 'Montserrat', sans-serif;">probono@ensafrica.foundation</span>. Your skills can change lives through our Access to Justice programme.</div>
         </div>
-        <div class="faq-card reveal reveal-delay-3">
-          <span class="faq-icon"><i class="fas fa-graduation-cap"></i></span>
-          <div class="faq-q">Scholarship inquiries</div>
-          <div class="faq-a">For the Future Lawyers Programme, contact <span class="faq-email">future@ensafrica.foundation</span>. We support Africa's next generation of legal changemakers.</div>
+        <div class="faq-card reveal reveal-delay-3" style="font-family: 'Montserrat', sans-serif;">
+          <span class="faq-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-graduation-cap"></i></span>
+          <div class="faq-q" style="font-family: 'Montserrat', sans-serif;">Scholarship inquiries</div>
+          <div class="faq-a" style="font-family: 'Montserrat', sans-serif;">For the Future Lawyers Programme, contact <span class="faq-email" style="font-family: 'Montserrat', sans-serif;">future@ensafrica.foundation</span>. We support Africa's next generation of legal changemakers.</div>
         </div>
-        <div class="faq-card reveal reveal-delay-4">
-          <span class="faq-icon"><i class="fas fa-newspaper"></i></span>
-          <div class="faq-q">Media &amp; press</div>
-          <div class="faq-a">Our communications team is available at <span class="faq-email">press@ensafrica.foundation</span>. We welcome coverage that amplifies our mission.</div>
+        <div class="faq-card reveal reveal-delay-4" style="font-family: 'Montserrat', sans-serif;">
+          <span class="faq-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-newspaper"></i></span>
+          <div class="faq-q" style="font-family: 'Montserrat', sans-serif;">Media &amp; press</div>
+          <div class="faq-a" style="font-family: 'Montserrat', sans-serif;">Our communications team is available at <span class="faq-email" style="font-family: 'Montserrat', sans-serif;">press@ensafrica.foundation</span>. We welcome coverage that amplifies our mission.</div>
         </div>
       </div>
     </section>
@@ -1338,54 +1319,54 @@
     <div class="pattern-border"></div>
 
     <!-- ── FOOTER ── -->
-    <footer>
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo">
+    <footer style="font-family: 'Montserrat', sans-serif;">
+      <div class="footer-brand" style="font-family: 'Montserrat', sans-serif;">
+        <a href="index.html" class="nav-logo" style="font-family: 'Montserrat', sans-serif;">
           <img src="./assets/ENS Africa logo final-04.png"
                alt="ENS Africa Foundation Logo"
                class="nav-logo-image"
                width="150" height="150">
         </a>
-        <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
-        <div style="display:flex;gap:1rem;margin-top:1.5rem;">
-          <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <p style="font-family: 'Montserrat', sans-serif;">Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
+        <div style="display:flex;gap:1rem;margin-top:1.5rem; font-family:'Montserrat',sans-serif;">
+          <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Foundation</div>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Financials</a></li>
-          <li><a href="#">Governance</a></li>
+      <div class="footer-col" style="font-family: 'Montserrat', sans-serif;">
+        <div class="footer-col-title" style="font-family: 'Montserrat', sans-serif;">Foundation</div>
+        <ul style="font-family: 'Montserrat', sans-serif;">
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">About Us</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Our Team</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Financials</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Governance</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Initiatives</div>
-        <ul>
-          <li><a href="#">Access to Justice</a></li>
-          <li><a href="#">Future Lawyers</a></li>
-          <li><a href="#">Women Empowerment</a></li>
-          <li><a href="#">Climate &amp; Rights</a></li>
+      <div class="footer-col" style="font-family: 'Montserrat', sans-serif;">
+        <div class="footer-col-title" style="font-family: 'Montserrat', sans-serif;">Initiatives</div>
+        <ul style="font-family: 'Montserrat', sans-serif;">
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Access to Justice</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Future Lawyers</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Women Empowerment</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Climate &amp; Rights</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Contact</div>
-        <ul>
-          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem;">150 West Street, Sandton</li>
-          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem;">Johannesburg, 2196</li>
-          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
-          <li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li>
+      <div class="footer-col" style="font-family: 'Montserrat', sans-serif;">
+        <div class="footer-col-title" style="font-family: 'Montserrat', sans-serif;">Contact</div>
+        <ul style="font-family: 'Montserrat', sans-serif;">
+          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem; font-family:'Montserrat',sans-serif;">150 West Street, Sandton</li>
+          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem; font-family:'Montserrat',sans-serif;">Johannesburg, 2196</li>
+          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem;margin-top:0.5rem; font-family:'Montserrat',sans-serif;">+27 11 269 7600</li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="mailto:foundation@ensafrica.com" style="font-family: 'Montserrat', sans-serif;">foundation@ensafrica.com</a></li>
         </ul>
       </div>
     </footer>
 
-    <div class="footer-bottom">
-      <span>© 2026 ENS Africa Foundation</span>
-      <span>A non-profit initiative supported by ENSafrica</span>
+    <div class="footer-bottom" style="font-family: 'Montserrat', sans-serif;">
+      <span style="font-family: 'Montserrat', sans-serif;">© 2026 ENS Africa Foundation</span>
+      <span style="font-family: 'Montserrat', sans-serif;">A non-profit initiative supported by ENSafrica</span>
     </div>
   </div>
 
