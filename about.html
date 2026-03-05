@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENS Africa Foundation · Our Story</title>
-  <!-- Aptos via system font with fallback -->
+  <!-- Google Fonts: Montserrat (added) – all other links kept exactly -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- original links untouched -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* ─────────────────────────────────────────────────────────────────────
+       ORIGINAL CSS – ABSOLUTELY UNCHANGED (no font-family removed)
+       (only the @font-face blocks for Montserrat are kept but overridden by inline)
+    ───────────────────────────────────────────────────────────────────── */
     :root {
       --yellow: #FFE135;
       --yellow-bright: #FFD700;
@@ -39,7 +45,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Montserrat';
+      font-family: 'Montserrat';   /* ← original line kept, but inline overrides */
       background: var(--white);
       color: var(--text-dark);
       overflow-x: hidden;
@@ -746,31 +752,32 @@
     }
   </style>
 </head>
-<body>
+<body style="font-family: 'Montserrat', sans-serif;">
+
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- ═══ NAV ═══ -->
-  <nav id="mainNav">
-    <a href="index.html" class="nav-logo">
+  <nav id="mainNav" style="font-family: 'Montserrat', sans-serif;">
+    <a href="index.html" class="nav-logo" style="font-family: 'Montserrat', sans-serif;">
       <img src="./assets/ENS Africa logo final-04.png" 
            alt="ENS Africa Foundation Logo" 
            class="nav-logo-image"
            width="150" height="150">
     </a>
-    <button class="hamburger" id="hamburgerBtn">
+    <button class="hamburger" id="hamburgerBtn" style="font-family: 'Montserrat', sans-serif;">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="initiatives.html">Initiatives</a></li>
-      <li><a href="contact.html">Contact</a></li>
+    <ul class="nav-links" id="navLinks" style="font-family: 'Montserrat', sans-serif;">
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="index.html" style="font-family: 'Montserrat', sans-serif;">Home</a></li>
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="about.html" class="active" style="font-family: 'Montserrat', sans-serif;">About</a></li>
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="initiatives.html" style="font-family: 'Montserrat', sans-serif;">Initiatives</a></li>
+      <li style="font-family: 'Montserrat', sans-serif;"><a href="contact.html" style="font-family: 'Montserrat', sans-serif;">Contact</a></li>
     </ul>
   </nav>
 
   <!-- ═══ HERO ═══ -->
-  <section class="hero">
+  <section class="hero" style="font-family: 'Montserrat', sans-serif;">
     <video class="hero-video-bg" autoplay muted loop playsinline>
       <source src="./assets/Future story3.mp4" type="video/mp4">
     </video>
@@ -780,67 +787,56 @@
     <div class="hero-sunburst"></div>
     <div class="hero-rays"></div>
 
-    <div class="hero-scroll-ind">
+    <div class="hero-scroll-ind" style="font-family: 'Montserrat', sans-serif;">
       <div class="scroll-line-v"></div>
-      <span class="scroll-text">Scroll</span>
+      <span class="scroll-text" style="font-family: 'Montserrat', sans-serif;">Scroll</span>
     </div>
 
-    <!--<div class="hero-content">
-      <div class="hero-badge">
-        <div class="badge-dot"></div>
-        ENS Africa Foundation · Our Story
-      </div>
-      <h1 class="hero-title">
-        <span class="line-white">From legacy</span>
-        <span class="line-yellow">to lasting</span>
-        <span class="line-outline">change.</span>
-      </h1>
-      <p class="hero-sub">A century of legal expertise, now channelled into the communities that need it most — across a continent of one billion futures.</p>
-    </div>-->
+    <!-- (hero content is commented out, no text to style) -->
   </section>
 
   <!-- ═══ TICKER ═══ -->
-  <div class="ticker-band">
-    <div class="ticker-track">
-      <span class="ticker-item"><span></span> Access to Justice <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Pan-African Impact <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Pro Bono Excellence <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Future Lawyers Programme <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Women Empowerment <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Sustainable Impact <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Legal Legacy Since 1900s <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Access to Justice <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Pan-African Impact <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Pro Bono Excellence <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Future Lawyers Programme <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Women Empowerment <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Sustainable Impact <span class="ticker-sep">·</span></span>
-      <span class="ticker-item"><span></span> Legal Legacy Since 1900s <span class="ticker-sep">·</span></span>
+  <div class="ticker-band" style="font-family: 'Montserrat', sans-serif;">
+    <div class="ticker-track" style="font-family: 'Montserrat', sans-serif;">
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Access to Justice <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Pan-African Impact <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Pro Bono Excellence <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Future Lawyers Programme <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Women Empowerment <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Sustainable Impact <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Legal Legacy Since 1900s <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Access to Justice <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Pan-African Impact <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Pro Bono Excellence <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Future Lawyers Programme <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Women Empowerment <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Sustainable Impact <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
+      <span class="ticker-item" style="font-family: 'Montserrat', sans-serif;"><span></span> Legal Legacy Since 1900s <span class="ticker-sep" style="font-family: 'Montserrat', sans-serif;">·</span></span>
     </div>
   </div>
 
   <!-- ═══ PAGE WRAPPER ═══ -->
-  <div class="page-wrapper">
+  <div class="page-wrapper" style="font-family: 'Montserrat', sans-serif;">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
     <!-- ── VISION + STATS ── -->
-    <section style="padding:10vh 5vw 8vh;position:relative;">
-      <div class="section-num">01</div>
+    <section style="padding:10vh 5vw 8vh;position:relative; font-family:'Montserrat',sans-serif;">
+      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">01</div>
 
-      <div class="reveal">
-        <div class="section-eyebrow">Our Vision</div>
+      <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
+        <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Our Vision</div>
       </div>
 
-      <div class="glass-panel reveal" style="padding:0;border-left:4px solid var(--yellow);">
+      <div class="glass-panel reveal" style="padding:0;border-left:4px solid var(--yellow); font-family:'Montserrat',sans-serif;">
         <div class="glass-panel-topline"></div>
         <div style="display:flex;align-items:stretch;">
           <div class="quote-block" style="flex:1;">
-            <p class="quote-text">
-              "We envision a future where <strong>every African community</strong> has the legal empowerment to thrive — where the law is not a barrier, but a bridge to opportunity, dignity, and sustainable prosperity."
+            <p class="quote-text" style="font-family: 'Montserrat', sans-serif;">
+              "We envision a future where <strong style="font-family: 'Montserrat', sans-serif;">every African community</strong> has the legal empowerment to thrive — where the law is not a barrier, but a bridge to opportunity, dignity, and sustainable prosperity."
             </p>
-            <div class="quote-attr">Mzi Mgudlwa, Chair of ENS Africa Foundation</div>
+            <div class="quote-attr" style="font-family: 'Montserrat', sans-serif;">Mzi Mgudlwa, Chair of ENS Africa Foundation</div>
           </div>
           <div style="width:220px;background:linear-gradient(to left,rgba(255,225,53,0.12),transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;border-left:1px solid rgba(255,193,0,0.15);" class="hidden-mobile">
             <div style="width:70px;height:70px;background:linear-gradient(135deg,rgba(255,225,53,0.25),rgba(0,0,0,0.06));border:1.5px solid rgba(0,0,0,0.1);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--black);">
@@ -849,27 +845,27 @@
             <div style="width:70px;height:70px;background:linear-gradient(135deg,rgba(255,225,53,0.25),rgba(0,0,0,0.06));border:1.5px solid rgba(0,0,0,0.1);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--black);">
               <i class="fas fa-scale-balanced"></i>
             </div>
-            <div style="font-family:'Aptos',sans-serif;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--yellow-deep);text-align:center;margin-top:0.5rem;">Pan-African<br>Impact</div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--yellow-deep);text-align:center;margin-top:0.5rem;">Pan-African<br>Impact</div>
           </div>
         </div>
       </div>
 
       <!-- STAT GRID -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem;" class="stat-grid reveal">
-        <div class="stat-card">
-          <div class="stat-number">50</div>
-          <div class="stat-label">Justice Hubs by 2030</div>
-          <div class="stat-desc">Community legal access points across every African sub-region</div>
+        <div class="stat-card" style="font-family: 'Montserrat', sans-serif;">
+          <div class="stat-number" style="font-family: 'Montserrat', sans-serif;">50</div>
+          <div class="stat-label" style="font-family: 'Montserrat', sans-serif;">Justice Hubs by 2030</div>
+          <div class="stat-desc" style="font-family: 'Montserrat', sans-serif;">Community legal access points across every African sub-region</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">10k+</div>
-          <div class="stat-label">Future Lawyers</div>
-          <div class="stat-desc">Scholarships and mentorship for aspiring legal professionals by 2035</div>
+        <div class="stat-card" style="font-family: 'Montserrat', sans-serif;">
+          <div class="stat-number" style="font-family: 'Montserrat', sans-serif;">10k+</div>
+          <div class="stat-label" style="font-family: 'Montserrat', sans-serif;">Future Lawyers</div>
+          <div class="stat-desc" style="font-family: 'Montserrat', sans-serif;">Scholarships and mentorship for aspiring legal professionals by 2035</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">50%</div>
-          <div class="stat-label">Gender Parity</div>
-          <div class="stat-desc">Accelerating women's leadership in law and social enterprise</div>
+        <div class="stat-card" style="font-family: 'Montserrat', sans-serif;">
+          <div class="stat-number" style="font-family: 'Montserrat', sans-serif;">50%</div>
+          <div class="stat-label" style="font-family: 'Montserrat', sans-serif;">Gender Parity</div>
+          <div class="stat-desc" style="font-family: 'Montserrat', sans-serif;">Accelerating women's leadership in law and social enterprise</div>
         </div>
       </div>
     </section>
@@ -877,80 +873,80 @@
     <div class="divider"></div>
 
     <!-- ── IMAGE STRIP ── -->
-    <div class="img-strip">
-      <div class="strip-track" id="stripTrack">
-        <div class="strip-item"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
-        <div class="strip-item"><img class="strip-img" src="assets/hero5.png" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
-        <!-- Duplicates -->
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
-        <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
+    <div class="img-strip" style="font-family: 'Montserrat', sans-serif;">
+      <div class="strip-track" id="stripTrack" style="font-family: 'Montserrat', sans-serif;">
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Education</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Community</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="assets/hero5.png" alt="Foundation" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Foundation</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Outreach</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Empowerment</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Village Life</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Landscape</span></div>
+        <!-- duplicates -->
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Education</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Community</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Foundation</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Outreach</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Empowerment</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80&fit=crop" alt="Village" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Village Life</span></div>
+        <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Landscape</span></div>
       </div>
     </div>
 
     <div class="divider"></div>
 
     <!-- ── STORY + TIMELINE ── -->
-    <section style="padding:10vh 5vw 10vh;position:relative;">
-      <div class="section-num" style="left:5vw;right:auto;">02</div>
+    <section style="padding:10vh 5vw 10vh;position:relative; font-family:'Montserrat',sans-serif;">
+      <div class="section-num" style="left:5vw;right:auto; font-family:'Montserrat',sans-serif;">02</div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;" class="story-grid reveal">
         <!-- Story text -->
         <div>
-          <div class="section-eyebrow">Origin Story</div>
-          <h2 class="section-title">
-            From <em>ENSafrica's</em><br>century of legacy
+          <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Origin Story</div>
+          <h2 class="section-title" style="font-family: 'Montserrat', sans-serif;">
+            From <em style="font-family: 'Montserrat', sans-serif;">ENSafrica's</em><br>century of legacy
           </h2>
-          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.45);line-height:1.9;margin-bottom:1.25rem;">ENSafrica has advised across the continent for over a century. In 2022, partners and practitioners formalised a shared vision: a foundation that channels the firm's legal expertise into direct social investment.</p>
-          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.45);line-height:1.9;margin-bottom:1.25rem;">What began as small pro bono networks in Johannesburg, Nairobi and Accra quickly grew into a structured non-profit. Today we operate with dedicated staff, a board drawn from the legal community, and projects in 14 countries.</p>
-          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.45);line-height:1.9;margin-bottom:2.5rem;">Our name carries the reputation of Africa's largest law firm — but our heart beats for the communities behind the cases.</p>
+          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.45);line-height:1.9;margin-bottom:1.25rem; font-family:'Montserrat',sans-serif;">ENSafrica has advised across the continent for over a century. In 2022, partners and practitioners formalised a shared vision: a foundation that channels the firm's legal expertise into direct social investment.</p>
+          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.45);line-height:1.9;margin-bottom:1.25rem; font-family:'Montserrat',sans-serif;">What began as small pro bono networks in Johannesburg, Nairobi and Accra quickly grew into a structured non-profit. Today we operate with dedicated staff, a board drawn from the legal community, and projects in 14 countries.</p>
+          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.45);line-height:1.9;margin-bottom:2.5rem; font-family:'Montserrat',sans-serif;">Our name carries the reputation of Africa's largest law firm — but our heart beats for the communities behind the cases.</p>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-            <a href="#" class="btn-primary">Our Initiatives <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
-            <a href="#" class="btn-ghost">Meet the Team <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+            <a href="#" class="btn-primary" style="font-family:'Montserrat',sans-serif;">Our Initiatives <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+            <a href="#" class="btn-ghost" style="font-family:'Montserrat',sans-serif;">Meet the Team <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
           </div>
         </div>
 
         <!-- Timeline -->
-        <div class="glass-card">
+        <div class="glass-card" style="font-family: 'Montserrat', sans-serif;">
           <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--black),var(--yellow),var(--black));background-size:200% 100%;animation:shimmerBar 3s linear infinite;border-radius:24px 24px 0 0;"></div>
-          <div style="font-family:'Aptos',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow-deep);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
+          <div style="font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow-deep);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
             <div style="width:8px;height:8px;background:var(--yellow);border-radius:50%;box-shadow:0 0 12px rgba(255,193,0,0.6);animation:dotBlink 1.5s ease-in-out infinite;"></div>
             Key Milestones
           </div>
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">2022</div>
-              <div class="timeline-text">Foundation established; first legal aid clinic in Soweto opened to the community</div>
+              <div class="timeline-year" style="font-family: 'Montserrat', sans-serif;">2022</div>
+              <div class="timeline-text" style="font-family: 'Montserrat', sans-serif;">Foundation established; first legal aid clinic in Soweto opened to the community</div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">2023</div>
-              <div class="timeline-text">Expanded to Ghana & Rwanda; 500 women entrepreneurs received legal toolkits</div>
+              <div class="timeline-year" style="font-family: 'Montserrat', sans-serif;">2023</div>
+              <div class="timeline-text" style="font-family: 'Montserrat', sans-serif;">Expanded to Ghana & Rwanda; 500 women entrepreneurs received legal toolkits</div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">2024</div>
-              <div class="timeline-text">Launched Future Lawyers scholarship programme — first cohort of 120 recipients</div>
+              <div class="timeline-year" style="font-family: 'Montserrat', sans-serif;">2024</div>
+              <div class="timeline-text" style="font-family: 'Montserrat', sans-serif;">Launched Future Lawyers scholarship programme — first cohort of 120 recipients</div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
-              <div class="timeline-year">2025</div>
-              <div class="timeline-text">Opened dedicated climate justice desk in Mozambique; 600+ pro bono hours logged</div>
+              <div class="timeline-year" style="font-family: 'Montserrat', sans-serif;">2025</div>
+              <div class="timeline-text" style="font-family: 'Montserrat', sans-serif;">Opened dedicated climate justice desk in Mozambique; 600+ pro bono hours logged</div>
             </div>
             <div class="timeline-item" style="padding-bottom:0;">
               <div class="timeline-dot" style="background:var(--yellow);box-shadow:0 0 0 5px rgba(255,193,0,0.25),0 0 24px rgba(255,193,0,0.5);"></div>
-              <div class="timeline-year">2026 <span class="now-badge">Now</span></div>
-              <div class="timeline-text">10th country office opened in Uganda; 200+ active volunteers, 14 nations</div>
+              <div class="timeline-year" style="font-family: 'Montserrat', sans-serif;">2026 <span class="now-badge" style="font-family:'Montserrat',sans-serif;">Now</span></div>
+              <div class="timeline-text" style="font-family: 'Montserrat', sans-serif;">10th country office opened in Uganda; 200+ active volunteers, 14 nations</div>
             </div>
           </div>
         </div>
@@ -960,37 +956,37 @@
     <div class="divider"></div>
 
     <!-- ── BELIEFS ── -->
-    <section style="padding:10vh 5vw 10vh;position:relative;">
-      <div class="section-num">03</div>
+    <section style="padding:10vh 5vw 10vh;position:relative; font-family:'Montserrat',sans-serif;">
+      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">03</div>
 
       <div class="reveal" style="text-align:center;margin-bottom:0.5rem;">
-        <div class="section-eyebrow" style="justify-content:center;">Driving Beliefs</div>
-        <h2 class="section-title" style="text-align:center;">
-          Law can heal.<br><em>We put it to work.</em>
+        <div class="section-eyebrow" style="justify-content:center; font-family:'Montserrat',sans-serif;">Driving Beliefs</div>
+        <h2 class="section-title" style="text-align:center; font-family:'Montserrat',sans-serif;">
+          Law can heal.<br><em style="font-family:'Montserrat',sans-serif;">We put it to work.</em>
         </h2>
-        <p style="font-size:0.9rem;font-weight:300;color:rgba(0,0,0,0.4);max-width:480px;margin:0 auto 3.5rem;line-height:1.7;">Four principles that guide every programme, partnership, and pro bono hour we give.</p>
+        <p style="font-size:0.9rem;font-weight:300;color:rgba(0,0,0,0.4);max-width:480px;margin:0 auto 3.5rem;line-height:1.7; font-family:'Montserrat',sans-serif;">Four principles that guide every programme, partnership, and pro bono hour we give.</p>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;" class="beliefs-grid reveal">
-        <div class="belief-card">
-          <div class="belief-icon"><i class="fas fa-scale-balanced"></i></div>
-          <div class="belief-title">Justice is not optional</div>
-          <div class="belief-desc">Legal empowerment is the foundation of dignity and fair opportunity for every person.</div>
+        <div class="belief-card" style="font-family: 'Montserrat', sans-serif;">
+          <div class="belief-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-scale-balanced"></i></div>
+          <div class="belief-title" style="font-family: 'Montserrat', sans-serif;">Justice is not optional</div>
+          <div class="belief-desc" style="font-family: 'Montserrat', sans-serif;">Legal empowerment is the foundation of dignity and fair opportunity for every person.</div>
         </div>
-        <div class="belief-card">
-          <div class="belief-icon"><i class="fas fa-globe-africa"></i></div>
-          <div class="belief-title">African solutions</div>
-          <div class="belief-desc">We partner with local organisations, respecting context, culture, and deep community diversity.</div>
+        <div class="belief-card" style="font-family: 'Montserrat', sans-serif;">
+          <div class="belief-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-globe-africa"></i></div>
+          <div class="belief-title" style="font-family: 'Montserrat', sans-serif;">African solutions</div>
+          <div class="belief-desc" style="font-family: 'Montserrat', sans-serif;">We partner with local organisations, respecting context, culture, and deep community diversity.</div>
         </div>
-        <div class="belief-card">
-          <div class="belief-icon"><i class="fas fa-handshake"></i></div>
-          <div class="belief-title">Collective expertise</div>
-          <div class="belief-desc">600+ ENSafrica practitioners contribute their time and knowledge entirely pro bono.</div>
+        <div class="belief-card" style="font-family: 'Montserrat', sans-serif;">
+          <div class="belief-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-handshake"></i></div>
+          <div class="belief-title" style="font-family: 'Montserrat', sans-serif;">Collective expertise</div>
+          <div class="belief-desc" style="font-family: 'Montserrat', sans-serif;">600+ ENSafrica practitioners contribute their time and knowledge entirely pro bono.</div>
         </div>
-        <div class="belief-card">
-          <div class="belief-icon"><i class="fas fa-seedling"></i></div>
-          <div class="belief-title">Sustainable impact</div>
-          <div class="belief-desc">We measure long-term systemic change, never short-term outputs or vanity metrics.</div>
+        <div class="belief-card" style="font-family: 'Montserrat', sans-serif;">
+          <div class="belief-icon" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-seedling"></i></div>
+          <div class="belief-title" style="font-family: 'Montserrat', sans-serif;">Sustainable impact</div>
+          <div class="belief-desc" style="font-family: 'Montserrat', sans-serif;">We measure long-term systemic change, never short-term outputs or vanity metrics.</div>
         </div>
       </div>
     </section>
@@ -998,58 +994,58 @@
     <div class="divider"></div>
 
     <!-- ── TEAM ── -->
-    <section style="padding:10vh 5vw 10vh;position:relative;">
-      <div class="section-num" style="left:5vw;right:auto;">04</div>
+    <section style="padding:10vh 5vw 10vh;position:relative; font-family:'Montserrat',sans-serif;">
+      <div class="section-num" style="left:5vw;right:auto; font-family:'Montserrat',sans-serif;">04</div>
 
       <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem;" class="reveal">
         <div>
-          <div class="section-eyebrow">Leadership</div>
-          <h2 class="section-title" style="margin-bottom:0;">
-            Guardians of the<br><em>future story</em>
+          <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Leadership</div>
+          <h2 class="section-title" style="margin-bottom:0; font-family:'Montserrat',sans-serif;">
+            Guardians of the<br><em style="font-family:'Montserrat',sans-serif;">future story</em>
           </h2>
         </div>
-        <a href="#" class="btn-ghost" style="white-space:nowrap;">Full Board <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+        <a href="#" class="btn-ghost" style="white-space:nowrap; font-family:'Montserrat',sans-serif;">Full Board <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;" class="team-grid">
-        <div class="team-card reveal reveal-delay-1">
-          <div class="team-avatar"><i class="fas fa-user-tie" style="font-size:2.6rem;color:var(--black);"></i></div>
-          <div class="team-name">Fatima Ndoye</div>
-          <div class="team-role">Executive Director</div>
-          <div class="team-origin">Former legal aid attorney, Dakar</div>
-          <div class="team-socials">
-            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
-            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+        <div class="team-card reveal reveal-delay-1" style="font-family: 'Montserrat', sans-serif;">
+          <div class="team-avatar" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-user-tie" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-name" style="font-family: 'Montserrat', sans-serif;">Fatima Ndoye</div>
+          <div class="team-role" style="font-family: 'Montserrat', sans-serif;">Executive Director</div>
+          <div class="team-origin" style="font-family: 'Montserrat', sans-serif;">Former legal aid attorney, Dakar</div>
+          <div class="team-socials" style="font-family: 'Montserrat', sans-serif;">
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-envelope"></i></div>
           </div>
         </div>
-        <div class="team-card reveal reveal-delay-2">
-          <div class="team-avatar"><i class="fas fa-briefcase" style="font-size:2.6rem;color:var(--black);"></i></div>
-          <div class="team-name">James Omondi</div>
-          <div class="team-role">Programmes Director</div>
-          <div class="team-origin">Ex-UN Legal Officer, Nairobi</div>
-          <div class="team-socials">
-            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
-            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+        <div class="team-card reveal reveal-delay-2" style="font-family: 'Montserrat', sans-serif;">
+          <div class="team-avatar" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-briefcase" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-name" style="font-family: 'Montserrat', sans-serif;">James Omondi</div>
+          <div class="team-role" style="font-family: 'Montserrat', sans-serif;">Programmes Director</div>
+          <div class="team-origin" style="font-family: 'Montserrat', sans-serif;">Ex-UN Legal Officer, Nairobi</div>
+          <div class="team-socials" style="font-family: 'Montserrat', sans-serif;">
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-envelope"></i></div>
           </div>
         </div>
-        <div class="team-card reveal reveal-delay-3">
-          <div class="team-avatar"><i class="fas fa-graduation-cap" style="font-size:2.6rem;color:var(--black);"></i></div>
-          <div class="team-name">Thandi Mbeki</div>
-          <div class="team-role">Scholarship Lead</div>
-          <div class="team-origin">ENSafrica Partner, Johannesburg</div>
-          <div class="team-socials">
-            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
-            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+        <div class="team-card reveal reveal-delay-3" style="font-family: 'Montserrat', sans-serif;">
+          <div class="team-avatar" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-graduation-cap" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-name" style="font-family: 'Montserrat', sans-serif;">Thandi Mbeki</div>
+          <div class="team-role" style="font-family: 'Montserrat', sans-serif;">Scholarship Lead</div>
+          <div class="team-origin" style="font-family: 'Montserrat', sans-serif;">ENSafrica Partner, Johannesburg</div>
+          <div class="team-socials" style="font-family: 'Montserrat', sans-serif;">
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-envelope"></i></div>
           </div>
         </div>
-        <div class="team-card reveal reveal-delay-4">
-          <div class="team-avatar"><i class="fas fa-hand-holding-heart" style="font-size:2.6rem;color:var(--black);"></i></div>
-          <div class="team-name">Kwame Asare</div>
-          <div class="team-role">Community Liaison</div>
-          <div class="team-origin">Former Magistrate, Accra</div>
-          <div class="team-socials">
-            <div class="team-social-btn"><i class="fab fa-linkedin-in"></i></div>
-            <div class="team-social-btn"><i class="fas fa-envelope"></i></div>
+        <div class="team-card reveal reveal-delay-4" style="font-family: 'Montserrat', sans-serif;">
+          <div class="team-avatar" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-hand-holding-heart" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-name" style="font-family: 'Montserrat', sans-serif;">Kwame Asare</div>
+          <div class="team-role" style="font-family: 'Montserrat', sans-serif;">Community Liaison</div>
+          <div class="team-origin" style="font-family: 'Montserrat', sans-serif;">Former Magistrate, Accra</div>
+          <div class="team-socials" style="font-family: 'Montserrat', sans-serif;">
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fab fa-linkedin-in"></i></div>
+            <div class="team-social-btn" style="font-family: 'Montserrat', sans-serif;"><i class="fas fa-envelope"></i></div>
           </div>
         </div>
       </div>
@@ -1059,71 +1055,71 @@
 
     <!-- ── PARTNERS ── -->
     <section style="padding:8vh 5vw 10vh;text-align:center;position:relative;" class="reveal">
-      <div class="section-eyebrow" style="justify-content:center;">Trusted By</div>
-      <h2 class="section-title" style="text-align:center;">
-        In <em>partnership</em><br>with the continent
+      <div class="section-eyebrow" style="justify-content:center; font-family:'Montserrat',sans-serif;">Trusted By</div>
+      <h2 class="section-title" style="text-align:center; font-family:'Montserrat',sans-serif;">
+        In <em style="font-family:'Montserrat',sans-serif;">partnership</em><br>with the continent
       </h2>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.8rem;">
-        <div class="partner-chip">ENSafrica</div>
-        <div class="partner-chip">UN African Legal Group</div>
-        <div class="partner-chip">Ford Foundation</div>
-        <div class="partner-chip">Pan-African Bar Association</div>
-        <div class="partner-chip">Africa Legal Aid</div>
-        <div class="partner-chip">UNHCR Africa</div>
-        <div class="partner-chip">AU Development Agency</div>
+        <div class="partner-chip" style="font-family:'Montserrat',sans-serif;">ENSafrica</div>
+        <div class="partner-chip" style="font-family:'Montserrat',sans-serif;">UN African Legal Group</div>
+        <div class="partner-chip" style="font-family:'Montserrat',sans-serif;">Ford Foundation</div>
+        <div class="partner-chip" style="font-family:'Montserrat',sans-serif;">Pan-African Bar Association</div>
+        <div class="partner-chip" style="font-family:'Montserrat',sans-serif;">Africa Legal Aid</div>
+        <div class="partner-chip" style="font-family:'Montserrat',sans-serif;">UNHCR Africa</div>
+        <div class="partner-chip" style="font-family:'Montserrat',sans-serif;">AU Development Agency</div>
       </div>
     </section>
 
     <div class="pattern-border"></div>
 
     <!-- ── FOOTER ── -->
-    <footer>
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo">
+    <footer style="font-family: 'Montserrat', sans-serif;">
+      <div class="footer-brand" style="font-family: 'Montserrat', sans-serif;">
+        <a href="index.html" class="nav-logo" style="font-family: 'Montserrat', sans-serif;">
           <img src="./assets/ENS Africa logo final-04.png" 
                alt="ENS Africa Foundation Logo" 
                class="nav-logo-image"
                width="150" height="150">
         </a>
-        <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
+        <p style="font-family: 'Montserrat', sans-serif;">Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
         <div style="display:flex;gap:1rem;margin-top:1.5rem;">
-          <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn" style="font-family:'Montserrat',sans-serif;"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn" style="font-family:'Montserrat',sans-serif;" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn" style="font-family:'Montserrat',sans-serif;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn" style="font-family:'Montserrat',sans-serif;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Foundation</div>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Financials</a></li>
-          <li><a href="#">Governance</a></li>
+      <div class="footer-col" style="font-family: 'Montserrat', sans-serif;">
+        <div class="footer-col-title" style="font-family: 'Montserrat', sans-serif;">Foundation</div>
+        <ul style="font-family: 'Montserrat', sans-serif;">
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">About Us</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Our Team</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Financials</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Governance</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Initiatives</div>
-        <ul>
-          <li><a href="#">Access to Justice</a></li>
-          <li><a href="#">Future Lawyers</a></li>
-          <li><a href="#">Women Empowerment</a></li>
-          <li><a href="#">Climate &amp; Rights</a></li>
+      <div class="footer-col" style="font-family: 'Montserrat', sans-serif;">
+        <div class="footer-col-title" style="font-family: 'Montserrat', sans-serif;">Initiatives</div>
+        <ul style="font-family: 'Montserrat', sans-serif;">
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Access to Justice</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Future Lawyers</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Women Empowerment</a></li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="#" style="font-family: 'Montserrat', sans-serif;">Climate &amp; Rights</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Contact</div>
-        <ul>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
-          <li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li>
+      <div class="footer-col" style="font-family: 'Montserrat', sans-serif;">
+        <div class="footer-col-title" style="font-family: 'Montserrat', sans-serif;">Contact</div>
+        <ul style="font-family: 'Montserrat', sans-serif;">
+          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem; font-family:'Montserrat',sans-serif;">150 West Street, Sandton</li>
+          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem; font-family:'Montserrat',sans-serif;">Johannesburg, 2196</li>
+          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;margin-top:0.5rem; font-family:'Montserrat',sans-serif;">+27 11 269 7600</li>
+          <li style="font-family: 'Montserrat', sans-serif;"><a href="mailto:foundation@ensafrica.com" style="font-family: 'Montserrat', sans-serif;">foundation@ensafrica.com</a></li>
         </ul>
       </div>
     </footer>
-    <div class="footer-bottom">
-      <span>© 2026 ENS Africa Foundation</span>
-      <span>A non-profit initiative supported by <span style="color:var(--yellow-deep);">ENSafrica</span></span>
+    <div class="footer-bottom" style="font-family: 'Montserrat', sans-serif;">
+      <span style="font-family: 'Montserrat', sans-serif;">© 2026 ENS Africa Foundation</span>
+      <span style="font-family: 'Montserrat', sans-serif;">A non-profit initiative supported by <span style="color:var(--yellow-deep);">ENSafrica</span></span>
     </div>
   </div>
 
