@@ -4,25 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENS Africa Foundation · Connect With Us</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <!-- Aptos font via system font stack since it's a Microsoft font -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --banana: #FFE135;
-      --banana-bright: #FFD700;
-      --banana-vivid: #FFC800;
-      --banana-hot: #FFB300;
-      --banana-deep: #E6A000;
-      --banana-pale: #FFF5B0;
-      --banana-glow: #FFEC5C;
-      --sun: #FF9E00;
-      --earth: #2C1810;
-      --earth-mid: #4A2C1A;
-      --earth-light: #7A4F35;
-      --cream: #FFFBEB;
       --white: #FFFFFF;
-      --green-africa: #1A3A2A;
-      --text-on-yellow: #1A0E00;
+      --yellow: #FFD700;
+      --yellow-light: #FFF8E0;
+      --yellow-dark: #E6C300;
+      --black: #000000;
+      --black-light: #1A1A1A;
+      --gradient-1: linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #000000 100%);
+      --gradient-2: linear-gradient(45deg, #FFF8E0, #FFD700, #1A1A1A);
+      --gradient-3: linear-gradient(225deg, rgba(255,255,255,0.9), rgba(255,215,0,0.8), rgba(0,0,0,0.7));
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,9 +24,9 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--cream);
-      color: var(--earth);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: var(--white);
+      color: var(--black);
       overflow-x: hidden;
       cursor: none;
     }
@@ -51,18 +45,18 @@
     /* ─── CURSOR ─── */
     .cursor-dot {
       width: 10px; height: 10px;
-      background: var(--banana);
+      background: var(--yellow);
       border-radius: 50%;
       position: fixed;
       pointer-events: none;
       z-index: 100000;
       transform: translate(-50%, -50%);
       transition: width 0.2s, height 0.2s;
-      box-shadow: 0 0 20px var(--banana), 0 0 40px rgba(255,225,53,0.4);
+      box-shadow: 0 0 20px var(--yellow), 0 0 40px rgba(255,215,0,0.4);
     }
     .cursor-ring {
       width: 36px; height: 36px;
-      border: 2px solid rgba(255,225,53,0.7);
+      border: 2px solid rgba(255,215,0,0.7);
       border-radius: 50%;
       position: fixed;
       pointer-events: none;
@@ -75,23 +69,23 @@
       width: 18px; height: 18px;
     }
 
-    /* ─── NAV (with new logo styles) ─── */
+    /* ─── NAV ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      padding: 1rem 5vw;  /* slightly adjusted for larger logo */
+      padding: 1rem 5vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
       transition: all 0.5s;
     }
     nav.scrolled {
-      background: rgba(255, 251, 230, 0.92);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(24px);
-      padding: 0.5rem 5vw; /* smaller padding when scrolled */
-      border-bottom: 2px solid var(--banana);
-      box-shadow: 0 4px 30px rgba(255,193,0,0.15);
+      padding: 0.5rem 5vw;
+      border-bottom: 2px solid var(--yellow);
+      box-shadow: 0 4px 30px rgba(255,215,0,0.15);
     }
 
     .nav-logo {
@@ -101,57 +95,52 @@
       text-decoration: none;
     }
     
-    /* New image‑based logo – width & height set to 80 */
     .nav-logo-image {
       width: 150px;
       height: 150px;
-      object-fit: contain;  /* keeps the full logo visible without distortion */
+      object-fit: contain;
       display: block;
     }
     
-    /* original text logo – hidden because we now use an image */
     .logo-mark, .logo-text {
       display: none;
     }
-    
-    /* optional: if you ever want to keep the text as fallback, 
-       but we hide it to match request "add a logo path … with height and width of 80" */
 
-    /* Adjust the rest of nav links for better alignment with taller logo */
     .nav-links {
       display: flex; align-items: center; gap: 0.25rem; list-style: none;
     }
     .nav-links a {
-      font-family: 'Outfit', sans-serif; font-size: 0.78rem;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.78rem;
       font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(255,255,255,0.75);
+      text-transform: uppercase; color: rgba(0,0,0,0.75);
       text-decoration: none; padding: 0.5rem 1rem;
       border-radius: 100px; transition: all 0.3s;
     }
-    nav.scrolled .nav-links a { color: var(--earth-mid); }
+    nav.scrolled .nav-links a { color: var(--black-light); }
     .nav-links a:hover, .nav-links a.active {
-      color: var(--earth);
-      background: var(--banana);
-      box-shadow: 0 4px 20px rgba(255,193,0,0.5);
+      color: var(--black);
+      background: var(--yellow);
+      box-shadow: 0 4px 20px rgba(255,215,0,0.5);
     }
 
     .hamburger {
       display: none; flex-direction: column; justify-content: space-between;
       width: 28px; height: 22px; background: transparent; border: none; cursor: pointer; z-index: 1001;
     }
-    .hamburger span { width: 100%; height: 2px; background: var(--banana); transition: all 0.3s; border-radius: 2px; }
+    .hamburger span { width: 100%; height: 2px; background: var(--yellow); transition: all 0.3s; border-radius: 2px; }
 
     @media (max-width: 768px) {
       .hamburger { display: flex; }
       .nav-links {
         position: fixed; top: 0; right: -100%; width: 75%; max-width: 300px; height: 100vh;
-        background: rgba(255,251,230,0.98); backdrop-filter: blur(24px);
+        background: rgba(255,255,255,0.98); backdrop-filter: blur(24px);
         flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
-        transition: right 0.4s ease; border-left: 3px solid var(--banana);
-        box-shadow: -10px 0 40px rgba(255,193,0,0.2); z-index: 1000;
+        transition: right 0.4s ease; border-left: 3px solid var(--yellow);
+        box-shadow: -10px 0 40px rgba(255,215,0,0.2); z-index: 1000;
       }
       .nav-links.active { right: 0; }
-      .nav-links a { font-size: 1rem; color: var(--earth-mid) !important; width: 100%; text-align: center; }
+      .nav-links a { font-size: 1rem; color: var(--black-light) !important; width: 100%; text-align: center; }
       .hamburger.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
       .hamburger.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
@@ -161,9 +150,10 @@
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       overflow: hidden; display: flex; align-items: flex-end;
+      background: linear-gradient(125deg, #FFFFFF 0%, #FFD700 50%, #000000 100%);
     }
 
-    .hero-carousel { position: absolute; inset: 0; z-index: 1; }
+    .hero-carousel { position: absolute; inset: 0; z-index: 1; opacity: 0.6; }
     .carousel-slide {
       position: absolute; inset: 0; opacity: 0;
       transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -171,48 +161,43 @@
     }
     .carousel-slide.active { opacity: 1; z-index: 2; }
 
-    /* The signature banana-yellow glow overlay */
     .hero-overlay {
       position: absolute; inset: 0; z-index: 3; pointer-events: none;
-      background: 
-        linear-gradient(to top, rgba(26,14,0,0.75) 0%, rgba(26,14,0,0.2) 40%, transparent 70%),
-        linear-gradient(135deg, rgba(255,225,53,0.18) 0%, transparent 50%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,215,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
     }
 
-    /* MASSIVE banana sun burst in corner */
     .hero-sunburst {
       position: absolute;
       top: -20%; right: -10%;
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(255,225,53,0.55) 0%, rgba(255,193,0,0.3) 30%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0.2) 30%, transparent 70%);
       z-index: 3; pointer-events: none;
       animation: sunPulse 4s ease-in-out infinite;
     }
     @keyframes sunPulse {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
+      0%, 100% { transform: scale(1); opacity: 0.8; }
       50% { transform: scale(1.1); opacity: 1; }
     }
 
-    /* Radiating lines from sun */
     .hero-rays {
       position: absolute; top: -20%; right: -10%;
       width: 700px; height: 700px;
       background: conic-gradient(from 0deg,
-        transparent 0deg, rgba(255,225,53,0.12) 5deg, transparent 10deg,
-        transparent 25deg, rgba(255,193,0,0.1) 30deg, transparent 35deg,
-        transparent 50deg, rgba(255,225,53,0.12) 55deg, transparent 60deg,
-        transparent 75deg, rgba(255,193,0,0.08) 80deg, transparent 85deg,
-        transparent 100deg, rgba(255,225,53,0.1) 105deg, transparent 110deg,
-        transparent 125deg, rgba(255,193,0,0.12) 130deg, transparent 135deg,
-        transparent 150deg, rgba(255,225,53,0.08) 155deg, transparent 160deg,
-        transparent 175deg, rgba(255,193,0,0.1) 180deg, transparent 185deg,
-        transparent 200deg, rgba(255,225,53,0.12) 205deg, transparent 210deg,
-        transparent 225deg, rgba(255,193,0,0.08) 230deg, transparent 235deg,
-        transparent 250deg, rgba(255,225,53,0.1) 255deg, transparent 260deg,
-        transparent 275deg, rgba(255,193,0,0.12) 280deg, transparent 285deg,
-        transparent 300deg, rgba(255,225,53,0.08) 305deg, transparent 310deg,
-        transparent 325deg, rgba(255,193,0,0.1) 330deg, transparent 335deg,
-        transparent 350deg, rgba(255,225,53,0.12) 355deg, transparent 360deg
+        transparent 0deg, rgba(255,215,0,0.1) 5deg, transparent 10deg,
+        transparent 25deg, rgba(0,0,0,0.1) 30deg, transparent 35deg,
+        transparent 50deg, rgba(255,255,255,0.1) 55deg, transparent 60deg,
+        transparent 75deg, rgba(255,215,0,0.08) 80deg, transparent 85deg,
+        transparent 100deg, rgba(0,0,0,0.08) 105deg, transparent 110deg,
+        transparent 125deg, rgba(255,215,0,0.1) 130deg, transparent 135deg,
+        transparent 150deg, rgba(255,255,255,0.1) 155deg, transparent 160deg,
+        transparent 175deg, rgba(255,215,0,0.1) 180deg, transparent 185deg,
+        transparent 200deg, rgba(0,0,0,0.08) 205deg, transparent 210deg,
+        transparent 225deg, rgba(255,215,0,0.1) 230deg, transparent 235deg,
+        transparent 250deg, rgba(255,255,255,0.1) 255deg, transparent 260deg,
+        transparent 275deg, rgba(255,215,0,0.1) 280deg, transparent 285deg,
+        transparent 300deg, rgba(0,0,0,0.08) 305deg, transparent 310deg,
+        transparent 325deg, rgba(255,255,255,0.1) 330deg, transparent 335deg,
+        transparent 350deg, rgba(255,215,0,0.1) 355deg, transparent 360deg
       );
       z-index: 3; pointer-events: none;
       animation: raysRotate 30s linear infinite;
@@ -226,28 +211,28 @@
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 10px;
-      background: var(--banana); color: var(--earth);
+      background: var(--yellow); color: var(--black);
       padding: 0.5rem 1.25rem; border-radius: 100px;
-      font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 800;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.7rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase;
       margin-bottom: 1.5rem;
       opacity: 0; animation: badgePop 0.6s 0.3s cubic-bezier(0.2,0,0,1) forwards;
-      box-shadow: 0 0 40px rgba(255,225,53,0.6), 0 4px 20px rgba(255,193,0,0.4);
+      box-shadow: 0 0 40px rgba(255,215,0,0.6), 0 4px 20px rgba(255,215,0,0.4);
     }
     @keyframes badgePop {
       from { opacity: 0; transform: translateY(20px) scale(0.9); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .badge-dot {
-      width: 8px; height: 8px; background: var(--earth);
+      width: 8px; height: 8px; background: var(--black);
       border-radius: 50%; animation: dotBlink 1.5s ease-in-out infinite;
     }
     @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    /* HERO TITLE – REDUCED FONT SIZE as requested */
     .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.2rem, 8vw, 7rem);   /* was clamp(3.8rem, 10vw, 9rem) — reduced */
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
       font-weight: 900; line-height: 0.9;
       letter-spacing: -0.03em;
       max-width: 850px;
@@ -257,43 +242,47 @@
       from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .hero-title .line-white { color: var(--white); display: block; }
+    .hero-title .line-white { color: var(--white); display: block; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
     .hero-title .line-yellow {
-      color: var(--banana);
+      color: var(--yellow);
       display: block;
-      text-shadow: 0 0 80px rgba(255,225,53,0.8), 0 0 160px rgba(255,193,0,0.4);
-      -webkit-text-stroke: 1px rgba(255,193,0,0.3);
+      text-shadow: 0 0 80px rgba(255,215,0,0.8), 0 0 160px rgba(255,215,0,0.4);
+      -webkit-text-stroke: 1px rgba(0,0,0,0.3);
     }
     .hero-title .line-outline {
       display: block;
-      color: transparent;
-      -webkit-text-stroke: 2px rgba(255,255,255,0.5);
+      color: var(--black);
+      text-shadow: 2px 2px 0 var(--white), -2px -2px 0 var(--yellow);
     }
 
     .hero-sub {
-      font-size: 1rem; font-weight: 300; color: rgba(255,252,235,0.75);
+      font-size: 1rem; font-weight: 300; color: var(--black);
       margin-top: 1.5rem; max-width: 440px; line-height: 1.8;
       opacity: 0; animation: fadeUp 1s 0.8s forwards;
+      background: rgba(255,255,255,0.7);
+      padding: 1rem;
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
     }
 
     .hero-cta {
       display: inline-flex; align-items: center; gap: 12px;
-      background: var(--banana); color: var(--earth);
+      background: var(--yellow); color: var(--black);
       padding: 1rem 2rem; border-radius: 100px; margin-top: 2rem;
-      font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.85rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
       border: none; cursor: pointer;
       opacity: 0; animation: fadeUp 1s 1s forwards;
       transition: all 0.3s; text-decoration: none;
-      box-shadow: 0 8px 40px rgba(255,193,0,0.5);
+      box-shadow: 0 8px 40px rgba(255,215,0,0.5);
     }
     .hero-cta:hover {
       transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 20px 60px rgba(255,193,0,0.7);
-      background: var(--banana-bright);
+      box-shadow: 0 20px 60px rgba(255,215,0,0.7);
+      background: var(--yellow-dark);
     }
 
-    /* Floating stat bubbles */
     .hero-stats {
       position: absolute; right: 5vw; bottom: 20vh; z-index: 10;
       display: flex; flex-direction: column; gap: 1rem;
@@ -301,30 +290,30 @@
     }
     @media (max-width: 768px) { .hero-stats { display: none; } }
     .stat-bubble {
-      background: rgba(255,225,53,0.15);
+      background: rgba(255,215,0,0.2);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,225,53,0.4);
+      border: 1px solid rgba(255,215,0,0.4);
       border-radius: 20px; padding: 1rem 1.5rem;
       text-align: center;
       transition: all 0.3s;
     }
     .stat-bubble:hover {
-      background: var(--banana);
-      border-color: var(--banana);
+      background: var(--yellow);
+      border-color: var(--yellow);
       transform: scale(1.05);
     }
     .stat-bubble:hover .stat-num,
-    .stat-bubble:hover .stat-label { color: var(--earth); }
+    .stat-bubble:hover .stat-label { color: var(--black); }
     .stat-num {
-      font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900;
-      color: var(--banana); display: block; line-height: 1;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--yellow); display: block; line-height: 1;
     }
     .stat-label {
       font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; color: rgba(255,240,180,0.65); margin-top: 4px;
+      text-transform: uppercase; color: rgba(0,0,0,0.65); margin-top: 4px;
     }
 
-    /* Scroll indicator */
     .hero-scroll-ind {
       position: absolute; left: 5vw; bottom: 8vh; z-index: 10;
       display: flex; align-items: center; gap: 12px;
@@ -332,7 +321,7 @@
     }
     .scroll-line-v {
       width: 1px; height: 50px;
-      background: linear-gradient(to bottom, var(--banana), transparent);
+      background: linear-gradient(to bottom, var(--yellow), transparent);
       animation: scrollBeat 2s ease-in-out infinite;
     }
     @keyframes scrollBeat {
@@ -341,33 +330,32 @@
     }
     .scroll-text {
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em;
-      text-transform: uppercase; color: rgba(255,225,53,0.7);
+      text-transform: uppercase; color: rgba(0,0,0,0.7);
       writing-mode: vertical-rl;
     }
 
-    /* Carousel dots */
     .carousel-dots {
       position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
       z-index: 20; display: flex; gap: 12px;
     }
     .c-dot {
       width: 8px; height: 8px; border-radius: 100px;
-      background: rgba(255,225,53,0.4); border: 1.5px solid rgba(255,225,53,0.7);
+      background: rgba(255,215,0,0.4); border: 1.5px solid rgba(255,215,0,0.7);
       cursor: pointer; transition: all 0.4s;
     }
     .c-dot.active {
-      width: 32px; background: var(--banana);
-      box-shadow: 0 0 20px rgba(255,225,53,0.8);
+      width: 32px; background: var(--yellow);
+      box-shadow: 0 0 20px rgba(255,215,0,0.8);
     }
 
     /* ─── TICKER BAND ─── */
     .ticker-band {
-      background: var(--banana);
+      background: var(--yellow);
       padding: 0.85rem 0;
       overflow: hidden;
       position: relative;
       border-top: 0; border-bottom: 0;
-      box-shadow: 0 4px 40px rgba(255,193,0,0.4);
+      box-shadow: 0 4px 40px rgba(255,215,0,0.4);
     }
     .ticker-track {
       display: flex; gap: 0; white-space: nowrap;
@@ -380,21 +368,21 @@
     .ticker-item {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 0 2rem;
-      font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--earth);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--black);
     }
-    .ticker-sep { color: var(--earth-mid); opacity: 0.4; font-size: 1.2rem; }
+    .ticker-sep { color: var(--black); opacity: 0.4; font-size: 1.2rem; }
 
     /* ─── PAGE WRAPPER ─── */
     .page-wrapper {
-      background: linear-gradient(180deg, #FFFBEB 0%, #FFFCE8 30%, #FFF8D5 60%, #FFFBEB 100%);
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFF8E0 30%, #FFD700 60%, #000000 100%);
       position: relative;
     }
 
-    /* Floating yellow orbs */
     .orb {
       position: absolute; border-radius: 50%; pointer-events: none;
-      background: radial-gradient(circle, rgba(255,225,53,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
     }
     .orb-1 { width: 600px; height: 600px; top: 5%; left: -200px; }
     .orb-2 { width: 500px; height: 500px; top: 40%; right: -150px; }
@@ -405,25 +393,26 @@
 
     .section-eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
-      font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 800;
-      letter-spacing: 0.3em; text-transform: uppercase; color: var(--banana-deep);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--black);
       margin-bottom: 1rem;
     }
     .section-eyebrow::before {
       content: ''; display: block; width: 36px; height: 3px;
-      background: var(--banana); border-radius: 2px;
+      background: var(--yellow); border-radius: 2px;
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       font-size: clamp(2.8rem, 5.5vw, 5.5rem);
       font-weight: 900; line-height: 0.95;
-      letter-spacing: -0.03em; color: var(--earth);
+      letter-spacing: -0.03em; color: var(--black);
       margin-bottom: 4rem;
     }
     .section-title em {
       font-style: italic;
-      background: linear-gradient(135deg, var(--banana), var(--sun));
+      background: linear-gradient(135deg, var(--yellow), var(--black));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
@@ -432,24 +421,23 @@
     }
     @media (max-width: 1100px) { .contact-grid { grid-template-columns: 1fr; } }
 
-    /* Form panel */
     .form-panel {
       background: rgba(255,255,255,0.7);
-      border: 2px solid rgba(255,193,0,0.25);
+      border: 2px solid rgba(255,215,0,0.25);
       border-radius: 30px; padding: 3rem;
       backdrop-filter: blur(30px);
-      box-shadow: 0 20px 80px rgba(255,193,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+      box-shadow: 0 20px 80px rgba(255,215,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
       position: relative; overflow: hidden;
       transition: all 0.5s;
     }
     .form-panel:hover {
-      border-color: rgba(255,193,0,0.5);
-      box-shadow: 0 30px 100px rgba(255,193,0,0.15);
+      border-color: rgba(255,215,0,0.5);
+      box-shadow: 0 30px 100px rgba(255,215,0,0.15);
     }
     .form-panel::before {
       content: ''; position: absolute;
       top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--banana), var(--sun), var(--banana));
+      background: linear-gradient(90deg, var(--white), var(--yellow), var(--black));
       background-size: 200% 100%;
       animation: shimmerBar 3s linear infinite;
     }
@@ -460,7 +448,7 @@
     .form-panel::after {
       content: ''; position: absolute;
       bottom: -40px; right: -40px; width: 160px; height: 160px;
-      background: radial-gradient(circle, rgba(255,225,53,0.15), transparent 70%);
+      background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 70%);
       pointer-events: none;
     }
 
@@ -473,30 +461,32 @@
       animation: dotBlink 1.5s ease-in-out infinite;
     }
     .form-header-text {
-      font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--banana-deep);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
     }
 
     .form-group { margin-bottom: 1.75rem; }
     .form-label {
-      font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--earth-light);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
       display: block; margin-bottom: 0.6rem;
     }
     .form-input {
       width: 100%;
       background: rgba(255, 255, 255, 0.8);
-      border: 1.5px solid rgba(255,193,0,0.2);
+      border: 1.5px solid rgba(255,215,0,0.2);
       border-radius: 14px; padding: 0.95rem 1.25rem;
-      color: var(--earth); font-family: 'Outfit', sans-serif;
+      color: var(--black); font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       font-size: 0.92rem; font-weight: 400;
       transition: all 0.3s; outline: none;
     }
-    .form-input::placeholder { color: rgba(74,44,26,0.3); }
+    .form-input::placeholder { color: rgba(0,0,0,0.3); }
     .form-input:focus {
       background: rgba(255,255,255,0.95);
-      border-color: var(--banana);
-      box-shadow: 0 0 0 4px rgba(255,225,53,0.2), 0 0 30px rgba(255,193,0,0.08);
+      border-color: var(--yellow);
+      box-shadow: 0 0 0 4px rgba(255,215,0,0.2), 0 0 30px rgba(255,215,0,0.08);
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
     @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
@@ -506,17 +496,18 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E6A000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 1rem center;
     }
-    select.form-input option { background: #fffbeb; color: var(--earth); }
+    select.form-input option { background: #ffffff; color: var(--black); }
 
     .btn-submit {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 1rem 2.25rem; border-radius: 100px;
-      font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.82rem; font-weight: 800;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--earth); border: none; cursor: pointer;
-      background: linear-gradient(135deg, var(--banana) 0%, var(--banana-vivid) 50%, var(--sun) 100%);
+      color: var(--black); border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--white) 0%, var(--yellow) 50%, var(--black) 100%);
       background-size: 200% 200%;
-      box-shadow: 0 8px 40px rgba(255,193,0,0.5);
+      box-shadow: 0 8px 40px rgba(255,215,0,0.5);
       transition: all 0.4s; position: relative; overflow: hidden;
     }
     .btn-submit::before {
@@ -527,79 +518,80 @@
     .btn-submit:hover::before { opacity: 1; }
     .btn-submit:hover {
       transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 20px 60px rgba(255,193,0,0.7);
+      box-shadow: 0 20px 60px rgba(255,215,0,0.7);
     }
     .btn-arrow {
-      width: 30px; height: 30px; background: rgba(26,14,0,0.15);
+      width: 30px; height: 30px; background: rgba(0,0,0,0.15);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       transition: transform 0.3s; font-size: 0.7rem;
     }
     .btn-submit:hover .btn-arrow { transform: translateX(5px); }
 
-    /* Info cards */
     .info-stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .info-card {
       background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,193,0,0.2);
+      border: 1.5px solid rgba(255,215,0,0.2);
       border-radius: 22px; padding: 1.6rem 1.75rem;
       backdrop-filter: blur(20px);
       transition: all 0.4s cubic-bezier(0.2,0,0,1);
       position: relative; overflow: hidden;
-      box-shadow: 0 4px 20px rgba(255,193,0,0.06);
+      box-shadow: 0 4px 20px rgba(255,215,0,0.06);
     }
     .info-card::before {
       content: ''; position: absolute;
       left: 0; top: 0; bottom: 0; width: 0;
-      background: linear-gradient(to bottom, var(--banana), var(--banana-vivid));
+      background: linear-gradient(to bottom, var(--white), var(--yellow), var(--black));
       border-radius: 22px 0 0 22px;
       transition: width 0.3s ease;
     }
     .info-card:hover::before { width: 4px; }
     .info-card:hover {
       transform: translateX(8px);
-      border-color: rgba(255,193,0,0.5);
+      border-color: rgba(255,215,0,0.5);
       background: rgba(255,255,255,0.85);
-      box-shadow: 0 12px 40px rgba(255,193,0,0.12);
+      box-shadow: 0 12px 40px rgba(255,215,0,0.12);
     }
     .info-icon {
       width: 42px; height: 42px;
-      background: linear-gradient(135deg, rgba(255,225,53,0.3), rgba(255,193,0,0.15));
-      border: 1.5px solid rgba(255,193,0,0.3);
+      background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(0,0,0,0.15));
+      border: 1.5px solid rgba(255,215,0,0.3);
       border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      color: var(--banana-deep); font-size: 1rem; margin-bottom: 0.9rem;
+      color: var(--black); font-size: 1rem; margin-bottom: 0.9rem;
       transition: all 0.3s;
     }
     .info-card:hover .info-icon {
-      background: var(--banana);
-      border-color: var(--banana);
-      color: var(--earth);
-      box-shadow: 0 4px 20px rgba(255,193,0,0.4);
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--black);
+      box-shadow: 0 4px 20px rgba(255,215,0,0.4);
     }
     .info-card-label {
-      font-family: 'Outfit', sans-serif; font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--banana-deep);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
       margin-bottom: 0.3rem;
     }
     .info-card-main {
-      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
-      color: var(--earth); line-height: 1.3;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--black); line-height: 1.3;
     }
-    .info-card-sub { font-size: 0.78rem; color: rgba(74,44,26,0.5); margin-top: 0.2rem; line-height: 1.5; }
+    .info-card-sub { font-size: 0.78rem; color: rgba(0,0,0,0.5); margin-top: 0.2rem; line-height: 1.5; }
 
     .social-row { display: flex; gap: 0.75rem; margin-top: 1rem; }
     .social-btn {
       width: 44px; height: 44px;
       background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,193,0,0.2);
+      border: 1.5px solid rgba(255,215,0,0.2);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      color: rgba(74,44,26,0.5); font-size: 0.9rem;
+      color: rgba(0,0,0,0.5); font-size: 0.9rem;
       transition: all 0.3s; cursor: pointer; backdrop-filter: blur(12px);
     }
     .social-btn:hover {
-      background: var(--banana); border-color: var(--banana);
-      color: var(--earth); transform: translateY(-4px) scale(1.1);
-      box-shadow: 0 8px 24px rgba(255,193,0,0.4);
+      background: var(--yellow); border-color: var(--yellow);
+      color: var(--black); transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 24px rgba(255,215,0,0.4);
     }
 
     /* ─── IMAGE STRIP ─── */
@@ -619,29 +611,27 @@
       width: 300px; height: 210px; border-radius: 20px;
       object-fit: cover; display: block;
       filter: saturate(0.8) brightness(0.9);
-      border: 2px solid rgba(255,193,0,0.15);
+      border: 2px solid rgba(255,215,0,0.15);
       transition: all 0.5s;
     }
     .strip-item:hover .strip-img {
       filter: saturate(1.1) brightness(1.05);
       transform: scale(1.04) translateY(-8px);
-      border-color: var(--banana);
-      box-shadow: 0 20px 50px rgba(255,193,0,0.3);
+      border-color: var(--yellow);
+      box-shadow: 0 20px 50px rgba(255,215,0,0.3);
     }
     .strip-label {
       position: absolute; bottom: 12px; left: 12px;
-      font-family: 'Outfit', sans-serif; font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--earth);
-      background: var(--banana); backdrop-filter: blur(8px);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
+      background: var(--yellow); backdrop-filter: blur(8px);
       padding: 4px 12px; border-radius: 100px;
     }
 
     /* ─── GLOBE / PRESENCE ─── */
     .globe-section { padding: 8vh 5vw; text-align: center; position: relative; }
 
-    /* ═══════════════════════════════════════════
-       AFRICA CONTINENT GLOBE — only changed block
-       ═══════════════════════════════════════════ */
     .globe-container {
       position: relative;
       width: 260px; height: 260px;
@@ -649,10 +639,9 @@
       perspective: 900px;
     }
 
-    /* Orbital rings stay outside the sphere */
     .globe-ring {
       position: absolute; top: 50%; left: 50%;
-      border-radius: 50%; border: 1.5px solid rgba(255,193,0,0.4);
+      border-radius: 50%; border: 1.5px solid rgba(255,215,0,0.4);
       pointer-events: none;
     }
     .globe-ring-1 {
@@ -671,7 +660,6 @@
       to   { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg); }
     }
 
-    /* The sphere ball */
     .africa-sphere {
       position: absolute;
       top: 50%; left: 50%;
@@ -679,21 +667,20 @@
       width: 220px; height: 220px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%,
-        rgba(255,245,120,0.6) 0%,
-        rgba(255,200,0,0.3) 35%,
-        rgba(180,100,0,0.35) 65%,
-        rgba(90,45,0,0.55) 100%
+        rgba(255,255,255,0.6) 0%,
+        rgba(255,215,0,0.3) 35%,
+        rgba(0,0,0,0.35) 65%,
+        rgba(0,0,0,0.55) 100%
       );
-      border: 2px solid rgba(255,193,0,0.45);
+      border: 2px solid rgba(255,215,0,0.45);
       box-shadow:
-        inset -28px -28px 55px rgba(140,80,0,0.45),
+        inset -28px -28px 55px rgba(0,0,0,0.45),
         inset 14px 14px 38px rgba(255,255,200,0.45),
-        0 0 80px rgba(255,193,0,0.3),
-        0 0 160px rgba(255,225,53,0.15);
+        0 0 80px rgba(255,215,0,0.3),
+        0 0 160px rgba(255,215,0,0.15);
       overflow: hidden;
       cursor: pointer;
       transition: box-shadow 0.4s;
-      /* idle gentle breathe */
       animation: africaBreathe 4s ease-in-out infinite;
     }
     @keyframes africaBreathe {
@@ -701,21 +688,19 @@
       50%       { filter: brightness(1.1); }
     }
 
-    /* Hover → 360° Y-spin */
     .globe-container:hover .africa-sphere {
       animation: africaSpin360 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
       box-shadow:
-        inset -28px -28px 55px rgba(140,80,0,0.45),
+        inset -28px -28px 55px rgba(0,0,0,0.45),
         inset 14px 14px 38px rgba(255,255,200,0.45),
-        0 0 130px rgba(255,193,0,0.6),
-        0 0 260px rgba(255,225,53,0.3);
+        0 0 130px rgba(255,215,0,0.6),
+        0 0 260px rgba(255,215,0,0.3);
     }
     @keyframes africaSpin360 {
       0%   { transform: translate(-50%, -50%) rotateY(0deg); }
       100% { transform: translate(-50%, -50%) rotateY(360deg); }
     }
 
-    /* The Africa SVG sits inside the sphere */
     .africa-continent {
       position: absolute;
       top: 50%; left: 50%;
@@ -723,16 +708,15 @@
       width: 130px; height: 140px;
       z-index: 2;
       filter:
-        drop-shadow(0 3px 14px rgba(160,90,0,0.55))
-        drop-shadow(0 0 28px rgba(255,200,0,0.4));
+        drop-shadow(0 3px 14px rgba(0,0,0,0.55))
+        drop-shadow(0 0 28px rgba(255,215,0,0.4));
     }
     .globe-container:hover .africa-continent {
       filter:
-        drop-shadow(0 4px 22px rgba(160,90,0,0.7))
-        drop-shadow(0 0 50px rgba(255,230,50,0.6));
+        drop-shadow(0 4px 22px rgba(0,0,0,0.7))
+        drop-shadow(0 0 50px rgba(255,215,0,0.6));
     }
 
-    /* Glass shine on top of sphere */
     .africa-shine {
       position: absolute;
       top: 10%; left: 18%;
@@ -741,7 +725,6 @@
       border-radius: 50%;
       pointer-events: none; z-index: 3;
     }
-    /* ═══════════════════════════════════════════ */
 
     .city-chips {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;
@@ -751,17 +734,18 @@
       display: inline-flex; align-items: center; gap: 8px;
       padding: 0.6rem 1.2rem;
       background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,193,0,0.2);
+      border: 1.5px solid rgba(255,215,0,0.2);
       border-radius: 100px;
-      font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.05em; color: var(--earth-mid);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.05em; color: var(--black);
       transition: all 0.35s; cursor: default; backdrop-filter: blur(12px);
-      box-shadow: 0 2px 10px rgba(255,193,0,0.06);
+      box-shadow: 0 2px 10px rgba(255,215,0,0.06);
     }
     .city-chip:hover {
-      background: var(--banana); border-color: var(--banana);
-      color: var(--earth); transform: translateY(-5px) scale(1.06);
-      box-shadow: 0 12px 30px rgba(255,193,0,0.35);
+      background: var(--yellow); border-color: var(--yellow);
+      color: var(--black); transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 12px 30px rgba(255,215,0,0.35);
     }
 
     /* ─── REGIONS ─── */
@@ -774,7 +758,7 @@
 
     .region-card {
       background: rgba(255,255,255,0.55);
-      border: 1.5px solid rgba(255,193,0,0.15);
+      border: 1.5px solid rgba(255,215,0,0.15);
       border-radius: 24px; padding: 2rem 1.5rem;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.2,0,0,1);
@@ -783,22 +767,23 @@
     }
     .region-card::after {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(255,225,53,0.2) 0%, transparent 70%);
+      background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.2) 0%, transparent 70%);
       opacity: 0; transition: opacity 0.4s;
     }
     .region-card:hover::after { opacity: 1; }
     .region-card:hover {
-      border-color: var(--banana);
+      border-color: var(--yellow);
       transform: translateY(-10px) scale(1.03);
       background: rgba(255,255,255,0.9);
-      box-shadow: 0 25px 60px rgba(255,193,0,0.2), 0 0 0 1px rgba(255,193,0,0.2);
+      box-shadow: 0 25px 60px rgba(255,215,0,0.2), 0 0 0 1px rgba(255,215,0,0.2);
     }
     .region-flag { font-size: 2.8rem; display: block; margin-bottom: 0.75rem; }
     .region-city {
-      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
-      color: var(--earth); margin-bottom: 0.4rem;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--black); margin-bottom: 0.4rem;
     }
-    .region-email { font-size: 0.68rem; color: rgba(180,120,0,0.6); word-break: break-all; }
+    .region-email { font-size: 0.68rem; color: rgba(0,0,0,0.6); word-break: break-all; }
 
     /* ─── FAQ ─── */
     .faq-section { padding: 6vh 5vw 8vh; }
@@ -809,37 +794,38 @@
 
     .faq-card {
       background: rgba(255,255,255,0.55);
-      border: 1.5px solid rgba(255,193,0,0.12);
+      border: 1.5px solid rgba(255,215,0,0.12);
       border-radius: 24px; padding: 2.25rem;
       transition: all 0.4s; position: relative; overflow: hidden;
       backdrop-filter: blur(16px);
     }
     .faq-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 0;
-      background: linear-gradient(180deg, rgba(255,225,53,0.15), transparent);
+      background: linear-gradient(180deg, rgba(255,215,0,0.15), transparent);
       transition: height 0.4s;
     }
     .faq-card:hover::before { height: 100%; }
     .faq-card:hover {
-      border-color: rgba(255,193,0,0.4);
+      border-color: rgba(255,215,0,0.4);
       transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(255,193,0,0.12);
+      box-shadow: 0 20px 50px rgba(255,215,0,0.12);
     }
-    .faq-icon { font-size: 1.6rem; color: var(--banana-vivid); margin-bottom: 1rem; display: block; }
+    .faq-icon { font-size: 1.6rem; color: var(--yellow); margin-bottom: 1rem; display: block; }
     .faq-q {
-      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
-      color: var(--earth); margin-bottom: 0.6rem; line-height: 1.3;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--black); margin-bottom: 0.6rem; line-height: 1.3;
     }
-    .faq-a { font-size: 0.84rem; font-weight: 300; color: rgba(74,44,26,0.55); line-height: 1.75; }
-    .faq-email { color: var(--banana-deep); font-weight: 600; }
+    .faq-a { font-size: 0.84rem; font-weight: 300; color: rgba(0,0,0,0.55); line-height: 1.75; }
+    .faq-email { color: var(--black); font-weight: 600; }
 
     /* ─── IMPACT BANNER ─── */
     .impact-banner {
       margin: 4vh 5vw;
-      background: linear-gradient(135deg, var(--banana) 0%, var(--banana-vivid) 40%, var(--sun) 100%);
+      background: linear-gradient(135deg, var(--white) 0%, var(--yellow) 40%, var(--black) 100%);
       border-radius: 30px; padding: 4rem 3rem;
       position: relative; overflow: hidden;
-      box-shadow: 0 30px 80px rgba(255,193,0,0.4);
+      box-shadow: 0 30px 80px rgba(255,215,0,0.4);
     }
     .impact-banner::before {
       content: ''; position: absolute; inset: 0;
@@ -849,8 +835,9 @@
       );
     }
     .impact-text {
-      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 900; color: var(--earth); line-height: 1.15;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900; color: var(--black); line-height: 1.15;
       max-width: 700px; position: relative; z-index: 1;
     }
     .impact-text em { font-style: italic; color: var(--white); }
@@ -859,65 +846,68 @@
       position: relative; z-index: 1; flex-wrap: wrap;
     }
     .impact-stat-num {
-      font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 3rem; font-weight: 900;
       color: var(--white); line-height: 1; display: block;
     }
     .impact-stat-label {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; color: rgba(26,14,0,0.55); margin-top: 4px;
+      text-transform: uppercase; color: rgba(0,0,0,0.55); margin-top: 4px;
     }
 
     /* ─── DIVIDERS ─── */
     .divider {
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,193,0,0.25), transparent);
+      background: linear-gradient(to right, transparent, rgba(255,215,0,0.25), transparent);
       margin: 0 5vw;
     }
     .pattern-border {
       height: 5px;
       background: repeating-linear-gradient(
         90deg,
-        var(--banana) 0px, var(--banana) 6px,
+        var(--white) 0px, var(--white) 6px,
         transparent 6px, transparent 14px,
-        var(--banana-vivid) 14px, var(--banana-vivid) 20px,
-        transparent 20px, transparent 28px
+        var(--yellow) 14px, var(--yellow) 20px,
+        transparent 20px, transparent 28px,
+        var(--black) 28px, var(--black) 34px
       );
       opacity: 0.6;
     }
 
     /* ─── FOOTER ─── */
     footer {
-      border-top: 2px solid rgba(255,193,0,0.2);
+      border-top: 2px solid rgba(255,215,0,0.2);
       padding: 5vh 5vw;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
-      background: rgba(255,252,220,0.5);
+      background: rgba(255,255,255,0.5);
     }
     @media (max-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 500px) { footer { grid-template-columns: 1fr; } }
 
     .footer-brand p {
-      font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5);
+      font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5);
       line-height: 1.8; margin-top: 1rem; max-width: 280px;
     }
     .footer-col-title {
-      font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 800;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--banana-deep);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
       margin-bottom: 1.2rem;
     }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
     .footer-col a {
-      font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5);
+      font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5);
       text-decoration: none; transition: color 0.2s;
     }
-    .footer-col a:hover { color: var(--banana-deep); }
+    .footer-col a:hover { color: var(--black); }
     .footer-bottom {
-      border-top: 1px solid rgba(255,193,0,0.12); padding: 1.5rem 5vw;
+      border-top: 1px solid rgba(255,215,0,0.12); padding: 1.5rem 5vw;
       display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.72rem; color: rgba(74,44,26,0.35);
-      background: rgba(255,252,220,0.3);
+      font-size: 0.72rem; color: rgba(0,0,0,0.35);
+      background: rgba(255,255,255,0.3);
     }
 
     /* ─── ANIMATIONS ─── */
@@ -937,12 +927,12 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* Scroll reveal number */
     .section-num {
-      font-family: 'Playfair Display', serif; font-size: 10rem; font-weight: 900;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 10rem; font-weight: 900;
       position: absolute; right: 5vw; top: 4vh;
-      color: rgba(255,193,0,0.07); pointer-events: none; line-height: 1;
-      -webkit-text-stroke: 1px rgba(255,193,0,0.1);
+      color: rgba(255,215,0,0.07); pointer-events: none; line-height: 1;
+      -webkit-text-stroke: 1px rgba(255,215,0,0.1);
     }
   </style>
 </head>
@@ -952,16 +942,13 @@
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- ═══ NAV (with new 80x80 image logo) ═══ -->
+  <!-- ═══ NAV ═══ -->
   <nav id="mainNav">
     <a href="index.html" class="nav-logo">
-      <!-- New image logo – width & height 80, using a placeholder SVG of Africa / ENS style.
-           Replace 'logo.svg' with your actual logo path. -->
       <img src="./assets/ENS Africa logo final-04.png" 
            alt="ENS Africa Foundation Logo" 
            class="nav-logo-image"
            width="200%" height="200%">
-      <!-- The old text logo is hidden by CSS -->
       <div class="logo-mark">ENS</div>
       <div class="logo-text">Africa <span>Foundation</span></div>
     </a>
@@ -979,7 +966,6 @@
   <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero-carousel">
-      <!-- African children & community images from Unsplash -->
       <div class="carousel-slide active" style="background-image:url('./assets/hero1.png');"></div>
       <div class="carousel-slide" style="background-image:url('./assets/home.jpg');"></div>
       <div class="carousel-slide" style="background-image:url('./assets/home2.jpg');"></div>
@@ -991,7 +977,6 @@
     <div class="hero-sunburst"></div>
     <div class="hero-rays"></div>
 
-    <!-- Floating stat bubbles -->
     <div class="hero-stats">
       <div class="stat-bubble">
         <span class="stat-num">12K+</span>
@@ -1021,8 +1006,7 @@
     </div>
 
      <div class="hero-content">
-      <!-- hero-badge can stay optional -->
-      <h1 class="hero-title">   <!-- font size reduced via clamp -->
+      <h1 class="hero-title">
         <span class="line-white">What's Your</span>
         <span class="line-yellow">Future</span>
         <span class="line-outline">Story?</span>
@@ -1038,7 +1022,6 @@
   <!-- ═══ TICKER ═══ -->
   <div class="ticker-band">
     <div class="ticker-track">
-      <!-- Two copies for seamless loop -->
       <span class="ticker-item"><span></span> Access to Justice <span class="ticker-sep">·</span></span>
       <span class="ticker-item"><span></span> Empowering Communities <span class="ticker-sep">·</span></span>
       <span class="ticker-item"><span></span> Future Lawyers Programme <span class="ticker-sep">·</span></span>
@@ -1055,8 +1038,6 @@
       <span class="ticker-item"><span></span> Pro Bono Volunteering <span class="ticker-sep">·</span></span>
     </div>
   </div>
-
-  <!--<div class="pattern-border"></div>-->
 
   <!-- ═══ PAGE WRAPPER ═══ -->
   <div class="page-wrapper" id="contact">
@@ -1123,8 +1104,8 @@
                 Send Message
                 <div class="btn-arrow"><i class="fas fa-arrow-right"></i></div>
               </button>
-              <p style="font-size:0.72rem;color:rgba(74,44,26,0.4);display:flex;align-items:center;gap:6px;">
-                <i class="fas fa-lock" style="color:rgba(255,193,0,0.6);"></i>
+              <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);display:flex;align-items:center;gap:6px;">
+                <i class="fas fa-lock" style="color:rgba(255,215,0,0.6);"></i>
                 All correspondence is confidential
               </p>
             </div>
@@ -1132,8 +1113,8 @@
 
           <div id="formSuccess" style="display:none;text-align:center;padding:2rem 0;">
             <div style="font-size:4rem;margin-bottom:1rem;">🌍</div>
-            <p style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--banana),var(--sun));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Message received!</p>
-            <p style="font-size:0.85rem;color:rgba(74,44,26,0.5);margin-top:0.6rem;line-height:1.6;">Thank you for reaching out. We'll be in touch<br>within 2 business days.</p>
+            <p style="font-family:'Aptos',sans-serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--yellow),var(--black));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Message received!</p>
+            <p style="font-size:0.85rem;color:rgba(0,0,0,0.5);margin-top:0.6rem;line-height:1.6;">Thank you for reaching out. We'll be in touch<br>within 2 business days.</p>
           </div>
         </div>
 
@@ -1159,7 +1140,7 @@
           </div>
           <div class="info-card reveal reveal-delay-4">
             <div class="info-card-label">Follow Our Work</div>
-            <p style="font-size:0.75rem;color:rgba(74,44,26,0.35);margin-bottom:0.5rem;">#ENSafricaFoundation</p>
+            <p style="font-size:0.75rem;color:rgba(0,0,0,0.35);margin-bottom:0.5rem;">#ENSafricaFoundation</p>
             <div class="social-row">
               <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
               <div class="social-btn"><i class="fab fa-twitter"></i></div>
@@ -1231,16 +1212,13 @@
         <h2 class="section-title" style="text-align:center;">Active <em>across</em> the<br>continent</h2>
       </div>
 
-      <!-- ═══ AFRICA CONTINENT GLOBE (only changed element) ═══ -->
+      <!-- ═══ AFRICA CONTINENT GLOBE ═══ -->
       <div class="globe-container reveal">
-        <!-- Orbital rings -->
         <div class="globe-ring globe-ring-1"></div>
         <div class="globe-ring globe-ring-2"></div>
 
-        <!-- Sphere ball with Africa SVG inside -->
         <div class="africa-sphere">
           <div class="africa-shine"></div>
-          <!-- Detailed Africa continent SVG path -->
           <svg class="africa-continent" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-label="African continent">
             <path d="
               M 185 10
@@ -1267,8 +1245,7 @@
               C 80 70, 92 55, 108 45
               C 125 34, 148 18, 165 12
               Z
-            " fill="url(#africaGold)" opacity="0.95"/>
-            <!-- Madagascar island -->
+            " fill="url(#africaGradient)" opacity="0.95"/>
             <path d="
               M 345 240
               C 352 235, 362 238, 366 248
@@ -1277,8 +1254,7 @@
               C 332 300, 330 288, 333 276
               C 336 262, 340 248, 345 240
               Z
-            " fill="url(#africaGold)" opacity="0.8"/>
-            <!-- Highlight overlay for depth -->
+            " fill="url(#africaGradient)" opacity="0.8"/>
             <path d="
               M 185 10
               C 195 8, 215 10, 230 18
@@ -1289,11 +1265,11 @@
               Z
             " fill="rgba(255,255,255,0.18)" />
             <defs>
-              <linearGradient id="africaGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stop-color="#FFE135"/>
-                <stop offset="35%"  stop-color="#FFC800"/>
-                <stop offset="70%"  stop-color="#E6A000"/>
-                <stop offset="100%" stop-color="#B87000"/>
+              <linearGradient id="africaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#FFFFFF"/>
+                <stop offset="35%"  stop-color="#FFD700"/>
+                <stop offset="70%"  stop-color="#FFD700"/>
+                <stop offset="100%" stop-color="#000000"/>
               </linearGradient>
             </defs>
           </svg>
@@ -1311,7 +1287,7 @@
         <div class="city-chip"><span>🇳🇦</span> Windhoek</div>
         <div class="city-chip"><span>🇲🇿</span> Maputo</div>
       </div>
-      <p style="font-size:0.72rem;color:rgba(74,44,26,0.3);text-align:center;margin-top:1.5rem;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
+      <p style="font-size:0.72rem;color:rgba(0,0,0,0.3);text-align:center;margin-top:1.5rem;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
     </section>
 
     <div class="divider"></div>
@@ -1386,13 +1362,10 @@
     <footer>
       <div class="footer-brand">
          <a href="index.html" class="nav-logo">
-      <!-- New image logo – width & height 80, using a placeholder SVG of Africa / ENS style.
-           Replace 'logo.svg' with your actual logo path. -->
       <img src="./assets/ENS Africa logo final-04.png" 
            alt="ENS Africa Foundation Logo" 
            class="nav-logo-image"
            width="200%" height="200%">
-      <!-- The old text logo is hidden by CSS -->
       
     </a>
         <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
@@ -1425,9 +1398,9 @@
       <div class="footer-col">
         <div class="footer-col-title">Contact</div>
         <ul>
-          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
-          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
-          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
+          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
+          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
+          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
           <li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li>
         </ul>
       </div>
@@ -1454,8 +1427,8 @@
       requestAnimationFrame(animRing);
     })();
     document.querySelectorAll('a, button, .city-chip, .region-card, .social-btn, .info-card, .faq-card, .stat-bubble').forEach(el => {
-      el.addEventListener('mouseenter', () => { dot.style.width = '20px'; dot.style.height = '20px'; ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(255,225,53,0.9)'; });
-      el.addEventListener('mouseleave', () => { dot.style.width = '10px'; dot.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(255,225,53,0.7)'; });
+      el.addEventListener('mouseenter', () => { dot.style.width = '20px'; dot.style.height = '20px'; ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(255,215,0,0.9)'; });
+      el.addEventListener('mouseleave', () => { dot.style.width = '10px'; dot.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(255,215,0,0.7)'; });
     });
 
     // ── Nav scroll ──
