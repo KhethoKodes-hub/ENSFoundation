@@ -4,27 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENS Africa Foundation · Our Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
+      --banana: #FFE135;
+      --banana-bright: #FFD700;
+      --banana-vivid: #FFC800;
+      --banana-hot: #FFB300;
+      --banana-deep: #E6A000;
+      --banana-pale: #FFF5B0;
+      --banana-glow: #FFEC5C;
+      --sun: #FF9E00;
+      --earth: #2C1810;
+      --earth-mid: #4A2C1A;
+      --earth-light: #7A4F35;
+      --cream: #FFFBEB;
       --white: #FFFFFF;
-      --yellow: #FFD700;
-      --yellow-light: #FFF8E0;
-      --yellow-dark: #E6C300;
-      --black: #000000;
-      --black-light: #1A1A1A;
-      --gradient-1: linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #000000 100%);
-      --gradient-2: linear-gradient(45deg, #FFF8E0, #FFD700, #1A1A1A);
-      --gradient-3: linear-gradient(225deg, rgba(255,255,255,0.9), rgba(255,215,0,0.8), rgba(0,0,0,0.7));
+      --green-africa: #1A3A2A;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      background: var(--white);
-      color: var(--black);
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
       overflow-x: hidden;
       cursor: none;
     }
@@ -38,15 +44,15 @@
 
     /* ─── CURSOR ─── */
     .cursor-dot {
-      width: 10px; height: 10px; background: var(--yellow);
+      width: 10px; height: 10px; background: var(--banana);
       border-radius: 50%; position: fixed; pointer-events: none; z-index: 100000;
       transform: translate(-50%,-50%);
       transition: width 0.2s, height 0.2s;
-      box-shadow: 0 0 20px var(--yellow), 0 0 40px rgba(255,215,0,0.4);
+      box-shadow: 0 0 20px var(--banana), 0 0 40px rgba(255,225,53,0.4);
     }
     .cursor-ring {
       width: 36px; height: 36px;
-      border: 2px solid rgba(255,215,0,0.7); border-radius: 50%;
+      border: 2px solid rgba(255,225,53,0.7); border-radius: 50%;
       position: fixed; pointer-events: none; z-index: 99999;
       transform: translate(-50%,-50%); transition: all 0.12s ease;
     }
@@ -59,63 +65,60 @@
       transition: all 0.5s;
     }
     nav.scrolled {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,251,230,0.92);
       backdrop-filter: blur(24px);
       padding: 0.9rem 5vw;
-      border-bottom: 2px solid var(--yellow);
-      box-shadow: 0 4px 30px rgba(255,215,0,0.15);
+      border-bottom: 2px solid var(--banana);
+      box-shadow: 0 4px 30px rgba(255,193,0,0.15);
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .logo-mark {
-      width: 46px; height: 46px; background: var(--yellow);
+      width: 46px; height: 46px; background: var(--banana);
       clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
       display: flex; align-items: center; justify-content: center;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.6rem; font-weight: 800;
-      letter-spacing: 0.05em; color: var(--black);
-      box-shadow: 0 0 30px rgba(255,215,0,0.8);
+      font-family: 'Outfit', sans-serif; font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--earth);
+      box-shadow: 0 0 30px rgba(255,225,53,0.8);
       animation: logoGlow 3s ease-in-out infinite;
     }
     @keyframes logoGlow {
-      0%,100% { box-shadow: 0 0 20px rgba(255,215,0,0.6); }
-      50% { box-shadow: 0 0 50px rgba(255,215,0,0.9), 0 0 80px rgba(255,215,0,0.4); }
+      0%,100% { box-shadow: 0 0 20px rgba(255,225,53,0.6); }
+      50% { box-shadow: 0 0 50px rgba(255,193,0,0.9), 0 0 80px rgba(255,225,53,0.4); }
     }
     .logo-text {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.2rem; font-weight: 700;
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
       color: var(--white); letter-spacing: 0.02em;
     }
-    nav.scrolled .logo-text { color: var(--black); }
-    .logo-text span { color: var(--yellow); font-style: italic; }
+    nav.scrolled .logo-text { color: var(--earth); }
+    .logo-text span { color: var(--banana); font-style: italic; }
 
     .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
     .nav-links a {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.78rem; font-weight: 600;
+      font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(0,0,0,0.75); text-decoration: none;
+      color: rgba(255,255,255,0.75); text-decoration: none;
       padding: 0.5rem 1rem; border-radius: 100px; transition: all 0.3s;
     }
-    nav.scrolled .nav-links a { color: var(--black-light); }
+    nav.scrolled .nav-links a { color: var(--earth-mid); }
     .nav-links a:hover, .nav-links a.active {
-      color: var(--black); background: var(--yellow);
-      box-shadow: 0 4px 20px rgba(255,215,0,0.5);
+      color: var(--earth); background: var(--banana);
+      box-shadow: 0 4px 20px rgba(255,193,0,0.5);
     }
     .hamburger {
       display: none; flex-direction: column; justify-content: space-between;
       width: 28px; height: 22px; background: transparent; border: none; cursor: pointer; z-index: 1001;
     }
-    .hamburger span { width: 100%; height: 2px; background: var(--yellow); transition: all 0.3s; border-radius: 2px; }
+    .hamburger span { width: 100%; height: 2px; background: var(--banana); transition: all 0.3s; border-radius: 2px; }
     @media (max-width: 768px) {
       .hamburger { display: flex; }
       .nav-links {
         position: fixed; top: 0; right: -100%; width: 75%; max-width: 300px; height: 100vh;
-        background: rgba(255,255,255,0.98); backdrop-filter: blur(24px);
+        background: rgba(255,251,230,0.98); backdrop-filter: blur(24px);
         flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
-        transition: right 0.4s ease; border-left: 3px solid var(--yellow); z-index: 1000;
+        transition: right 0.4s ease; border-left: 3px solid var(--banana); z-index: 1000;
       }
       .nav-links.active { right: 0; }
-      .nav-links a { font-size: 1rem; color: var(--black-light) !important; width: 100%; text-align: center; }
+      .nav-links a { font-size: 1rem; color: var(--earth-mid) !important; width: 100%; text-align: center; }
       .hamburger.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
       .hamburger.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
@@ -125,45 +128,45 @@
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       overflow: hidden; display: flex; align-items: flex-end;
-      background: linear-gradient(125deg, #FFFFFF 0%, #FFD700 50%, #000000 100%);
     }
-   /* .hero-bg {
+    .hero-bg {
       position: absolute; inset: 0; z-index: 1;
       background: url('./assets/abouther.png') center/cover no-repeat;
       transform-origin: center;
-      opacity: 0.6;
-    }  */
+    }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 2; pointer-events: none;
-      background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,215,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+      background:
+        linear-gradient(to top, rgba(26,14,0,0.85) 0%, rgba(26,14,0,0.25) 40%, transparent 70%),
+        linear-gradient(135deg, rgba(255,225,53,0.15) 0%, transparent 50%);
     }
     .hero-sunburst {
       position: absolute; top: -25%; right: -12%;
       width: 750px; height: 750px;
-      background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0.2) 30%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,225,53,0.5) 0%, rgba(255,193,0,0.28) 30%, transparent 70%);
       z-index: 3; pointer-events: none;
       animation: sunPulse 4s ease-in-out infinite;
     }
-    @keyframes sunPulse { 0%,100% { transform:scale(1); opacity:.8; } 50% { transform:scale(1.1); opacity:1; } }
+    @keyframes sunPulse { 0%,100% { transform:scale(1); opacity:.9; } 50% { transform:scale(1.1); opacity:1; } }
     .hero-rays {
       position: absolute; top: -25%; right: -12%;
       width: 750px; height: 750px;
       background: conic-gradient(from 0deg,
-        transparent 0deg,rgba(255,215,0,0.1) 5deg,transparent 10deg,
-        transparent 25deg,rgba(0,0,0,0.08) 30deg,transparent 35deg,
-        transparent 50deg,rgba(255,255,255,0.1) 55deg,transparent 60deg,
-        transparent 75deg,rgba(255,215,0,0.08) 80deg,transparent 85deg,
-        transparent 100deg,rgba(0,0,0,0.08) 105deg,transparent 110deg,
-        transparent 125deg,rgba(255,215,0,0.1) 130deg,transparent 135deg,
-        transparent 150deg,rgba(255,255,255,0.1) 155deg,transparent 160deg,
-        transparent 175deg,rgba(255,215,0,0.1) 180deg,transparent 185deg,
-        transparent 200deg,rgba(0,0,0,0.08) 205deg,transparent 210deg,
-        transparent 225deg,rgba(255,215,0,0.1) 230deg,transparent 235deg,
-        transparent 250deg,rgba(255,255,255,0.1) 255deg,transparent 260deg,
-        transparent 275deg,rgba(255,215,0,0.1) 280deg,transparent 285deg,
-        transparent 300deg,rgba(0,0,0,0.08) 305deg,transparent 310deg,
-        transparent 325deg,rgba(255,255,255,0.1) 330deg,transparent 335deg,
-        transparent 350deg,rgba(255,215,0,0.1) 355deg,transparent 360deg
+        transparent 0deg,rgba(255,225,53,0.1) 5deg,transparent 10deg,
+        transparent 25deg,rgba(255,193,0,0.08) 30deg,transparent 35deg,
+        transparent 50deg,rgba(255,225,53,0.1) 55deg,transparent 60deg,
+        transparent 75deg,rgba(255,193,0,0.07) 80deg,transparent 85deg,
+        transparent 100deg,rgba(255,225,53,0.09) 105deg,transparent 110deg,
+        transparent 125deg,rgba(255,193,0,0.1) 130deg,transparent 135deg,
+        transparent 150deg,rgba(255,225,53,0.07) 155deg,transparent 160deg,
+        transparent 175deg,rgba(255,193,0,0.09) 180deg,transparent 185deg,
+        transparent 200deg,rgba(255,225,53,0.1) 205deg,transparent 210deg,
+        transparent 225deg,rgba(255,193,0,0.07) 230deg,transparent 235deg,
+        transparent 250deg,rgba(255,225,53,0.09) 255deg,transparent 260deg,
+        transparent 275deg,rgba(255,193,0,0.1) 280deg,transparent 285deg,
+        transparent 300deg,rgba(255,225,53,0.07) 305deg,transparent 310deg,
+        transparent 325deg,rgba(255,193,0,0.09) 330deg,transparent 335deg,
+        transparent 350deg,rgba(255,225,53,0.1) 355deg,transparent 360deg
       );
       z-index: 3; pointer-events: none;
       animation: raysRotate 30s linear infinite;
@@ -176,51 +179,45 @@
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 10px;
-      background: var(--yellow); color: var(--black);
+      background: var(--banana); color: var(--earth);
       padding: 0.5rem 1.25rem; border-radius: 100px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.7rem; font-weight: 800;
+      font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem;
       opacity: 0; animation: badgePop 0.6s 0.3s cubic-bezier(0.2,0,0,1) forwards;
-      box-shadow: 0 0 40px rgba(255,215,0,0.6), 0 4px 20px rgba(255,215,0,0.4);
+      box-shadow: 0 0 40px rgba(255,225,53,0.6), 0 4px 20px rgba(255,193,0,0.4);
     }
     @keyframes badgePop {
       from { opacity:0; transform:translateY(20px) scale(0.9); }
       to { opacity:1; transform:translateY(0) scale(1); }
     }
     .badge-dot {
-      width: 8px; height: 8px; background: var(--black);
+      width: 8px; height: 8px; background: var(--earth);
       border-radius: 50%; animation: dotBlink 1.5s ease-in-out infinite;
     }
     @keyframes dotBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     .hero-title {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(3.8rem, 10vw, 9rem);
       font-weight: 900; line-height: 0.9; letter-spacing: -0.03em;
       max-width: 850px;
       opacity: 0; animation: titleSlide 1s 0.5s cubic-bezier(0.2,0,0,1) forwards;
     }
     @keyframes titleSlide { from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
-    .line-white { color: var(--white); display: block; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+    .line-white { color: var(--white); display: block; }
     .line-yellow {
-      color: var(--yellow); display: block;
-      text-shadow: 0 0 80px rgba(255,215,0,0.8), 0 0 160px rgba(255,215,0,0.4);
-      -webkit-text-stroke: 1px rgba(0,0,0,0.3);
+      color: var(--banana); display: block;
+      text-shadow: 0 0 80px rgba(255,225,53,0.8), 0 0 160px rgba(255,193,0,0.4);
     }
     .line-outline {
-      display: block; color: var(--black);
-      text-shadow: 2px 2px 0 var(--white), -2px -2px 0 var(--yellow);
+      display: block; color: transparent;
+      -webkit-text-stroke: 2px rgba(255,255,255,0.5);
     }
 
     .hero-sub {
-      font-size: 1rem; font-weight: 300; color: var(--black);
+      font-size: 1rem; font-weight: 300; color: rgba(255,252,235,0.75);
       margin-top: 1.5rem; max-width: 480px; line-height: 1.8;
       opacity: 0; animation: fadeUp 1s 0.8s forwards;
-      background: rgba(255,255,255,0.7);
-      padding: 1rem;
-      border-radius: 12px;
-      backdrop-filter: blur(8px);
     }
 
     .hero-scroll-ind {
@@ -230,15 +227,16 @@
     }
     .scroll-line-v {
       width: 1px; height: 50px;
-      background: linear-gradient(to bottom, var(--yellow), transparent);
+      background: linear-gradient(to bottom, var(--banana), transparent);
       animation: scrollBeat 2s ease-in-out infinite;
     }
     @keyframes scrollBeat { 0%,100%{opacity:1;height:50px} 50%{opacity:0.3;height:25px} }
     .scroll-text {
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em;
-      text-transform: uppercase; color: rgba(0,0,0,0.7); writing-mode: vertical-rl;
+      text-transform: uppercase; color: rgba(255,225,53,0.7); writing-mode: vertical-rl;
     }
 
+    /* Floating hero stats */
     .hero-stats {
       position: absolute; right: 5vw; bottom: 18vh; z-index: 10;
       display: flex; flex-direction: column; gap: 1rem;
@@ -246,28 +244,27 @@
     }
     @media (max-width: 768px) { .hero-stats { display: none; } }
     .stat-bubble {
-      background: rgba(255,215,0,0.12); backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,215,0,0.4); border-radius: 20px;
+      background: rgba(255,225,53,0.12); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,225,53,0.4); border-radius: 20px;
       padding: 0.9rem 1.3rem; text-align: center; transition: all 0.3s;
     }
     .stat-bubble:hover {
-      background: var(--yellow); border-color: var(--yellow);
+      background: var(--banana); border-color: var(--banana);
     }
-    .stat-bubble:hover .sb-num, .stat-bubble:hover .sb-label { color: var(--black); }
+    .stat-bubble:hover .sb-num, .stat-bubble:hover .sb-label { color: var(--earth); }
     .sb-num {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.7rem; font-weight: 900;
-      color: var(--yellow); display: block; line-height: 1;
+      font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 900;
+      color: var(--banana); display: block; line-height: 1;
     }
     .sb-label {
       font-size: 0.6rem; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; color: rgba(0,0,0,0.65); margin-top: 3px;
+      text-transform: uppercase; color: rgba(255,240,180,0.65); margin-top: 3px;
     }
 
     /* ─── TICKER ─── */
     .ticker-band {
-      background: var(--yellow); padding: 0.85rem 0; overflow: hidden;
-      box-shadow: 0 4px 40px rgba(255,215,0,0.4);
+      background: var(--banana); padding: 0.85rem 0; overflow: hidden;
+      box-shadow: 0 4px 40px rgba(255,193,0,0.4);
     }
     .ticker-track {
       display: flex; gap: 0; white-space: nowrap;
@@ -276,18 +273,17 @@
     @keyframes tickerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
     .ticker-item {
       display: inline-flex; align-items: center; gap: 12px; padding: 0 2rem;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--black);
+      font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--earth);
     }
-    .ticker-sep { color: var(--black); opacity: 0.4; font-size: 1.2rem; }
+    .ticker-sep { color: var(--earth-mid); opacity: 0.4; font-size: 1.2rem; }
 
     /* ─── PAGE WRAPPER ─── */
     .page-wrapper {
-      background: linear-gradient(180deg,#FFFFFF 0%,#FFF8E0 30%,#FFD700 60%,#000000 100%);
+      background: linear-gradient(180deg,#FFFBEB 0%,#FFFCE8 30%,#FFF8D5 60%,#FFFBEB 100%);
       position: relative;
     }
-    .orb { position: absolute; border-radius: 50%; pointer-events: none; background: radial-gradient(circle,rgba(255,215,0,0.12) 0%,transparent 70%); }
+    .orb { position: absolute; border-radius: 50%; pointer-events: none; background: radial-gradient(circle,rgba(255,225,53,0.12) 0%,transparent 70%); }
     .orb-1 { width:600px;height:600px;top:5%;left:-200px; }
     .orb-2 { width:500px;height:500px;top:40%;right:-150px; }
     .orb-3 { width:400px;height:400px;bottom:20%;left:30%; }
@@ -295,43 +291,40 @@
     /* ─── SHARED TOKENS ─── */
     .section-eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.68rem; font-weight: 800;
-      letter-spacing: 0.3em; text-transform: uppercase; color: var(--black);
+      font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--banana-deep);
       margin-bottom: 1rem;
     }
     .section-eyebrow::before {
       content: ''; display: block; width: 36px; height: 3px;
-      background: var(--yellow); border-radius: 2px;
+      background: var(--banana); border-radius: 2px;
     }
     .section-title {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2.8rem, 5.5vw, 5.5rem);
       font-weight: 900; line-height: 0.95; letter-spacing: -0.03em;
-      color: var(--black); margin-bottom: 2.5rem;
+      color: var(--earth); margin-bottom: 2.5rem;
     }
     .section-title em {
       font-style: italic;
-      background: linear-gradient(135deg, var(--yellow), var(--black));
+      background: linear-gradient(135deg, var(--banana), var(--sun));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .section-num {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 10rem; font-weight: 900;
+      font-family: 'Playfair Display', serif; font-size: 10rem; font-weight: 900;
       position: absolute; right: 5vw; top: 4vh;
-      color: rgba(255,215,0,0.07); pointer-events: none; line-height: 1;
-      -webkit-text-stroke: 1px rgba(255,215,0,0.1);
+      color: rgba(255,193,0,0.07); pointer-events: none; line-height: 1;
+      -webkit-text-stroke: 1px rgba(255,193,0,0.1);
     }
     .divider {
       height: 1px; margin: 0 5vw;
-      background: linear-gradient(to right,transparent,rgba(255,215,0,0.25),transparent);
+      background: linear-gradient(to right,transparent,rgba(255,193,0,0.25),transparent);
     }
     .pattern-border {
       height: 5px;
       background: repeating-linear-gradient(90deg,
-        var(--white) 0px,var(--white) 6px,transparent 6px,transparent 14px,
-        var(--yellow) 14px,var(--yellow) 20px,transparent 20px,transparent 28px,
-        var(--black) 28px,var(--black) 34px
+        var(--banana) 0px,var(--banana) 6px,transparent 6px,transparent 14px,
+        var(--banana-vivid) 14px,var(--banana-vivid) 20px,transparent 20px,transparent 28px
       );
       opacity: 0.6;
     }
@@ -339,18 +332,18 @@
     /* ─── GLASS PANEL ─── */
     .glass-panel {
       background: rgba(255,255,255,0.7);
-      border: 2px solid rgba(255,215,0,0.25); border-radius: 30px; padding: 3rem;
+      border: 2px solid rgba(255,193,0,0.25); border-radius: 30px; padding: 3rem;
       backdrop-filter: blur(30px);
-      box-shadow: 0 20px 80px rgba(255,215,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+      box-shadow: 0 20px 80px rgba(255,193,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
       position: relative; overflow: hidden; transition: all 0.5s;
     }
     .glass-panel:hover {
-      border-color: rgba(255,215,0,0.5);
-      box-shadow: 0 30px 100px rgba(255,215,0,0.15);
+      border-color: rgba(255,193,0,0.5);
+      box-shadow: 0 30px 100px rgba(255,193,0,0.15);
     }
     .glass-panel-topline {
       position: absolute; top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--white), var(--yellow), var(--black));
+      background: linear-gradient(90deg, var(--banana), var(--sun), var(--banana));
       background-size: 200% 100%;
       animation: shimmerBar 3s linear infinite;
     }
@@ -358,79 +351,75 @@
 
     .glass-card {
       background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,215,0,0.18); border-radius: 24px; padding: 2.5rem;
+      border: 1.5px solid rgba(255,193,0,0.18); border-radius: 24px; padding: 2.5rem;
       backdrop-filter: blur(20px); position: relative; overflow: hidden;
-      transition: all 0.4s; box-shadow: 0 4px 20px rgba(255,215,0,0.07);
+      transition: all 0.4s; box-shadow: 0 4px 20px rgba(255,193,0,0.07);
     }
     .glass-card:hover {
-      border-color: rgba(255,215,0,0.45); background: rgba(255,255,255,0.85);
-      box-shadow: 0 20px 50px rgba(255,215,0,0.12);
+      border-color: rgba(255,193,0,0.45); background: rgba(255,255,255,0.85);
+      box-shadow: 0 20px 50px rgba(255,193,0,0.12);
     }
 
     /* ─── QUOTE ─── */
     .quote-block { position: relative; padding: 3rem 3rem 3rem 4.5rem; }
     .quote-block::before {
       content: '\201C';
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 14rem; line-height: 1; font-weight: 900;
-      color: rgba(255,215,0,0.12); position: absolute; top: -2rem; left: 0.5rem; pointer-events: none;
+      font-family: 'Playfair Display', serif; font-size: 14rem; line-height: 1; font-weight: 900;
+      color: rgba(255,193,0,0.12); position: absolute; top: -2rem; left: 0.5rem; pointer-events: none;
     }
     .quote-text {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; font-style: italic;
-      line-height: 1.5; color: var(--black); position: relative; z-index: 1;
+      line-height: 1.5; color: var(--earth); position: relative; z-index: 1;
     }
     .quote-text strong {
-      background: linear-gradient(135deg, var(--yellow), var(--black));
+      background: linear-gradient(135deg, var(--banana), var(--sun));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       font-style: normal; font-weight: 900;
     }
     .quote-attr {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
+      font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--banana-deep);
       margin-top: 1.5rem; display: flex; align-items: center; gap: 12px;
     }
-    .quote-attr::before { content:''; display:block; width:36px; height:3px; background:var(--yellow); border-radius:2px; }
+    .quote-attr::before { content:''; display:block; width:36px; height:3px; background:var(--banana); border-radius:2px; }
 
     /* ─── STAT CARDS ─── */
     .stat-card {
       background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,215,0,0.18); border-radius: 24px; padding: 2rem 1.75rem;
+      border: 1.5px solid rgba(255,193,0,0.18); border-radius: 24px; padding: 2rem 1.75rem;
       backdrop-filter: blur(16px); position: relative; overflow: hidden;
       transition: all 0.4s cubic-bezier(0.2,0,0,1);
-      box-shadow: 0 4px 16px rgba(255,215,0,0.07);
+      box-shadow: 0 4px 16px rgba(255,193,0,0.07);
     }
     .stat-card::before {
       content:''; position:absolute; top:0; left:0; right:0; height:3px;
-      background: linear-gradient(90deg, var(--white), var(--yellow), var(--black));
+      background: linear-gradient(90deg, var(--banana), var(--sun));
       transform: scaleX(0); transition: transform 0.4s;
     }
     .stat-card:hover::before { transform: scaleX(1); }
     .stat-card:hover {
-      border-color: rgba(255,215,0,0.45); transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255,193,0,0.45); transform: translateY(-8px) scale(1.02);
       background: rgba(255,255,255,0.85);
-      box-shadow: 0 24px 50px rgba(255,215,0,0.15);
+      box-shadow: 0 24px 50px rgba(255,193,0,0.15);
     }
     .stat-number {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 4.5rem; font-weight: 900; line-height: 1;
-      background: linear-gradient(135deg, var(--yellow), var(--black));
+      font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; line-height: 1;
+      background: linear-gradient(135deg, var(--banana), var(--sun));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .stat-label {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.7rem; font-weight: 800;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
+      font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--banana-deep);
       margin-top: 0.5rem; margin-bottom: 0.6rem;
     }
-    .stat-desc { font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5); line-height: 1.6; }
+    .stat-desc { font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5); line-height: 1.6; }
 
     /* ─── TIMELINE ─── */
     .timeline { position: relative; padding-left: 2rem; }
     .timeline::before {
       content:''; position:absolute; left:0; top:0; bottom:0; width:2px;
-      background: linear-gradient(to bottom, transparent, var(--yellow), rgba(255,215,0,0.2), transparent);
+      background: linear-gradient(to bottom, transparent, var(--banana), rgba(255,193,0,0.2), transparent);
       border-radius: 2px;
     }
     .timeline-item {
@@ -441,112 +430,107 @@
     .timeline-item.visible { opacity: 1; transform: translateX(0); }
     .timeline-dot {
       position: absolute; left: -2.45rem; top: 0.25rem;
-      width: 12px; height: 12px; border-radius: 50%; background: var(--yellow);
-      box-shadow: 0 0 0 4px rgba(255,215,0,0.2), 0 0 14px rgba(255,215,0,0.4);
+      width: 12px; height: 12px; border-radius: 50%; background: var(--banana);
+      box-shadow: 0 0 0 4px rgba(255,193,0,0.2), 0 0 14px rgba(255,193,0,0.4);
       transition: all 0.3s;
     }
     .timeline-item:hover .timeline-dot {
       transform: scale(1.5);
-      box-shadow: 0 0 0 6px rgba(255,215,0,0.25), 0 0 24px rgba(255,215,0,0.5);
+      box-shadow: 0 0 0 6px rgba(255,193,0,0.25), 0 0 24px rgba(255,193,0,0.5);
     }
     .timeline-year {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.1rem; font-weight: 900;
-      color: var(--black); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 8px;
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900;
+      color: var(--banana-deep); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 8px;
     }
-    .timeline-text { font-size: 0.85rem; font-weight: 300; color: rgba(0,0,0,0.55); line-height: 1.65; }
+    .timeline-text { font-size: 0.85rem; font-weight: 300; color: rgba(74,44,26,0.55); line-height: 1.65; }
     .now-badge {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.55rem; font-weight: 800;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
-      background: var(--yellow); padding: 2px 10px; border-radius: 100px;
+      font-family: 'Outfit', sans-serif; font-size: 0.55rem; font-weight: 800;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--earth);
+      background: var(--banana); padding: 2px 10px; border-radius: 100px;
     }
 
     /* ─── BELIEF CARDS ─── */
     .belief-card {
       background: rgba(255,255,255,0.55);
-      border: 1.5px solid rgba(255,215,0,0.14); border-radius: 24px; padding: 2.25rem;
+      border: 1.5px solid rgba(255,193,0,0.14); border-radius: 24px; padding: 2.25rem;
       text-align: center; position: relative; overflow: hidden;
       backdrop-filter: blur(16px); transition: all 0.4s; cursor: default;
     }
     .belief-card::before {
       content:''; position:absolute; top:0; left:0; right:0; height:4px;
-      background: linear-gradient(90deg, transparent, var(--white), var(--yellow), var(--black), transparent);
+      background: linear-gradient(90deg, transparent, var(--banana), var(--banana-vivid), transparent);
       transform: scaleX(0); transition: transform 0.4s ease;
     }
     .belief-card:hover::before { transform: scaleX(1); }
     .belief-card::after {
       content:''; position:absolute; inset:0;
-      background: radial-gradient(circle at 50% 100%, rgba(255,215,0,0.12), transparent 70%);
+      background: radial-gradient(circle at 50% 100%, rgba(255,225,53,0.12), transparent 70%);
       opacity: 0; transition: opacity 0.4s;
     }
     .belief-card:hover::after { opacity: 1; }
     .belief-card:hover {
-      border-color: rgba(255,215,0,0.4); transform: translateY(-8px);
+      border-color: rgba(255,193,0,0.4); transform: translateY(-8px);
       background: rgba(255,255,255,0.85);
-      box-shadow: 0 20px 50px rgba(255,215,0,0.14);
+      box-shadow: 0 20px 50px rgba(255,193,0,0.14);
     }
     .belief-icon {
       width: 64px; height: 64px; margin: 0 auto 1.25rem;
-      background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(0,0,0,0.15));
-      border: 1.5px solid rgba(255,215,0,0.3); border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,225,53,0.3), rgba(255,193,0,0.15));
+      border: 1.5px solid rgba(255,193,0,0.3); border-radius: 18px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; color: var(--black);
+      font-size: 1.6rem; color: var(--banana-deep);
       transition: all 0.4s;
     }
     .belief-card:hover .belief-icon {
-      background: var(--yellow); border-color: var(--yellow);
-      color: var(--black); transform: scale(1.1) rotate(-5deg);
-      box-shadow: 0 8px 30px rgba(255,215,0,0.4);
+      background: var(--banana); border-color: var(--banana);
+      color: var(--earth); transform: scale(1.1) rotate(-5deg);
+      box-shadow: 0 8px 30px rgba(255,193,0,0.4);
     }
     .belief-title {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--black); margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      color: var(--earth); margin-bottom: 0.5rem;
     }
-    .belief-desc { font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5); line-height: 1.7; }
+    .belief-desc { font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5); line-height: 1.7; }
 
     /* ─── TEAM CARDS ─── */
     .team-card {
       background: rgba(255,255,255,0.55);
-      border: 1.5px solid rgba(255,215,0,0.14); border-radius: 24px; padding: 2rem 1.5rem;
+      border: 1.5px solid rgba(255,193,0,0.14); border-radius: 24px; padding: 2rem 1.5rem;
       text-align: center; position: relative; overflow: hidden;
       backdrop-filter: blur(16px); transition: all 0.4s;
     }
     .team-card::after {
       content:''; position:absolute; bottom:0; left:0; right:0; height:4px;
-      background: linear-gradient(90deg, transparent, var(--white), var(--yellow), var(--black), transparent);
+      background: linear-gradient(90deg, transparent, var(--banana), transparent);
       transform: scaleX(0); transition: transform 0.4s;
     }
     .team-card:hover::after { transform: scaleX(1); }
     .team-card:hover {
-      border-color: rgba(255,215,0,0.4); transform: translateY(-10px);
+      border-color: rgba(255,193,0,0.4); transform: translateY(-10px);
       background: rgba(255,255,255,0.85);
-      box-shadow: 0 24px 60px rgba(255,215,0,0.15), 0 0 0 1px rgba(255,215,0,0.12);
+      box-shadow: 0 24px 60px rgba(255,193,0,0.15), 0 0 0 1px rgba(255,193,0,0.12);
     }
     .team-avatar {
       width: 90px; height: 90px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(0,0,0,0.15));
-      border: 2px solid rgba(255,215,0,0.25);
+      background: linear-gradient(135deg, rgba(255,225,53,0.3), rgba(255,193,0,0.15));
+      border: 2px solid rgba(255,193,0,0.25);
       display: flex; align-items: center; justify-content: center;
       font-size: 2.5rem; margin: 0 auto 1.25rem; transition: all 0.4s;
     }
     .team-card:hover .team-avatar {
-      background: var(--yellow); border-color: var(--yellow);
-      box-shadow: 0 0 40px rgba(255,215,0,0.4); transform: scale(1.07);
+      background: var(--banana); border-color: var(--banana);
+      box-shadow: 0 0 40px rgba(255,193,0,0.4); transform: scale(1.07);
     }
-    .team-card:hover .team-avatar i { color: var(--black); }
+    .team-card:hover .team-avatar i { color: var(--earth); }
     .team-name {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.3rem; font-weight: 700;
-      color: var(--black); margin-bottom: 0.25rem;
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+      color: var(--earth); margin-bottom: 0.25rem;
     }
     .team-role {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.62rem; font-weight: 800;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.4rem;
+      font-family: 'Outfit', sans-serif; font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--banana-deep); margin-bottom: 0.4rem;
     }
-    .team-origin { font-size: 0.75rem; color: rgba(0,0,0,0.4); font-weight: 300; }
+    .team-origin { font-size: 0.75rem; color: rgba(74,44,26,0.4); font-weight: 300; }
     .team-socials {
       display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem;
       opacity: 0; transform: translateY(8px); transition: all 0.3s;
@@ -554,65 +538,62 @@
     .team-card:hover .team-socials { opacity: 1; transform: translateY(0); }
     .team-social-btn {
       width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(255,215,0,0.2); border: 1px solid rgba(255,215,0,0.3);
+      background: rgba(255,225,53,0.2); border: 1px solid rgba(255,193,0,0.3);
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; color: var(--black); cursor: pointer; transition: all 0.2s;
+      font-size: 0.72rem; color: var(--banana-deep); cursor: pointer; transition: all 0.2s;
     }
-    .team-social-btn:hover { background: var(--yellow); color: var(--black); transform: scale(1.12); }
+    .team-social-btn:hover { background: var(--banana); color: var(--earth); transform: scale(1.12); }
 
     /* ─── PARTNER CHIPS ─── */
     .partner-chip {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 0.65rem 1.4rem;
-      background: rgba(255,255,255,0.6); border: 1.5px solid rgba(255,215,0,0.2); border-radius: 100px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.06em; color: var(--black);
+      background: rgba(255,255,255,0.6); border: 1.5px solid rgba(255,193,0,0.2); border-radius: 100px;
+      font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--earth-mid);
       transition: all 0.35s; cursor: default; backdrop-filter: blur(12px);
     }
     .partner-chip:hover {
-      background: var(--yellow); border-color: var(--yellow); color: var(--black);
+      background: var(--banana); border-color: var(--banana); color: var(--earth);
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 28px rgba(255,215,0,0.35);
+      box-shadow: 0 10px 28px rgba(255,193,0,0.35);
     }
 
     /* ─── BUTTONS ─── */
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 0.95rem 2.25rem; border-radius: 100px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.8rem; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--black);
+      font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--earth);
       border: none; cursor: pointer; text-decoration: none;
-      background: linear-gradient(135deg, var(--white) 0%, var(--yellow) 50%, var(--black) 100%);
-      box-shadow: 0 8px 40px rgba(255,215,0,0.5); transition: all 0.4s;
+      background: linear-gradient(135deg, var(--banana) 0%, var(--banana-vivid) 50%, var(--sun) 100%);
+      box-shadow: 0 8px 40px rgba(255,193,0,0.5); transition: all 0.4s;
     }
-    .btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 20px 60px rgba(255,215,0,0.65); }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 20px 60px rgba(255,193,0,0.65); }
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 0.95rem 2.25rem; border-radius: 100px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.8rem; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--black);
-      background: rgba(255,255,255,0.6); border: 2px solid rgba(255,215,0,0.35);
+      font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--banana-deep);
+      background: rgba(255,255,255,0.6); border: 2px solid rgba(255,193,0,0.35);
       backdrop-filter: blur(12px); cursor: pointer; text-decoration: none; transition: all 0.3s;
     }
     .btn-ghost:hover {
-      background: rgba(255,255,255,0.85); border-color: rgba(255,215,0,0.6);
-      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,215,0,0.15);
+      background: rgba(255,255,255,0.85); border-color: rgba(255,193,0,0.6);
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,193,0,0.15);
     }
 
     /* ─── SOCIAL ─── */
     .social-btn {
       width: 44px; height: 44px; background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,215,0,0.2); border-radius: 50%;
+      border: 1.5px solid rgba(255,193,0,0.2); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      color: rgba(0,0,0,0.5); font-size: 0.9rem; transition: all 0.3s; cursor: pointer;
+      color: rgba(74,44,26,0.5); font-size: 0.9rem; transition: all 0.3s; cursor: pointer;
     }
     .social-btn:hover {
-      background: var(--yellow); border-color: var(--yellow);
-      color: var(--black); transform: translateY(-4px) scale(1.1);
-      box-shadow: 0 8px 24px rgba(255,215,0,0.4);
+      background: var(--banana); border-color: var(--banana);
+      color: var(--earth); transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 24px rgba(255,193,0,0.4);
     }
 
     /* ─── IMAGE STRIP ─── */
@@ -626,43 +607,41 @@
     .strip-img {
       width: 300px; height: 200px; border-radius: 20px; object-fit: cover; display: block;
       filter: saturate(0.8) brightness(0.9);
-      border: 2px solid rgba(255,215,0,0.15); transition: all 0.5s;
+      border: 2px solid rgba(255,193,0,0.15); transition: all 0.5s;
     }
     .strip-item:hover .strip-img {
       filter: saturate(1.1) brightness(1.05);
       transform: scale(1.04) translateY(-8px);
-      border-color: var(--yellow); box-shadow: 0 20px 50px rgba(255,215,0,0.3);
+      border-color: var(--banana); box-shadow: 0 20px 50px rgba(255,193,0,0.3);
     }
     .strip-label {
       position: absolute; bottom: 12px; left: 12px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
-      background: var(--yellow); padding: 4px 12px; border-radius: 100px;
+      font-family: 'Outfit', sans-serif; font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--earth);
+      background: var(--banana); padding: 4px 12px; border-radius: 100px;
     }
 
     /* ─── FOOTER ─── */
     footer {
-      border-top: 2px solid rgba(255,215,0,0.2); padding: 5vh 5vw;
+      border-top: 2px solid rgba(255,193,0,0.2); padding: 5vh 5vw;
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
-      background: rgba(255,255,255,0.5);
+      background: rgba(255,252,220,0.5);
     }
     @media (max-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 500px) { footer { grid-template-columns: 1fr; } }
-    .footer-brand p { font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5); line-height: 1.8; margin-top: 1rem; max-width: 280px; }
+    .footer-brand p { font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5); line-height: 1.8; margin-top: 1rem; max-width: 280px; }
     .footer-col-title {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.65rem; font-weight: 800;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); margin-bottom: 1.2rem;
+      font-family: 'Outfit', sans-serif; font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--banana-deep); margin-bottom: 1.2rem;
     }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
-    .footer-col a { font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--black); }
+    .footer-col a { font-size: 0.82rem; font-weight: 300; color: rgba(74,44,26,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--banana-deep); }
     .footer-bottom {
-      border-top: 1px solid rgba(255,215,0,0.12); padding: 1.5rem 5vw;
+      border-top: 1px solid rgba(255,193,0,0.12); padding: 1.5rem 5vw;
       display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.72rem; color: rgba(0,0,0,0.35); background: rgba(255,255,255,0.3);
+      font-size: 0.72rem; color: rgba(74,44,26,0.35); background: rgba(255,252,220,0.3);
     }
 
     /* ─── REVEAL ─── */
@@ -688,25 +667,29 @@
       .stat-grid { grid-template-columns: 1fr !important; }
     }
 
-    .nav-logo-image {
+     .nav-logo-image {
       width: 150px;
       height: 150px;
-      object-fit: contain;
+      object-fit: contain;  /* keeps the full logo visible without distortion */
       display: block;
     }
 
-    /* Video Background */
-    .hero-video-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-      opacity: 0.6;
-    }
+  /* Video Background - ADDED */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
 
-    
+/* Keep the original .hero-bg as a fallback */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('./assets/abouther.png') center/cover no-repeat;
+  transform-origin: center;
+}
   </style>
 </head>
 <body>
@@ -714,40 +697,62 @@
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- ═══ NAV ═══ -->
-  <nav id="mainNav">
+ <nav id="mainNav">
     <a href="index.html" class="nav-logo">
+      <!-- New image logo – width & height 80, using a placeholder SVG of Africa / ENS style.
+           Replace 'logo.svg' with your actual logo path. -->
       <img src="./assets/ENS Africa logo final-04.png" 
            alt="ENS Africa Foundation Logo" 
            class="nav-logo-image"
            width="100" height="100">
+      
     </a>
     <button class="hamburger" id="hamburgerBtn">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" >Home</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="initiatives.html">Initiatives</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+ <!-- ═══ HERO ═══ -->
+<section class="hero">
+  <video class="hero-video-bg" autoplay muted loop playsinline>
+    <source src="./assets/Future story3.mp4" type="video/mp4">
+    <!-- I will add fallback image in case video doesnt load -->
+  </video>
+  
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-sunburst"></div>
+  <div class="hero-rays"></div>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <video class="hero-video-bg" autoplay muted loop playsinline>
-      <source src="./assets/Future story3.mp4" type="video/mp4">
-    </video>
-    
-    <div class="hero-bg" id="heroBg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-sunburst"></div>
-    <div class="hero-rays"></div>
+  <!--<div class="hero-stats">
+    <div class="stat-bubble"><span class="sb-num">14</span><div class="sb-label">Countries</div></div>
+    <div class="stat-bubble"><span class="sb-num">600+</span><div class="sb-label">Volunteers</div></div>
+    <div class="stat-bubble"><span class="sb-num">2022</span><div class="sb-label">Founded</div></div>
+  </div>-->
 
-    <div class="hero-scroll-ind">
-      <div class="scroll-line-v"></div>
-      <span class="scroll-text">Scroll</span>
+  <div class="hero-scroll-ind">
+    <div class="scroll-line-v"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+
+  <!--<div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      ENS Africa Foundation · Our Story
     </div>
-  </section>
+    <h1 class="hero-title">
+      <span class="line-white">From legacy</span>
+      <span class="line-yellow">to lasting</span>
+      <span class="line-outline">change.</span>
+    </h1>
+    <p class="hero-sub">A century of legal expertise, now channelled into the communities that need it most — across a continent of one billion futures.</p>
+  </div>-->
+</section>
 
   <!-- ═══ TICKER ═══ -->
   <div class="ticker-band">
@@ -769,6 +774,8 @@
     </div>
   </div>
 
+  <!--<div class="pattern-border"></div>-->
+
   <!-- ═══ PAGE WRAPPER ═══ -->
   <div class="page-wrapper">
     <div class="orb orb-1"></div>
@@ -783,7 +790,7 @@
         <div class="section-eyebrow">Our Vision</div>
       </div>
 
-      <div class="glass-panel reveal" style="padding:0;border-left:4px solid var(--yellow);">
+      <div class="glass-panel reveal" style="padding:0;border-left:4px solid var(--banana);">
         <div class="glass-panel-topline"></div>
         <div style="display:flex;align-items:stretch;">
           <div class="quote-block" style="flex:1;">
@@ -792,14 +799,14 @@
             </p>
             <div class="quote-attr">Mzi Mgudlwa, Chair of ENS Africa Foundation</div>
           </div>
-          <div style="width:220px;background:linear-gradient(to left,rgba(255,215,0,0.12),transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;border-left:1px solid rgba(255,215,0,0.15);" class="hidden-mobile">
-            <div style="width:70px;height:70px;background:linear-gradient(135deg,rgba(255,215,0,0.3),rgba(0,0,0,0.15));border:1.5px solid rgba(255,215,0,0.35);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--black);">
+          <div style="width:220px;background:linear-gradient(to left,rgba(255,225,53,0.12),transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem;border-left:1px solid rgba(255,193,0,0.15);" class="hidden-mobile">
+            <div style="width:70px;height:70px;background:linear-gradient(135deg,rgba(255,225,53,0.3),rgba(255,193,0,0.15));border:1.5px solid rgba(255,193,0,0.35);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--banana-deep);">
               <i class="fas fa-globe-africa"></i>
             </div>
-            <div style="width:70px;height:70px;background:linear-gradient(135deg,rgba(255,215,0,0.3),rgba(0,0,0,0.15));border:1.5px solid rgba(255,215,0,0.35);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--black);">
+            <div style="width:70px;height:70px;background:linear-gradient(135deg,rgba(255,225,53,0.3),rgba(255,193,0,0.15));border:1.5px solid rgba(255,193,0,0.35);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--banana-deep);">
               <i class="fas fa-scale-balanced"></i>
             </div>
-            <div style="font-family:'Aptos',sans-serif;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--black);text-align:center;margin-top:0.5rem;">Pan-African<br>Impact</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--banana-deep);text-align:center;margin-top:0.5rem;">Pan-African<br>Impact</div>
           </div>
         </div>
       </div>
@@ -827,9 +834,9 @@
     <div class="divider"></div>
 
     <!-- ── IMAGE STRIP ── -->
-    <div class="img-strip">
+   <div class="img-strip">
       <div class="strip-track" id="stripTrack">
-        <div class="strip-item"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
+        <div class="strip-item"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label" >Education</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
         <div class="strip-item"><img class="strip-img" src="assets/hero5.png" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
@@ -860,9 +867,9 @@
           <h2 class="section-title">
             From <em>ENSafrica's</em><br>century of legacy
           </h2>
-          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.6);line-height:1.9;margin-bottom:1.25rem;">ENSafrica has advised across the continent for over a century. In 2022, partners and practitioners formalised a shared vision: a foundation that channels the firm's legal expertise into direct social investment.</p>
-          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.6);line-height:1.9;margin-bottom:1.25rem;">What began as small pro bono networks in Johannesburg, Nairobi and Accra quickly grew into a structured non-profit. Today we operate with dedicated staff, a board drawn from the legal community, and projects in 14 countries.</p>
-          <p style="font-size:0.95rem;font-weight:300;color:rgba(0,0,0,0.6);line-height:1.9;margin-bottom:2.5rem;">Our name carries the reputation of Africa's largest law firm — but our heart beats for the communities behind the cases.</p>
+          <p style="font-size:0.95rem;font-weight:300;color:rgba(74,44,26,0.6);line-height:1.9;margin-bottom:1.25rem;">ENSafrica has advised across the continent for over a century. In 2022, partners and practitioners formalised a shared vision: a foundation that channels the firm's legal expertise into direct social investment.</p>
+          <p style="font-size:0.95rem;font-weight:300;color:rgba(74,44,26,0.6);line-height:1.9;margin-bottom:1.25rem;">What began as small pro bono networks in Johannesburg, Nairobi and Accra quickly grew into a structured non-profit. Today we operate with dedicated staff, a board drawn from the legal community, and projects in 14 countries.</p>
+          <p style="font-size:0.95rem;font-weight:300;color:rgba(74,44,26,0.6);line-height:1.9;margin-bottom:2.5rem;">Our name carries the reputation of Africa's largest law firm — but our heart beats for the communities behind the cases.</p>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;">
             <a href="#" class="btn-primary">Our Initiatives <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
             <a href="#" class="btn-ghost">Meet the Team <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
@@ -871,9 +878,9 @@
 
         <!-- Timeline -->
         <div class="glass-card">
-          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--white),var(--yellow),var(--black));background-size:200% 100%;animation:shimmerBar 3s linear infinite;border-radius:24px 24px 0 0;"></div>
-          <div style="font-family:'Aptos',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--black);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
-            <div style="width:8px;height:8px;background:var(--yellow);border-radius:50%;box-shadow:0 0 12px rgba(255,215,0,0.6);animation:dotBlink 1.5s ease-in-out infinite;"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--banana),var(--sun),var(--banana));background-size:200% 100%;animation:shimmerBar 3s linear infinite;border-radius:24px 24px 0 0;"></div>
+          <div style="font-family:'Outfit',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--banana-deep);margin-bottom:2rem;display:flex;align-items:center;gap:10px;">
+            <div style="width:8px;height:8px;background:var(--banana);border-radius:50%;box-shadow:0 0 12px rgba(255,193,0,0.6);animation:dotBlink 1.5s ease-in-out infinite;"></div>
             Key Milestones
           </div>
           <div class="timeline">
@@ -898,7 +905,7 @@
               <div class="timeline-text">Opened dedicated climate justice desk in Mozambique; 600+ pro bono hours logged</div>
             </div>
             <div class="timeline-item" style="padding-bottom:0;">
-              <div class="timeline-dot" style="background:var(--yellow);box-shadow:0 0 0 5px rgba(255,215,0,0.25),0 0 24px rgba(255,215,0,0.5);"></div>
+              <div class="timeline-dot" style="background:var(--banana);box-shadow:0 0 0 5px rgba(255,193,0,0.25),0 0 24px rgba(255,193,0,0.5);"></div>
               <div class="timeline-year">2026 <span class="now-badge">Now</span></div>
               <div class="timeline-text">10th country office opened in Uganda; 200+ active volunteers, 14 nations</div>
             </div>
@@ -918,7 +925,7 @@
         <h2 class="section-title" style="text-align:center;">
           Law can heal.<br><em>We put it to work.</em>
         </h2>
-        <p style="font-size:0.9rem;font-weight:300;color:rgba(0,0,0,0.45);max-width:480px;margin:0 auto 3.5rem;line-height:1.7;">Four principles that guide every programme, partnership, and pro bono hour we give.</p>
+        <p style="font-size:0.9rem;font-weight:300;color:rgba(74,44,26,0.45);max-width:480px;margin:0 auto 3.5rem;line-height:1.7;">Four principles that guide every programme, partnership, and pro bono hour we give.</p>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;" class="beliefs-grid reveal">
@@ -963,7 +970,7 @@
 
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;" class="team-grid">
         <div class="team-card reveal reveal-delay-1">
-          <div class="team-avatar"><i class="fas fa-user-tie" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-avatar"><i class="fas fa-user-tie" style="font-size:2.6rem;color:var(--banana-deep);"></i></div>
           <div class="team-name">Fatima Ndoye</div>
           <div class="team-role">Executive Director</div>
           <div class="team-origin">Former legal aid attorney, Dakar</div>
@@ -973,7 +980,7 @@
           </div>
         </div>
         <div class="team-card reveal reveal-delay-2">
-          <div class="team-avatar"><i class="fas fa-briefcase" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-avatar"><i class="fas fa-briefcase" style="font-size:2.6rem;color:var(--banana-deep);"></i></div>
           <div class="team-name">James Omondi</div>
           <div class="team-role">Programmes Director</div>
           <div class="team-origin">Ex-UN Legal Officer, Nairobi</div>
@@ -983,7 +990,7 @@
           </div>
         </div>
         <div class="team-card reveal reveal-delay-3">
-          <div class="team-avatar"><i class="fas fa-graduation-cap" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-avatar"><i class="fas fa-graduation-cap" style="font-size:2.6rem;color:var(--banana-deep);"></i></div>
           <div class="team-name">Thandi Mbeki</div>
           <div class="team-role">Scholarship Lead</div>
           <div class="team-origin">ENSafrica Partner, Johannesburg</div>
@@ -993,7 +1000,7 @@
           </div>
         </div>
         <div class="team-card reveal reveal-delay-4">
-          <div class="team-avatar"><i class="fas fa-hand-holding-heart" style="font-size:2.6rem;color:var(--black);"></i></div>
+          <div class="team-avatar"><i class="fas fa-hand-holding-heart" style="font-size:2.6rem;color:var(--banana-deep);"></i></div>
           <div class="team-name">Kwame Asare</div>
           <div class="team-role">Community Liaison</div>
           <div class="team-origin">Former Magistrate, Accra</div>
@@ -1030,17 +1037,22 @@
     <footer>
       <div class="footer-brand">
         <a href="index.html" class="nav-logo">
-          <img src="./assets/ENS Africa logo final-04.png" 
-               alt="ENS Africa Foundation Logo" 
-               class="nav-logo-image"
-               width="200%" height="200%">
-        </a>
+      <!-- New image logo – width & height 80, using a placeholder SVG of Africa / ENS style.
+           Replace 'logo.svg' with your actual logo path. -->
+      <img src="./assets/ENS Africa logo final-04.png" 
+           alt="ENS Africa Foundation Logo" 
+           class="nav-logo-image"
+           width="200%" height="200%">
+      <!-- The old text logo is hidden by CSS -->
+      
+    </a>
         <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
-        <div style="display:flex;gap:1rem;margin-top:1.5rem;">
-          <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+         <div style="display:flex;gap:1rem;margin-top:1.5rem;">
+              <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+
         </div>
       </div>
       <div class="footer-col">
@@ -1064,16 +1076,16 @@
       <div class="footer-col">
         <div class="footer-col-title">Contact</div>
         <ul>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
+          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
+          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
+          <li style="color:rgba(74,44,26,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
           <li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li>
         </ul>
       </div>
     </footer>
     <div class="footer-bottom">
       <span>© 2026 ENS Africa Foundation</span>
-      <span>A non-profit initiative supported by <span style="color:var(--black);opacity:0.8;">ENSafrica</span></span>
+      <span>A non-profit initiative supported by <span style="color:var(--banana-deep);opacity:0.8;">ENSafrica</span></span>
     </div>
   </div>
 
@@ -1092,8 +1104,8 @@
       requestAnimationFrame(animRing);
     })();
     document.querySelectorAll('a,button,.partner-chip,.belief-card,.team-card,.stat-card,.strip-img,.stat-bubble').forEach(el=>{
-      el.addEventListener('mouseenter',()=>{ dot.style.width='20px';dot.style.height='20px';ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(255,215,0,0.9)'; });
-      el.addEventListener('mouseleave',()=>{ dot.style.width='10px';dot.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(255,215,0,0.7)'; });
+      el.addEventListener('mouseenter',()=>{ dot.style.width='20px';dot.style.height='20px';ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(255,225,53,0.9)'; });
+      el.addEventListener('mouseleave',()=>{ dot.style.width='10px';dot.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(255,225,53,0.7)'; });
     });
 
     // ── Nav scroll ──

@@ -4,29 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENS Africa Foundation · Connect With Us</title>
-  <!-- Aptos font via system font stack since it's a Microsoft font -->
+  <!-- Aptos via Google Fonts approximation (Aptos is a Microsoft font; we use it as system font with fallback) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --white: #FFFFFF;
-      --yellow: #FFD700;
-      --yellow-light: #FFF8E0;
-      --yellow-dark: #E6C300;
+      --yellow: #FFE135;
+      --yellow-bright: #FFD700;
+      --yellow-vivid: #FFC800;
+      --yellow-hot: #FFB300;
+      --yellow-deep: #E6A000;
+      --yellow-pale: #FFF9CC;
       --black: #000000;
-      --black-light: #1A1A1A;
-      --gradient-1: linear-gradient(135deg, #FFFFFF 0%, #FFD700 50%, #000000 100%);
-      --gradient-2: linear-gradient(45deg, #FFF8E0, #FFD700, #1A1A1A);
-      --gradient-3: linear-gradient(225deg, rgba(255,255,255,0.9), rgba(255,215,0,0.8), rgba(0,0,0,0.7));
+      --black-mid: #111111;
+      --black-light: #333333;
+      --white: #FFFFFF;
+      --off-white: #FAFAFA;
+      --text-dark: #111111;
+    }
+
+    /* Aptos is a system font on Windows 11+; fallback to similar sans-serif */
+    @font-face {
+      font-family: 'Aptos';
+      src: local('Aptos'), local('Aptos Regular');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Aptos';
+      src: local('Aptos Bold'), local('Aptos-Bold');
+      font-weight: 700;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--white);
-      color: var(--black);
+      color: var(--text-dark);
       overflow-x: hidden;
       cursor: none;
     }
@@ -36,7 +51,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 9999;
       mix-blend-mode: multiply;
@@ -52,21 +67,17 @@
       z-index: 100000;
       transform: translate(-50%, -50%);
       transition: width 0.2s, height 0.2s;
-      box-shadow: 0 0 20px var(--yellow), 0 0 40px rgba(255,215,0,0.4);
+      box-shadow: 0 0 20px var(--yellow), 0 0 40px rgba(255,225,53,0.4);
     }
     .cursor-ring {
       width: 36px; height: 36px;
-      border: 2px solid rgba(255,215,0,0.7);
+      border: 2px solid rgba(255,225,53,0.7);
       border-radius: 50%;
       position: fixed;
       pointer-events: none;
       z-index: 99999;
       transform: translate(-50%, -50%);
       transition: all 0.12s ease;
-    }
-    body:has(a:hover) .cursor-dot,
-    body:has(button:hover) .cursor-dot {
-      width: 18px; height: 18px;
     }
 
     /* ─── NAV ─── */
@@ -81,47 +92,43 @@
       transition: all 0.5s;
     }
     nav.scrolled {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(24px);
       padding: 0.5rem 5vw;
       border-bottom: 2px solid var(--yellow);
-      box-shadow: 0 4px 30px rgba(255,215,0,0.15);
+      box-shadow: 0 4px 30px rgba(255,193,0,0.15);
     }
 
     .nav-logo {
-      display: flex; 
-      align-items: center; 
+      display: flex;
+      align-items: center;
       gap: 12px;
       text-decoration: none;
     }
-    
     .nav-logo-image {
       width: 150px;
       height: 150px;
       object-fit: contain;
       display: block;
     }
-    
-    .logo-mark, .logo-text {
-      display: none;
-    }
+    .logo-mark, .logo-text { display: none; }
 
     .nav-links {
       display: flex; align-items: center; gap: 0.25rem; list-style: none;
     }
     .nav-links a {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.78rem;
       font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(0,0,0,0.75);
+      text-transform: uppercase; color: rgba(255,255,255,0.85);
       text-decoration: none; padding: 0.5rem 1rem;
       border-radius: 100px; transition: all 0.3s;
     }
-    nav.scrolled .nav-links a { color: var(--black-light); }
+    nav.scrolled .nav-links a { color: var(--black-mid); }
     .nav-links a:hover, .nav-links a.active {
       color: var(--black);
       background: var(--yellow);
-      box-shadow: 0 4px 20px rgba(255,215,0,0.5);
+      box-shadow: 0 4px 20px rgba(255,193,0,0.5);
     }
 
     .hamburger {
@@ -137,10 +144,10 @@
         background: rgba(255,255,255,0.98); backdrop-filter: blur(24px);
         flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
         transition: right 0.4s ease; border-left: 3px solid var(--yellow);
-        box-shadow: -10px 0 40px rgba(255,215,0,0.2); z-index: 1000;
+        box-shadow: -10px 0 40px rgba(255,193,0,0.2); z-index: 1000;
       }
       .nav-links.active { right: 0; }
-      .nav-links a { font-size: 1rem; color: var(--black-light) !important; width: 100%; text-align: center; }
+      .nav-links a { font-size: 1rem; color: var(--black-mid) !important; width: 100%; text-align: center; }
       .hamburger.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
       .hamburger.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
@@ -150,10 +157,9 @@
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       overflow: hidden; display: flex; align-items: flex-end;
-      background: linear-gradient(125deg, #FFFFFF 0%, #FFD700 50%, #000000 100%);
     }
 
-    .hero-carousel { position: absolute; inset: 0; z-index: 1; opacity: 0.6; }
+    .hero-carousel { position: absolute; inset: 0; z-index: 1; }
     .carousel-slide {
       position: absolute; inset: 0; opacity: 0;
       transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -161,48 +167,13 @@
     }
     .carousel-slide.active { opacity: 1; z-index: 2; }
 
+    /* Subtle bottom gradient only — pictures fully visible */
     .hero-overlay {
       position: absolute; inset: 0; z-index: 3; pointer-events: none;
-      background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,215,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 35%, transparent 60%);
     }
 
-    .hero-sunburst {
-      position: absolute;
-      top: -20%; right: -10%;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0.2) 30%, transparent 70%);
-      z-index: 3; pointer-events: none;
-      animation: sunPulse 4s ease-in-out infinite;
-    }
-    @keyframes sunPulse {
-      0%, 100% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.1); opacity: 1; }
-    }
-
-    .hero-rays {
-      position: absolute; top: -20%; right: -10%;
-      width: 700px; height: 700px;
-      background: conic-gradient(from 0deg,
-        transparent 0deg, rgba(255,215,0,0.1) 5deg, transparent 10deg,
-        transparent 25deg, rgba(0,0,0,0.1) 30deg, transparent 35deg,
-        transparent 50deg, rgba(255,255,255,0.1) 55deg, transparent 60deg,
-        transparent 75deg, rgba(255,215,0,0.08) 80deg, transparent 85deg,
-        transparent 100deg, rgba(0,0,0,0.08) 105deg, transparent 110deg,
-        transparent 125deg, rgba(255,215,0,0.1) 130deg, transparent 135deg,
-        transparent 150deg, rgba(255,255,255,0.1) 155deg, transparent 160deg,
-        transparent 175deg, rgba(255,215,0,0.1) 180deg, transparent 185deg,
-        transparent 200deg, rgba(0,0,0,0.08) 205deg, transparent 210deg,
-        transparent 225deg, rgba(255,215,0,0.1) 230deg, transparent 235deg,
-        transparent 250deg, rgba(255,255,255,0.1) 255deg, transparent 260deg,
-        transparent 275deg, rgba(255,215,0,0.1) 280deg, transparent 285deg,
-        transparent 300deg, rgba(0,0,0,0.08) 305deg, transparent 310deg,
-        transparent 325deg, rgba(255,255,255,0.1) 330deg, transparent 335deg,
-        transparent 350deg, rgba(255,215,0,0.1) 355deg, transparent 360deg
-      );
-      z-index: 3; pointer-events: none;
-      animation: raysRotate 30s linear infinite;
-    }
-    @keyframes raysRotate { to { transform: rotate(360deg); } }
+    /* NO sunburst, NO rays — removed */
 
     .hero-content {
       position: relative; z-index: 10;
@@ -213,12 +184,12 @@
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--yellow); color: var(--black);
       padding: 0.5rem 1.25rem; border-radius: 100px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.7rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase;
       margin-bottom: 1.5rem;
       opacity: 0; animation: badgePop 0.6s 0.3s cubic-bezier(0.2,0,0,1) forwards;
-      box-shadow: 0 0 40px rgba(255,215,0,0.6), 0 4px 20px rgba(255,215,0,0.4);
+      box-shadow: 0 0 40px rgba(255,225,53,0.6), 0 4px 20px rgba(255,193,0,0.4);
     }
     @keyframes badgePop {
       from { opacity: 0; transform: translateY(20px) scale(0.9); }
@@ -230,59 +201,52 @@
     }
     @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+    /* HERO TITLE */
     .hero-title {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(3.2rem, 8vw, 7rem);
-      font-weight: 900; line-height: 0.9;
+      font-weight: 900; line-height: 0.95;
       letter-spacing: -0.03em;
-      max-width: 850px;
+      max-width: 900px;
       opacity: 0; animation: titleSlide 1s 0.5s cubic-bezier(0.2,0,0,1) forwards;
     }
     @keyframes titleSlide {
       from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .hero-title .line-white { color: var(--white); display: block; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+    /* "What's Your" — white */
+    .hero-title .line-white { color: var(--white); display: block; }
+    /* "Future Story?" — plain yellow, on ONE line */
     .hero-title .line-yellow {
       color: var(--yellow);
       display: block;
-      text-shadow: 0 0 80px rgba(255,215,0,0.8), 0 0 160px rgba(255,215,0,0.4);
-      -webkit-text-stroke: 1px rgba(0,0,0,0.3);
-    }
-    .hero-title .line-outline {
-      display: block;
-      color: var(--black);
-      text-shadow: 2px 2px 0 var(--white), -2px -2px 0 var(--yellow);
     }
 
     .hero-sub {
-      font-size: 1rem; font-weight: 300; color: var(--black);
+      font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.8);
       margin-top: 1.5rem; max-width: 440px; line-height: 1.8;
       opacity: 0; animation: fadeUp 1s 0.8s forwards;
-      background: rgba(255,255,255,0.7);
-      padding: 1rem;
-      border-radius: 12px;
-      backdrop-filter: blur(8px);
     }
 
     .hero-cta {
       display: inline-flex; align-items: center; gap: 12px;
       background: var(--yellow); color: var(--black);
       padding: 1rem 2rem; border-radius: 100px; margin-top: 2rem;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.85rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
       border: none; cursor: pointer;
       opacity: 0; animation: fadeUp 1s 1s forwards;
       transition: all 0.3s; text-decoration: none;
-      box-shadow: 0 8px 40px rgba(255,215,0,0.5);
+      box-shadow: 0 8px 40px rgba(255,193,0,0.5);
     }
     .hero-cta:hover {
       transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 20px 60px rgba(255,215,0,0.7);
-      background: var(--yellow-dark);
+      box-shadow: 0 20px 60px rgba(255,193,0,0.7);
+      background: var(--yellow-bright);
     }
 
+    /* Floating stat bubbles */
     .hero-stats {
       position: absolute; right: 5vw; bottom: 20vh; z-index: 10;
       display: flex; flex-direction: column; gap: 1rem;
@@ -290,9 +254,9 @@
     }
     @media (max-width: 768px) { .hero-stats { display: none; } }
     .stat-bubble {
-      background: rgba(255,215,0,0.2);
+      background: rgba(0,0,0,0.35);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,215,0,0.4);
+      border: 1px solid rgba(255,225,53,0.5);
       border-radius: 20px; padding: 1rem 1.5rem;
       text-align: center;
       transition: all 0.3s;
@@ -305,15 +269,15 @@
     .stat-bubble:hover .stat-num,
     .stat-bubble:hover .stat-label { color: var(--black); }
     .stat-num {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.8rem; font-weight: 900;
+      font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900;
       color: var(--yellow); display: block; line-height: 1;
     }
     .stat-label {
       font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; color: rgba(0,0,0,0.65); margin-top: 4px;
+      text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 4px;
     }
 
+    /* Scroll indicator */
     .hero-scroll-ind {
       position: absolute; left: 5vw; bottom: 8vh; z-index: 10;
       display: flex; align-items: center; gap: 12px;
@@ -330,32 +294,32 @@
     }
     .scroll-text {
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em;
-      text-transform: uppercase; color: rgba(0,0,0,0.7);
+      text-transform: uppercase; color: rgba(255,225,53,0.8);
       writing-mode: vertical-rl;
     }
 
+    /* Carousel dots */
     .carousel-dots {
       position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
       z-index: 20; display: flex; gap: 12px;
     }
     .c-dot {
       width: 8px; height: 8px; border-radius: 100px;
-      background: rgba(255,215,0,0.4); border: 1.5px solid rgba(255,215,0,0.7);
+      background: rgba(255,225,53,0.4); border: 1.5px solid rgba(255,225,53,0.7);
       cursor: pointer; transition: all 0.4s;
     }
     .c-dot.active {
       width: 32px; background: var(--yellow);
-      box-shadow: 0 0 20px rgba(255,215,0,0.8);
+      box-shadow: 0 0 20px rgba(255,225,53,0.8);
     }
 
     /* ─── TICKER BAND ─── */
     .ticker-band {
-      background: var(--yellow);
+      background: linear-gradient(90deg, var(--black) 0%, #1a1a1a 50%, var(--black) 100%);
       padding: 0.85rem 0;
       overflow: hidden;
       position: relative;
-      border-top: 0; border-bottom: 0;
-      box-shadow: 0 4px 40px rgba(255,215,0,0.4);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.3);
     }
     .ticker-track {
       display: flex; gap: 0; white-space: nowrap;
@@ -368,21 +332,22 @@
     .ticker-item {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 0 2rem;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--black);
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow);
     }
-    .ticker-sep { color: var(--black); opacity: 0.4; font-size: 1.2rem; }
+    .ticker-sep { color: rgba(255,225,53,0.4); font-size: 1.2rem; }
 
     /* ─── PAGE WRAPPER ─── */
     .page-wrapper {
-      background: linear-gradient(180deg, #FFFFFF 0%, #FFF8E0 30%, #FFD700 60%, #000000 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #fffef7 40%, #fffce8 70%, #ffffff 100%);
       position: relative;
     }
 
+    /* Subtle orbs */
     .orb {
       position: absolute; border-radius: 50%; pointer-events: none;
-      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,225,53,0.08) 0%, transparent 70%);
     }
     .orb-1 { width: 600px; height: 600px; top: 5%; left: -200px; }
     .orb-2 { width: 500px; height: 500px; top: 40%; right: -150px; }
@@ -393,27 +358,29 @@
 
     .section-eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.68rem; font-weight: 800;
-      letter-spacing: 0.3em; text-transform: uppercase; color: var(--black);
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--yellow-deep);
       margin-bottom: 1rem;
     }
     .section-eyebrow::before {
       content: ''; display: block; width: 36px; height: 3px;
-      background: var(--yellow); border-radius: 2px;
+      background: linear-gradient(90deg, var(--black), var(--yellow));
+      border-radius: 2px;
     }
 
     .section-title {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2.8rem, 5.5vw, 5.5rem);
       font-weight: 900; line-height: 0.95;
       letter-spacing: -0.03em; color: var(--black);
       margin-bottom: 4rem;
     }
+    /* Italic accent — plain yellow, no gradient text-fill */
     .section-title em {
       font-style: italic;
-      background: linear-gradient(135deg, var(--yellow), var(--black));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      color: var(--yellow);
+      -webkit-text-fill-color: var(--yellow);
     }
 
     .contact-grid {
@@ -421,35 +388,30 @@
     }
     @media (max-width: 1100px) { .contact-grid { grid-template-columns: 1fr; } }
 
+    /* Form panel */
     .form-panel {
-      background: rgba(255,255,255,0.7);
-      border: 2px solid rgba(255,215,0,0.25);
+      background: rgba(255,255,255,0.85);
+      border: 2px solid rgba(0,0,0,0.08);
       border-radius: 30px; padding: 3rem;
       backdrop-filter: blur(30px);
-      box-shadow: 0 20px 80px rgba(255,215,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+      box-shadow: 0 20px 80px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
       position: relative; overflow: hidden;
       transition: all 0.5s;
     }
     .form-panel:hover {
-      border-color: rgba(255,215,0,0.5);
-      box-shadow: 0 30px 100px rgba(255,215,0,0.15);
+      border-color: rgba(255,193,0,0.4);
+      box-shadow: 0 30px 100px rgba(255,193,0,0.1);
     }
     .form-panel::before {
       content: ''; position: absolute;
       top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--white), var(--yellow), var(--black));
+      background: linear-gradient(90deg, var(--black), var(--yellow), var(--black));
       background-size: 200% 100%;
       animation: shimmerBar 3s linear infinite;
     }
     @keyframes shimmerBar {
       from { background-position: 0% 0%; }
       to { background-position: 200% 0%; }
-    }
-    .form-panel::after {
-      content: ''; position: absolute;
-      bottom: -40px; right: -40px; width: 160px; height: 160px;
-      background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 70%);
-      pointer-events: none;
     }
 
     .form-header {
@@ -461,32 +423,32 @@
       animation: dotBlink 1.5s ease-in-out infinite;
     }
     .form-header-text {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black-light);
     }
 
     .form-group { margin-bottom: 1.75rem; }
     .form-label {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--black-light);
       display: block; margin-bottom: 0.6rem;
     }
     .form-input {
       width: 100%;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1.5px solid rgba(255,215,0,0.2);
+      background: rgba(255,255,255,0.9);
+      border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 14px; padding: 0.95rem 1.25rem;
-      color: var(--black); font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--black); font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.92rem; font-weight: 400;
       transition: all 0.3s; outline: none;
     }
     .form-input::placeholder { color: rgba(0,0,0,0.3); }
     .form-input:focus {
-      background: rgba(255,255,255,0.95);
+      background: #fff;
       border-color: var(--yellow);
-      box-shadow: 0 0 0 4px rgba(255,215,0,0.2), 0 0 30px rgba(255,215,0,0.08);
+      box-shadow: 0 0 0 4px rgba(255,225,53,0.2);
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
     @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
@@ -496,66 +458,63 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E6A000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 1rem center;
     }
-    select.form-input option { background: #ffffff; color: var(--black); }
+    select.form-input option { background: #fff; color: var(--black); }
 
     .btn-submit {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 1rem 2.25rem; border-radius: 100px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.82rem; font-weight: 800;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--black); border: none; cursor: pointer;
-      background: linear-gradient(135deg, var(--white) 0%, var(--yellow) 50%, var(--black) 100%);
-      background-size: 200% 200%;
-      box-shadow: 0 8px 40px rgba(255,215,0,0.5);
+      background: linear-gradient(135deg, var(--black) 0%, #222 40%, var(--black) 100%);
+      color: var(--yellow);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
       transition: all 0.4s; position: relative; overflow: hidden;
     }
-    .btn-submit::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .btn-submit:hover::before { opacity: 1; }
     .btn-submit:hover {
       transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 20px 60px rgba(255,215,0,0.7);
+      background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-bright) 100%);
+      color: var(--black);
+      box-shadow: 0 20px 60px rgba(255,193,0,0.5);
     }
     .btn-arrow {
-      width: 30px; height: 30px; background: rgba(0,0,0,0.15);
+      width: 30px; height: 30px; background: rgba(255,225,53,0.2);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       transition: transform 0.3s; font-size: 0.7rem;
     }
     .btn-submit:hover .btn-arrow { transform: translateX(5px); }
 
+    /* Info cards */
     .info-stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .info-card {
-      background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,215,0,0.2);
+      background: rgba(255,255,255,0.8);
+      border: 1.5px solid rgba(0,0,0,0.08);
       border-radius: 22px; padding: 1.6rem 1.75rem;
       backdrop-filter: blur(20px);
       transition: all 0.4s cubic-bezier(0.2,0,0,1);
       position: relative; overflow: hidden;
-      box-shadow: 0 4px 20px rgba(255,215,0,0.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     }
     .info-card::before {
       content: ''; position: absolute;
       left: 0; top: 0; bottom: 0; width: 0;
-      background: linear-gradient(to bottom, var(--white), var(--yellow), var(--black));
+      background: linear-gradient(to bottom, var(--black), var(--yellow));
       border-radius: 22px 0 0 22px;
       transition: width 0.3s ease;
     }
     .info-card:hover::before { width: 4px; }
     .info-card:hover {
       transform: translateX(8px);
-      border-color: rgba(255,215,0,0.5);
-      background: rgba(255,255,255,0.85);
-      box-shadow: 0 12px 40px rgba(255,215,0,0.12);
+      border-color: rgba(255,193,0,0.4);
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
     .info-icon {
       width: 42px; height: 42px;
-      background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(0,0,0,0.15));
-      border: 1.5px solid rgba(255,215,0,0.3);
+      background: linear-gradient(135deg, rgba(255,225,53,0.25), rgba(0,0,0,0.06));
+      border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 12px; display: flex; align-items: center; justify-content: center;
       color: var(--black); font-size: 1rem; margin-bottom: 0.9rem;
       transition: all 0.3s;
@@ -564,34 +523,34 @@
       background: var(--yellow);
       border-color: var(--yellow);
       color: var(--black);
-      box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+      box-shadow: 0 4px 20px rgba(255,193,0,0.4);
     }
     .info-card-label {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow-deep);
       margin-bottom: 0.3rem;
     }
     .info-card-main {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.3rem; font-weight: 700;
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
       color: var(--black); line-height: 1.3;
     }
-    .info-card-sub { font-size: 0.78rem; color: rgba(0,0,0,0.5); margin-top: 0.2rem; line-height: 1.5; }
+    .info-card-sub { font-size: 0.78rem; color: rgba(0,0,0,0.4); margin-top: 0.2rem; line-height: 1.5; }
 
     .social-row { display: flex; gap: 0.75rem; margin-top: 1rem; }
     .social-btn {
       width: 44px; height: 44px;
-      background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,215,0,0.2);
+      background: rgba(255,255,255,0.8);
+      border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      color: rgba(0,0,0,0.5); font-size: 0.9rem;
+      color: rgba(0,0,0,0.4); font-size: 0.9rem;
       transition: all 0.3s; cursor: pointer; backdrop-filter: blur(12px);
+      text-decoration: none;
     }
     .social-btn:hover {
       background: var(--yellow); border-color: var(--yellow);
       color: var(--black); transform: translateY(-4px) scale(1.1);
-      box-shadow: 0 8px 24px rgba(255,215,0,0.4);
+      box-shadow: 0 8px 24px rgba(255,193,0,0.4);
     }
 
     /* ─── IMAGE STRIP ─── */
@@ -610,19 +569,19 @@
     .strip-img {
       width: 300px; height: 210px; border-radius: 20px;
       object-fit: cover; display: block;
-      filter: saturate(0.8) brightness(0.9);
-      border: 2px solid rgba(255,215,0,0.15);
+      filter: saturate(0.9) brightness(0.95);
+      border: 2px solid rgba(0,0,0,0.06);
       transition: all 0.5s;
     }
     .strip-item:hover .strip-img {
       filter: saturate(1.1) brightness(1.05);
       transform: scale(1.04) translateY(-8px);
       border-color: var(--yellow);
-      box-shadow: 0 20px 50px rgba(255,215,0,0.3);
+      box-shadow: 0 20px 50px rgba(255,193,0,0.3);
     }
     .strip-label {
       position: absolute; bottom: 12px; left: 12px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.6rem; font-weight: 700;
       letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
       background: var(--yellow); backdrop-filter: blur(8px);
@@ -641,7 +600,7 @@
 
     .globe-ring {
       position: absolute; top: 50%; left: 50%;
-      border-radius: 50%; border: 1.5px solid rgba(255,215,0,0.4);
+      border-radius: 50%; border: 1.5px solid rgba(255,193,0,0.4);
       pointer-events: none;
     }
     .globe-ring-1 {
@@ -667,17 +626,17 @@
       width: 220px; height: 220px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%,
-        rgba(255,255,255,0.6) 0%,
-        rgba(255,215,0,0.3) 35%,
-        rgba(0,0,0,0.35) 65%,
-        rgba(0,0,0,0.55) 100%
+        rgba(255,255,255,0.9) 0%,
+        rgba(255,240,100,0.6) 30%,
+        rgba(255,193,0,0.5) 65%,
+        rgba(0,0,0,0.6) 100%
       );
-      border: 2px solid rgba(255,215,0,0.45);
+      border: 2px solid rgba(255,193,0,0.45);
       box-shadow:
-        inset -28px -28px 55px rgba(0,0,0,0.45),
-        inset 14px 14px 38px rgba(255,255,200,0.45),
-        0 0 80px rgba(255,215,0,0.3),
-        0 0 160px rgba(255,215,0,0.15);
+        inset -28px -28px 55px rgba(0,0,0,0.35),
+        inset 14px 14px 38px rgba(255,255,255,0.4),
+        0 0 80px rgba(255,193,0,0.25),
+        0 0 160px rgba(255,225,53,0.1);
       overflow: hidden;
       cursor: pointer;
       transition: box-shadow 0.4s;
@@ -687,14 +646,13 @@
       0%, 100% { filter: brightness(1); }
       50%       { filter: brightness(1.1); }
     }
-
     .globe-container:hover .africa-sphere {
       animation: africaSpin360 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
       box-shadow:
-        inset -28px -28px 55px rgba(0,0,0,0.45),
-        inset 14px 14px 38px rgba(255,255,200,0.45),
-        0 0 130px rgba(255,215,0,0.6),
-        0 0 260px rgba(255,215,0,0.3);
+        inset -28px -28px 55px rgba(0,0,0,0.35),
+        inset 14px 14px 38px rgba(255,255,255,0.4),
+        0 0 130px rgba(255,193,0,0.5),
+        0 0 260px rgba(255,225,53,0.25);
     }
     @keyframes africaSpin360 {
       0%   { transform: translate(-50%, -50%) rotateY(0deg); }
@@ -708,13 +666,8 @@
       width: 130px; height: 140px;
       z-index: 2;
       filter:
-        drop-shadow(0 3px 14px rgba(0,0,0,0.55))
-        drop-shadow(0 0 28px rgba(255,215,0,0.4));
-    }
-    .globe-container:hover .africa-continent {
-      filter:
-        drop-shadow(0 4px 22px rgba(0,0,0,0.7))
-        drop-shadow(0 0 50px rgba(255,215,0,0.6));
+        drop-shadow(0 3px 14px rgba(0,0,0,0.4))
+        drop-shadow(0 0 28px rgba(255,200,0,0.4));
     }
 
     .africa-shine {
@@ -733,19 +686,19 @@
     .city-chip {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 0.6rem 1.2rem;
-      background: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,215,0,0.2);
+      background: rgba(255,255,255,0.8);
+      border: 1.5px solid rgba(0,0,0,0.08);
       border-radius: 100px;
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.05em; color: var(--black);
+      letter-spacing: 0.05em; color: var(--black-mid);
       transition: all 0.35s; cursor: default; backdrop-filter: blur(12px);
-      box-shadow: 0 2px 10px rgba(255,215,0,0.06);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
     .city-chip:hover {
       background: var(--yellow); border-color: var(--yellow);
       color: var(--black); transform: translateY(-5px) scale(1.06);
-      box-shadow: 0 12px 30px rgba(255,215,0,0.35);
+      box-shadow: 0 12px 30px rgba(255,193,0,0.35);
     }
 
     /* ─── REGIONS ─── */
@@ -757,8 +710,8 @@
     @media (max-width: 500px) { .regions-grid { grid-template-columns: 1fr; } }
 
     .region-card {
-      background: rgba(255,255,255,0.55);
-      border: 1.5px solid rgba(255,215,0,0.15);
+      background: rgba(255,255,255,0.7);
+      border: 1.5px solid rgba(0,0,0,0.08);
       border-radius: 24px; padding: 2rem 1.5rem;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.2,0,0,1);
@@ -767,23 +720,22 @@
     }
     .region-card::after {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.2) 0%, transparent 70%);
+      background: radial-gradient(circle at 50% 0%, rgba(255,225,53,0.2) 0%, transparent 70%);
       opacity: 0; transition: opacity 0.4s;
     }
     .region-card:hover::after { opacity: 1; }
     .region-card:hover {
       border-color: var(--yellow);
       transform: translateY(-10px) scale(1.03);
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 25px 60px rgba(255,215,0,0.2), 0 0 0 1px rgba(255,215,0,0.2);
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 25px 60px rgba(255,193,0,0.2), 0 0 0 1px rgba(255,193,0,0.2);
     }
     .region-flag { font-size: 2.8rem; display: block; margin-bottom: 0.75rem; }
     .region-city {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.35rem; font-weight: 700;
+      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
       color: var(--black); margin-bottom: 0.4rem;
     }
-    .region-email { font-size: 0.68rem; color: rgba(0,0,0,0.6); word-break: break-all; }
+    .region-email { font-size: 0.68rem; color: rgba(0,0,0,0.4); word-break: break-all; }
 
     /* ─── FAQ ─── */
     .faq-section { padding: 6vh 5vw 8vh; }
@@ -793,105 +745,101 @@
     @media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
 
     .faq-card {
-      background: rgba(255,255,255,0.55);
-      border: 1.5px solid rgba(255,215,0,0.12);
+      background: rgba(255,255,255,0.7);
+      border: 1.5px solid rgba(0,0,0,0.08);
       border-radius: 24px; padding: 2.25rem;
       transition: all 0.4s; position: relative; overflow: hidden;
       backdrop-filter: blur(16px);
     }
     .faq-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 0;
-      background: linear-gradient(180deg, rgba(255,215,0,0.15), transparent);
+      background: linear-gradient(180deg, rgba(255,225,53,0.12), transparent);
       transition: height 0.4s;
     }
     .faq-card:hover::before { height: 100%; }
     .faq-card:hover {
-      border-color: rgba(255,215,0,0.4);
+      border-color: rgba(255,193,0,0.4);
       transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(255,215,0,0.12);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.07);
     }
-    .faq-icon { font-size: 1.6rem; color: var(--yellow); margin-bottom: 1rem; display: block; }
+    .faq-icon { font-size: 1.6rem; color: var(--yellow-deep); margin-bottom: 1rem; display: block; }
     .faq-q {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.2rem; font-weight: 700;
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
       color: var(--black); margin-bottom: 0.6rem; line-height: 1.3;
     }
-    .faq-a { font-size: 0.84rem; font-weight: 300; color: rgba(0,0,0,0.55); line-height: 1.75; }
-    .faq-email { color: var(--black); font-weight: 600; }
+    .faq-a { font-size: 0.84rem; font-weight: 300; color: rgba(0,0,0,0.45); line-height: 1.75; }
+    .faq-email { color: var(--yellow-deep); font-weight: 600; }
 
     /* ─── IMPACT BANNER ─── */
     .impact-banner {
       margin: 4vh 5vw;
-      background: linear-gradient(135deg, var(--white) 0%, var(--yellow) 40%, var(--black) 100%);
+      background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 40%, #111 100%);
       border-radius: 30px; padding: 4rem 3rem;
       position: relative; overflow: hidden;
-      box-shadow: 0 30px 80px rgba(255,215,0,0.4);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
     }
     .impact-banner::before {
       content: ''; position: absolute; inset: 0;
       background: conic-gradient(from 200deg at 80% 50%,
-        transparent 0deg, rgba(255,255,255,0.12) 10deg, transparent 20deg,
-        transparent 40deg, rgba(255,255,255,0.08) 50deg, transparent 60deg
+        transparent 0deg, rgba(255,225,53,0.08) 10deg, transparent 20deg,
+        transparent 40deg, rgba(255,225,53,0.05) 50deg, transparent 60deg
       );
     }
     .impact-text {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 900; color: var(--black); line-height: 1.15;
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900; color: var(--white); line-height: 1.15;
       max-width: 700px; position: relative; z-index: 1;
     }
-    .impact-text em { font-style: italic; color: var(--white); }
+    .impact-text em { font-style: italic; color: var(--yellow); }
     .impact-stats {
       display: flex; gap: 3rem; margin-top: 2.5rem;
       position: relative; z-index: 1; flex-wrap: wrap;
     }
     .impact-stat-num {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 3rem; font-weight: 900;
-      color: var(--white); line-height: 1; display: block;
+      font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900;
+      color: var(--yellow); line-height: 1; display: block;
     }
     .impact-stat-label {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; color: rgba(0,0,0,0.55); margin-top: 4px;
+      text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;
     }
 
     /* ─── DIVIDERS ─── */
     .divider {
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,215,0,0.25), transparent);
+      background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
       margin: 0 5vw;
     }
     .pattern-border {
       height: 5px;
       background: repeating-linear-gradient(
         90deg,
-        var(--white) 0px, var(--white) 6px,
+        var(--black) 0px, var(--black) 6px,
         transparent 6px, transparent 14px,
         var(--yellow) 14px, var(--yellow) 20px,
-        transparent 20px, transparent 28px,
-        var(--black) 28px, var(--black) 34px
+        transparent 20px, transparent 28px
       );
-      opacity: 0.6;
+      opacity: 0.7;
     }
 
     /* ─── FOOTER ─── */
     footer {
-      border-top: 2px solid rgba(255,215,0,0.2);
+      border-top: 2px solid rgba(0,0,0,0.08);
       padding: 5vh 5vw;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
-      background: rgba(255,255,255,0.5);
+      background: #f8f8f8;
     }
     @media (max-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 500px) { footer { grid-template-columns: 1fr; } }
 
     .footer-brand p {
-      font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5);
+      font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.45);
       line-height: 1.8; margin-top: 1rem; max-width: 280px;
     }
     .footer-col-title {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
       font-size: 0.65rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
       margin-bottom: 1.2rem;
@@ -899,15 +847,15 @@
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
     .footer-col a {
-      font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.5);
+      font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.4);
       text-decoration: none; transition: color 0.2s;
     }
-    .footer-col a:hover { color: var(--black); }
+    .footer-col a:hover { color: var(--yellow-deep); }
     .footer-bottom {
-      border-top: 1px solid rgba(255,215,0,0.12); padding: 1.5rem 5vw;
+      border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 5vw;
       display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.72rem; color: rgba(0,0,0,0.35);
-      background: rgba(255,255,255,0.3);
+      font-size: 0.72rem; color: rgba(0,0,0,0.3);
+      background: #f3f3f3;
     }
 
     /* ─── ANIMATIONS ─── */
@@ -928,11 +876,10 @@
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     .section-num {
-      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      font-size: 10rem; font-weight: 900;
+      font-family: 'Playfair Display', serif; font-size: 10rem; font-weight: 900;
       position: absolute; right: 5vw; top: 4vh;
-      color: rgba(255,215,0,0.07); pointer-events: none; line-height: 1;
-      -webkit-text-stroke: 1px rgba(255,215,0,0.1);
+      color: rgba(0,0,0,0.04); pointer-events: none; line-height: 1;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.06);
     }
   </style>
 </head>
@@ -945,10 +892,10 @@
   <!-- ═══ NAV ═══ -->
   <nav id="mainNav">
     <a href="index.html" class="nav-logo">
-      <img src="./assets/ENS Africa logo final-04.png" 
-           alt="ENS Africa Foundation Logo" 
+      <img src="./assets/ENS Africa logo final-04.png"
+           alt="ENS Africa Foundation Logo"
            class="nav-logo-image"
-           width="200%" height="200%">
+           width="150" height="150">
       <div class="logo-mark">ENS</div>
       <div class="logo-text">Africa <span>Foundation</span></div>
     </a>
@@ -973,10 +920,10 @@
       <div class="carousel-slide" style="background-image:url('./assets/ladyteach.png');"></div>
     </div>
 
+    <!-- Minimal bottom fade only — pictures fully visible, no colour overlays -->
     <div class="hero-overlay"></div>
-    <div class="hero-sunburst"></div>
-    <div class="hero-rays"></div>
 
+    <!-- Floating stat bubbles -->
     <div class="hero-stats">
       <div class="stat-bubble">
         <span class="stat-num">12K+</span>
@@ -1005,11 +952,11 @@
       <div class="c-dot" data-index="4"></div>
     </div>
 
-     <div class="hero-content">
+    <div class="hero-content">
       <h1 class="hero-title">
         <span class="line-white">What's Your</span>
-        <span class="line-yellow">Future</span>
-        <span class="line-outline">Story?</span>
+        <!-- "Future Story?" on ONE line, plain yellow -->
+        <span class="line-yellow">Future Story?</span>
       </h1>
       <p class="hero-sub">We believe in the transformative power of community, justice, and opportunity. Reach out — every conversation plants a seed.</p>
       <a href="contact.html" class="hero-cta">
@@ -1104,8 +1051,8 @@
                 Send Message
                 <div class="btn-arrow"><i class="fas fa-arrow-right"></i></div>
               </button>
-              <p style="font-size:0.72rem;color:rgba(0,0,0,0.4);display:flex;align-items:center;gap:6px;">
-                <i class="fas fa-lock" style="color:rgba(255,215,0,0.6);"></i>
+              <p style="font-size:0.72rem;color:rgba(0,0,0,0.3);display:flex;align-items:center;gap:6px;">
+                <i class="fas fa-lock" style="color:var(--yellow-deep);"></i>
                 All correspondence is confidential
               </p>
             </div>
@@ -1113,8 +1060,8 @@
 
           <div id="formSuccess" style="display:none;text-align:center;padding:2rem 0;">
             <div style="font-size:4rem;margin-bottom:1rem;">🌍</div>
-            <p style="font-family:'Aptos',sans-serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--yellow),var(--black));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Message received!</p>
-            <p style="font-size:0.85rem;color:rgba(0,0,0,0.5);margin-top:0.6rem;line-height:1.6;">Thank you for reaching out. We'll be in touch<br>within 2 business days.</p>
+            <p style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--yellow-deep);">Message received!</p>
+            <p style="font-size:0.85rem;color:rgba(0,0,0,0.4);margin-top:0.6rem;line-height:1.6;">Thank you for reaching out. We'll be in touch<br>within 2 business days.</p>
           </div>
         </div>
 
@@ -1140,12 +1087,12 @@
           </div>
           <div class="info-card reveal reveal-delay-4">
             <div class="info-card-label">Follow Our Work</div>
-            <p style="font-size:0.75rem;color:rgba(0,0,0,0.35);margin-bottom:0.5rem;">#ENSafricaFoundation</p>
+            <p style="font-size:0.75rem;color:rgba(0,0,0,0.3);margin-bottom:0.5rem;">#ENSafricaFoundation</p>
             <div class="social-row">
               <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
               <div class="social-btn"><i class="fab fa-twitter"></i></div>
               <div class="social-btn"><i class="fab fa-instagram"></i></div>
-              <div href="https://www.facebook.com/ENSlaw" class="social-btn"><i class="fab fa-facebook-f"></i></div>
+              <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
             </div>
           </div>
         </div>
@@ -1157,14 +1104,14 @@
     <!-- ── IMAGE STRIP ── -->
     <div class="img-strip">
       <div class="strip-track" id="stripTrack">
-        <div class="strip-item"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label" >Education</span></div>
+        <div class="strip-item"><img class="strip-img" src="assets/teacher2.png" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
         <div class="strip-item"><img class="strip-img" src="assets/hero5.png" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
         <div class="strip-item"><img class="strip-img" src="assets/commteach.png" alt="Outreach" loading="lazy"><span class="strip-label">Outreach</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label">Empowerment</span></div>
         <div class="strip-item"><img class="strip-img" src="assets/femalelawyer.png" alt="Village" loading="lazy"><span class="strip-label">Village Life</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label">Landscape</span></div>
-        <!-- Duplicates -->
+        <!-- Duplicates for seamless loop -->
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label">Education</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label">Community</span></div>
         <div class="strip-item"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label">Foundation</span></div>
@@ -1212,70 +1159,44 @@
         <h2 class="section-title" style="text-align:center;">Active <em>across</em> the<br>continent</h2>
       </div>
 
-      <!-- ═══ AFRICA CONTINENT GLOBE ═══ -->
       <div class="globe-container reveal">
         <div class="globe-ring globe-ring-1"></div>
         <div class="globe-ring globe-ring-2"></div>
-
         <div class="africa-sphere">
           <div class="africa-shine"></div>
           <svg class="africa-continent" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-label="African continent">
             <path d="
-              M 185 10
-              C 195 8, 215 10, 230 18
-              C 250 28, 268 22, 278 30
-              C 292 40, 295 58, 288 72
-              C 280 88, 282 105, 275 118
-              C 268 132, 272 148, 280 160
-              C 292 178, 298 198, 295 215
-              C 292 232, 300 248, 310 260
-              C 322 275, 328 292, 325 308
-              C 322 325, 330 340, 335 355
-              C 340 372, 338 390, 330 404
-              C 318 422, 305 435, 288 442
-              C 268 450, 248 458, 228 462
-              C 208 466, 188 468, 170 462
-              C 150 456, 132 445, 118 432
-              C 100 416, 88 398, 80 378
-              C 72 358, 68 338, 70 318
-              C 72 298, 65 280, 58 262
-              C 50 242, 48 222, 52 202
-              C 56 182, 68 165, 72 145
-              C 76 125, 70 105, 75 88
-              C 80 70, 92 55, 108 45
-              C 125 34, 148 18, 165 12
-              Z
-            " fill="url(#africaGradient)" opacity="0.95"/>
+              M 185 10 C 195 8, 215 10, 230 18 C 250 28, 268 22, 278 30
+              C 292 40, 295 58, 288 72 C 280 88, 282 105, 275 118
+              C 268 132, 272 148, 280 160 C 292 178, 298 198, 295 215
+              C 292 232, 300 248, 310 260 C 322 275, 328 292, 325 308
+              C 322 325, 330 340, 335 355 C 340 372, 338 390, 330 404
+              C 318 422, 305 435, 288 442 C 268 450, 248 458, 228 462
+              C 208 466, 188 468, 170 462 C 150 456, 132 445, 118 432
+              C 100 416, 88 398, 80 378 C 72 358, 68 338, 70 318
+              C 72 298, 65 280, 58 262 C 50 242, 48 222, 52 202
+              C 56 182, 68 165, 72 145 C 76 125, 70 105, 75 88
+              C 80 70, 92 55, 108 45 C 125 34, 148 18, 165 12 Z
+            " fill="url(#africaGold)" opacity="0.95"/>
             <path d="
-              M 345 240
-              C 352 235, 362 238, 366 248
-              C 370 260, 368 278, 362 290
-              C 356 302, 348 308, 340 304
-              C 332 300, 330 288, 333 276
-              C 336 262, 340 248, 345 240
-              Z
-            " fill="url(#africaGradient)" opacity="0.8"/>
+              M 345 240 C 352 235, 362 238, 366 248 C 370 260, 368 278, 362 290
+              C 356 302, 348 308, 340 304 C 332 300, 330 288, 333 276 C 336 262, 340 248, 345 240 Z
+            " fill="url(#africaGold)" opacity="0.8"/>
             <path d="
-              M 185 10
-              C 195 8, 215 10, 230 18
-              C 250 28, 268 22, 278 30
-              C 270 45, 255 52, 240 60
-              C 220 70, 200 68, 182 58
-              C 165 48, 155 32, 165 18
-              Z
+              M 185 10 C 195 8, 215 10, 230 18 C 250 28, 268 22, 278 30
+              C 270 45, 255 52, 240 60 C 220 70, 200 68, 182 58 C 165 48, 155 32, 165 18 Z
             " fill="rgba(255,255,255,0.18)" />
             <defs>
-              <linearGradient id="africaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stop-color="#FFFFFF"/>
-                <stop offset="35%"  stop-color="#FFD700"/>
-                <stop offset="70%"  stop-color="#FFD700"/>
-                <stop offset="100%" stop-color="#000000"/>
+              <linearGradient id="africaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#FFE135"/>
+                <stop offset="35%"  stop-color="#FFC800"/>
+                <stop offset="70%"  stop-color="#E6A000"/>
+                <stop offset="100%" stop-color="#B87000"/>
               </linearGradient>
             </defs>
           </svg>
         </div>
       </div>
-      <!-- ═══ END AFRICA CONTINENT GLOBE ═══ -->
 
       <div class="city-chips reveal">
         <div class="city-chip"><span>🇿🇦</span> Johannesburg</div>
@@ -1287,7 +1208,7 @@
         <div class="city-chip"><span>🇳🇦</span> Windhoek</div>
         <div class="city-chip"><span>🇲🇿</span> Maputo</div>
       </div>
-      <p style="font-size:0.72rem;color:rgba(0,0,0,0.3);text-align:center;margin-top:1.5rem;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
+      <p style="font-size:0.72rem;color:rgba(0,0,0,0.25);text-align:center;margin-top:1.5rem;">* Physical offices in Johannesburg, Nairobi, Kigali, and Accra — others via partner organisations.</p>
     </section>
 
     <div class="divider"></div>
@@ -1361,20 +1282,18 @@
     <!-- ── FOOTER ── -->
     <footer>
       <div class="footer-brand">
-         <a href="index.html" class="nav-logo">
-      <img src="./assets/ENS Africa logo final-04.png" 
-           alt="ENS Africa Foundation Logo" 
-           class="nav-logo-image"
-           width="200%" height="200%">
-      
-    </a>
+        <a href="index.html" class="nav-logo">
+          <img src="./assets/ENS Africa logo final-04.png"
+               alt="ENS Africa Foundation Logo"
+               class="nav-logo-image"
+               width="150" height="150">
+        </a>
         <p>Supporting communities where ENSafrica operates — because lasting change needs law, heart, and community.</p>
         <div style="display:flex;gap:1rem;margin-top:1.5rem;">
-              <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-
+          <a href="https://www.linkedin.com/company/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/ensafrica" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/ENSlaw" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -1398,9 +1317,9 @@
       <div class="footer-col">
         <div class="footer-col-title">Contact</div>
         <ul>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">150 West Street, Sandton</li>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;">Johannesburg, 2196</li>
-          <li style="color:rgba(0,0,0,0.4);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
+          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem;">150 West Street, Sandton</li>
+          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem;">Johannesburg, 2196</li>
+          <li style="color:rgba(0,0,0,0.35);font-size:0.8rem;margin-top:0.5rem;">+27 11 269 7600</li>
           <li><a href="mailto:foundation@ensafrica.com">foundation@ensafrica.com</a></li>
         </ul>
       </div>
@@ -1427,8 +1346,8 @@
       requestAnimationFrame(animRing);
     })();
     document.querySelectorAll('a, button, .city-chip, .region-card, .social-btn, .info-card, .faq-card, .stat-bubble').forEach(el => {
-      el.addEventListener('mouseenter', () => { dot.style.width = '20px'; dot.style.height = '20px'; ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(255,215,0,0.9)'; });
-      el.addEventListener('mouseleave', () => { dot.style.width = '10px'; dot.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(255,215,0,0.7)'; });
+      el.addEventListener('mouseenter', () => { dot.style.width = '20px'; dot.style.height = '20px'; ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(255,225,53,0.9)'; });
+      el.addEventListener('mouseleave', () => { dot.style.width = '10px'; dot.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(255,225,53,0.7)'; });
     });
 
     // ── Nav scroll ──
