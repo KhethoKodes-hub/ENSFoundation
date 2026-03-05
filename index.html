@@ -11,8 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ─────────────────────────────────────────────────────────────────────
-       ORIGINAL CSS – ABSOLUTELY UNCHANGED (no font-family removed)
-       (only the @font-face blocks for Montserrat are kept but overridden by inline)
+       ORIGINAL CSS STRUCTURE PRESERVED – MODIFICATIONS LABELED
     ───────────────────────────────────────────────────────────────────── */
     :root {
       --yellow: #FFE135;
@@ -45,7 +44,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Montserrat';   /* ← original line kept, but inline overrides */
+      font-family: 'Montserrat';
       background: var(--white);
       color: var(--text-dark);
       overflow-x: hidden;
@@ -86,7 +85,7 @@
       transition: all 0.12s ease;
     }
 
-    /* ─── NAV ─── */
+    /* ─── NAV (MODIFIED: transparent at top, turns yellow on scroll) ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -96,13 +95,14 @@
       align-items: center;
       justify-content: space-between;
       transition: all 0.5s;
+      background: transparent; /* fully transparent when at top */
     }
     nav.scrolled {
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--yellow);      /* yellow when scrolled (original behavior) */
       backdrop-filter: blur(24px);
       padding: 0.5rem 5vw;
-      border-bottom: 2px solid var(--yellow);
-      box-shadow: 0 4px 30px rgba(255,193,0,0.15);
+      border-bottom: 2px solid var(--black);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.25);
     }
 
     .nav-logo {
@@ -122,44 +122,81 @@
     .nav-links {
       display: flex; align-items: center; gap: 0.25rem; list-style: none;
     }
+    /* BUTTON STYLE: black background, white text (always, even on transparent nav) */
     .nav-links a {
       font-family: 'Montserrat';
       font-size: 0.78rem;
       font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: rgba(255,255,255,0.85);
-      text-decoration: none; padding: 0.5rem 1rem;
-      border-radius: 100px; transition: all 0.3s;
+      text-transform: uppercase; 
+      color: var(--white);               /* white text */
+      text-decoration: none; 
+      padding: 0.5rem 1rem;
+      border-radius: 100px; 
+      transition: all 0.3s;
+      background: var(--black);           /* black background */
+      border: 1.5px solid rgba(255,255,255,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    nav.scrolled .nav-links a { color: var(--black-mid); }
+    /* when nav is transparent (top), links remain black (contrast against hero) */
+    nav:not(.scrolled) .nav-links a {
+      background: var(--black); 
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.15);
+    }
+    nav.scrolled .nav-links a {
+      color: var(--white);
+      background: var(--black);           /* keep black even on yellow */
+    }
+    /* glassmorphism hover: semi‑transparent black + blur (glass effect) */
     .nav-links a:hover, .nav-links a.active {
-      color: var(--black);
-      background: var(--yellow);
-      box-shadow: 0 4px 20px rgba(255,193,0,0.5);
+      background: rgba(0,0,0,0.75);        /* semi‑transparent black = glass */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
     }
 
     .hamburger {
       display: none; flex-direction: column; justify-content: space-between;
       width: 28px; height: 22px; background: transparent; border: none; cursor: pointer; z-index: 1001;
     }
-    .hamburger span { width: 100%; height: 2px; background: var(--yellow); transition: all 0.3s; border-radius: 2px; }
+    .hamburger span { 
+      width: 100%; height: 2px; 
+      background: var(--white);    /* white bars on transparent nav (visible on hero) */
+      transition: all 0.3s; border-radius: 2px; 
+    }
+    nav.scrolled .hamburger span {
+      background: var(--black);    /* black bars when nav yellow */
+    }
 
     @media (max-width: 768px) {
       .hamburger { display: flex; }
       .nav-links {
         position: fixed; top: 0; right: -100%; width: 75%; max-width: 300px; height: 100vh;
-        background: rgba(255,255,255,0.98); backdrop-filter: blur(24px);
+        background: rgba(0,0,0,0.96);      /* dark glass for mobile menu */
+        backdrop-filter: blur(24px);
         flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
         transition: right 0.4s ease; border-left: 3px solid var(--yellow);
-        box-shadow: -10px 0 40px rgba(255,193,0,0.2); z-index: 1000;
+        box-shadow: -10px 0 40px rgba(0,0,0,0.6); z-index: 1000;
       }
       .nav-links.active { right: 0; }
-      .nav-links a { font-size: 1rem; color: var(--black-mid) !important; width: 100%; text-align: center; }
+      .nav-links a { 
+        font-size: 1rem; color: var(--white) !important; width: 100%; text-align: center; 
+        background: transparent;          /* override for mobile consistency */
+        border: 1.5px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(4px);
+      }
+      .nav-links a:hover {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+      }
       .hamburger.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
       .hamburger.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
     }
 
-    /* ─── HERO ─── */
+    /* ─── HERO (unchanged structure, only CTA button updated) ─── */
     .hero {
       position: relative; height: 100vh; min-height: 700px;
       overflow: hidden; display: flex; align-items: flex-end;
@@ -258,38 +295,37 @@
       from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* "What's Your" — white */
     .hero-title .line-white { color: var(--white); display: block; }
-    /* "Future Story?" — plain yellow, on ONE line */
-    .hero-title .line-yellow {
-      color: var(--yellow);
-      display: block;
-    }
+    .hero-title .line-yellow { color: var(--yellow); display: block; }
 
     .hero-sub {
       font-family: 'Montserrat';
-
       font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.8);
       margin-top: 1.5rem; max-width: 440px; line-height: 1.8;
       opacity: 0; animation: fadeUp 1s 0.8s forwards;
     }
 
+    /* HERO CTA – MODIFIED: black bg, white text + glass hover */
     .hero-cta {
       display: inline-flex; align-items: center; gap: 12px;
-      background: var(--yellow); color: var(--black);
+      background: var(--black); color: var(--white);
       padding: 1rem 2rem; border-radius: 100px; margin-top: 2rem;
       font-family: 'Montserrat';
       font-size: 0.85rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
-      border: none; cursor: pointer;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      cursor: pointer;
       opacity: 0; animation: fadeUp 1s 1s forwards;
       transition: all 0.3s; text-decoration: none;
-      box-shadow: 0 8px 40px rgba(255,193,0,0.5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
     }
     .hero-cta:hover {
       transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 20px 60px rgba(255,193,0,0.7);
-      background: var(--yellow-bright);
+      background: rgba(0,0,0,0.75); /* glassmorphism effect */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
     }
 
     /* Floating stat bubbles */
@@ -315,12 +351,11 @@
     .stat-bubble:hover .stat-num,
     .stat-bubble:hover .stat-label { color: var(--black); }
     .stat-num {
-            font-family: 'Montserrat'; font-size: 1.8rem; font-weight: 900;
+      font-family: 'Montserrat'; font-size: 1.8rem; font-weight: 900;
       color: var(--yellow); display: block; line-height: 1;
     }
     .stat-label {
       font-family: 'Montserrat';
-
       font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em;
       text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 4px;
     }
@@ -342,7 +377,6 @@
     }
     .scroll-text {
       font-family: 'Montserrat';
-
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em;
       text-transform: uppercase; color: rgba(255,225,53,0.8);
       writing-mode: vertical-rl;
@@ -426,7 +460,6 @@
       letter-spacing: -0.03em; color: var(--black);
       margin-bottom: 4rem;
     }
-    /* Italic accent — plain yellow, no gradient text-fill */
     .section-title em {
       font-family: 'Montserrat';
       font-style: italic;
@@ -487,12 +520,11 @@
       display: block; margin-bottom: 0.6rem;
     }
     .form-input {
-
       width: 100%;
       background: rgba(255,255,255,0.9);
       border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 14px; padding: 0.95rem 1.25rem;
-      color: var(--black);       font-family: 'Montserrat';
+      color: var(--black); font-family: 'Montserrat';
       font-size: 0.92rem; font-weight: 400;
       transition: all 0.3s; outline: none;
     }
@@ -512,23 +544,27 @@
     }
     select.form-input option { background: #fff; color: var(--black); }
 
+    /* BUTTON SUBMIT – MODIFIED: black bg, white text + glass hover */
     .btn-submit {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 1rem 2.25rem; border-radius: 100px;
       font-family: 'Montserrat';
       font-size: 0.82rem; font-weight: 800;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--black); border: none; cursor: pointer;
-      background: linear-gradient(135deg, var(--black) 0%, #222 40%, var(--black) 100%);
-      color: var(--yellow);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      background: var(--black); color: var(--white);
       box-shadow: 0 8px 40px rgba(0,0,0,0.3);
       transition: all 0.4s; position: relative; overflow: hidden;
     }
     .btn-submit:hover {
       transform: translateY(-3px) scale(1.03);
-      background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-bright) 100%);
-      color: var(--black);
-      box-shadow: 0 20px 60px rgba(255,193,0,0.5);
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
     .btn-arrow {
       width: 30px; height: 30px; background: rgba(255,225,53,0.2);
@@ -537,9 +573,8 @@
     }
     .btn-submit:hover .btn-arrow { transform: translateX(5px); }
 
-    /* Info cards */
+    /* Info cards (unchanged) */
     .info-stack { display: flex; flex-direction: column; gap: 1.25rem; }
-
     .info-card {
       background: rgba(255,255,255,0.8);
       border: 1.5px solid rgba(0,0,0,0.08);
@@ -605,7 +640,7 @@
       box-shadow: 0 8px 24px rgba(255,193,0,0.4);
     }
 
-    /* ─── IMAGE STRIP ─── */
+    /* ─── IMAGE STRIP (unchanged) ─── */
     .img-strip { padding: 5vh 0; overflow: hidden; height: 500px; }
     .strip-track {
       display: flex; gap: 1.25rem;
@@ -640,16 +675,14 @@
       padding: 4px 12px; border-radius: 100px;
     }
 
-    /* ─── GLOBE / PRESENCE ─── */
+    /* ─── GLOBE / PRESENCE (unchanged) ─── */
     .globe-section { padding: 8vh 5vw; text-align: center; position: relative; }
-
     .globe-container {
       position: relative;
       width: 260px; height: 260px;
       margin: 4rem auto 3rem;
       perspective: 900px;
     }
-
     .globe-ring {
       position: absolute; top: 50%; left: 50%;
       border-radius: 50%; border: 1.5px solid rgba(255,193,0,0.4);
@@ -670,7 +703,6 @@
       from { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(0deg); }
       to   { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg); }
     }
-
     .africa-sphere {
       position: absolute;
       top: 50%; left: 50%;
@@ -710,7 +742,6 @@
       0%   { transform: translate(-50%, -50%) rotateY(0deg); }
       100% { transform: translate(-50%, -50%) rotateY(360deg); }
     }
-
     .africa-continent {
       position: absolute;
       top: 50%; left: 50%;
@@ -721,7 +752,6 @@
         drop-shadow(0 3px 14px rgba(0,0,0,0.4))
         drop-shadow(0 0 28px rgba(255,200,0,0.4));
     }
-
     .africa-shine {
       position: absolute;
       top: 10%; left: 18%;
@@ -730,7 +760,6 @@
       border-radius: 50%;
       pointer-events: none; z-index: 3;
     }
-
     .city-chips {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;
       max-width: 750px; margin: 0 auto;
@@ -760,7 +789,6 @@
     }
     @media (max-width: 900px) { .regions-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 500px) { .regions-grid { grid-template-columns: 1fr; } }
-
     .region-card {
       background: rgba(255,255,255,0.7);
       border: 1.5px solid rgba(0,0,0,0.08);
@@ -784,7 +812,7 @@
     }
     .region-flag { font-size: 2.8rem; display: block; margin-bottom: 0.75rem; }
     .region-city {
-            font-family: 'Montserrat'; font-size: 1.35rem; font-weight: 700;
+      font-family: 'Montserrat'; font-size: 1.35rem; font-weight: 700;
       color: var(--black); margin-bottom: 0.4rem;
     }
     .region-email { font-size: 0.68rem; color: rgba(0,0,0,0.4); word-break: break-all; }
@@ -795,7 +823,6 @@
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 4rem;
     }
     @media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
-
     .faq-card {
       background: rgba(255,255,255,0.7);
       border: 1.5px solid rgba(0,0,0,0.08);
@@ -814,12 +841,12 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 50px rgba(0,0,0,0.07);
     }
-    .faq-icon {       font-family: 'Montserrat'; font-size: 1.6rem; color: var(--yellow-deep); margin-bottom: 1rem; display: block; }
+    .faq-icon { font-family: 'Montserrat'; font-size: 1.6rem; color: var(--yellow-deep); margin-bottom: 1rem; display: block; }
     .faq-q {
-            font-family: 'Montserrat'; font-size: 1.2rem; font-weight: 700;
+      font-family: 'Montserrat'; font-size: 1.2rem; font-weight: 700;
       color: var(--black); margin-bottom: 0.6rem; line-height: 1.3;
     }
-    .faq-a {       font-family: 'Montserrat'; font-size: 0.84rem; font-weight: 300; color: rgba(0,0,0,0.45); line-height: 1.75; }
+    .faq-a { font-family: 'Montserrat'; font-size: 0.84rem; font-weight: 300; color: rgba(0,0,0,0.45); line-height: 1.75; }
     .faq-email { color: var(--yellow-deep); font-weight: 600; }
 
     /* ─── IMPACT BANNER ─── */
@@ -838,22 +865,21 @@
       );
     }
     .impact-text {
-           font-family: 'Montserrat'; font-size: clamp(1.8rem, 4vw, 3rem);
+      font-family: 'Montserrat'; font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 900; color: var(--white); line-height: 1.15;
       max-width: 700px; position: relative; z-index: 1;
     }
-    .impact-text em {       font-family: 'Montserrat'; font-style: italic; color: var(--yellow); }
+    .impact-text em { font-family: 'Montserrat'; font-style: italic; color: var(--yellow); }
     .impact-stats {
       display: flex; gap: 3rem; margin-top: 2.5rem;
       position: relative; z-index: 1; flex-wrap: wrap;
     }
     .impact-stat-num {
-            font-family: 'Montserrat';  font-size: 3rem; font-weight: 900;
+      font-family: 'Montserrat'; font-size: 3rem; font-weight: 900;
       color: var(--yellow); line-height: 1; display: block;
     }
     .impact-stat-label {
       font-family: 'Montserrat';
-
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
       text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;
     }
@@ -887,10 +913,8 @@
     }
     @media (max-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 500px) { footer { grid-template-columns: 1fr; } }
-
     .footer-brand p {
       font-family: 'Montserrat';
-
       font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.45);
       line-height: 1.8; margin-top: 1rem; max-width: 280px;
     }
@@ -904,7 +928,6 @@
     .footer-col li { margin-bottom: 0.6rem; }
     .footer-col a {
       font-family: 'Montserrat';
-
       font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.4);
       text-decoration: none; transition: color 0.2s;
     }
@@ -913,7 +936,6 @@
       border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 5vw;
       display: flex; justify-content: space-between; align-items: center;
       font-family: 'Montserrat';
-
       font-size: 0.72rem; color: rgba(0,0,0,0.3);
       background: #f3f3f3;
     }
@@ -936,7 +958,7 @@
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     .section-num {
-            font-family: 'Montserrat'; font-size: 10rem; font-weight: 900;
+      font-family: 'Montserrat'; font-size: 10rem; font-weight: 900;
       position: absolute; right: 5vw; top: 4vh;
       color: rgba(0,0,0,0.04); pointer-events: none; line-height: 1;
       -webkit-text-stroke: 1px rgba(0,0,0,0.06);
@@ -949,10 +971,10 @@
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- ═══ NAV ═══ -->
+  <!-- ═══ NAV (transparent at top, turns yellow on scroll) ═══ -->
   <nav id="mainNav" style="font-family: 'Montserrat', sans-serif;">
     <a href="index.html" class="nav-logo" style="font-family: 'Montserrat', sans-serif;">
-      <img src="./assets/ENS Africa logo final-04.png"
+      <img src="./assets//ENS Africa logo final-03 black.png"
            alt="ENS Africa Foundation Logo"
            class="nav-logo-image"
            width="150" height="150">
@@ -979,15 +1001,9 @@
       <div class="carousel-slide" style="background-image:url('./assets/femalelawyer.png');"></div>
       <div class="carousel-slide" style="background-image:url('./assets/ladyteach.png');"></div>
     </div>
-
-    <!-- Minimal bottom fade only — pictures fully visible, no colour overlays -->
     <div class="hero-overlay"></div>
-    
-    <!-- ADDED: Sunburst and rays animation -->
     <div class="hero-sunburst"></div>
     <div class="hero-rays"></div>
-
-    <!-- Floating stat bubbles -->
     <div class="hero-stats" style="font-family: 'Montserrat', sans-serif;">
       <div class="stat-bubble" style="font-family: 'Montserrat', sans-serif;">
         <span class="stat-num" style="font-family: 'Montserrat', sans-serif;">12K+</span>
@@ -1002,12 +1018,10 @@
         <div class="stat-label" style="font-family: 'Montserrat', sans-serif;">Years Impact</div>
       </div>
     </div>
-
     <div class="hero-scroll-ind" style="font-family: 'Montserrat', sans-serif;">
       <div class="scroll-line-v"></div>
       <span class="scroll-text" style="font-family: 'Montserrat', sans-serif;">Scroll</span>
     </div>
-
     <div class="carousel-dots">
       <div class="c-dot active" data-index="0"></div>
       <div class="c-dot" data-index="1"></div>
@@ -1015,11 +1029,9 @@
       <div class="c-dot" data-index="3"></div>
       <div class="c-dot" data-index="4"></div>
     </div>
-
     <div class="hero-content" style="font-family: 'Montserrat', sans-serif;">
       <h1 class="hero-title" style="font-family: 'Montserrat', sans-serif;">
         <span class="line-white" style="font-family: 'Montserrat', sans-serif;">What's Your</span>
-        <!-- "Future Story?" on ONE line, plain yellow -->
         <span class="line-yellow" style="font-family: 'Montserrat', sans-serif;">Future Story?</span>
       </h1>
       <p class="hero-sub" style="font-family: 'Montserrat', sans-serif;">We believe in the transformative power of community, justice, and opportunity. Reach out — every conversation plants a seed.</p>
@@ -1050,15 +1062,10 @@
     </div>
   </div>
 
-  <!-- ═══ PAGE WRAPPER ═══ -->
-  <div class="page-wrapper" id="contact" style="font-family: 'Montserrat', sans-serif;">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+ 
 
     <!-- ── CONTACT FORM ── -->
     <section class="contact-section" style="font-family: 'Montserrat', sans-serif;">
-      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">01</div>
       <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
         <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Get In Touch</div>
         <h2 class="section-title" style="font-family: 'Montserrat', sans-serif;">
@@ -1175,7 +1182,7 @@
         <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&fit=crop" alt="Women" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Empowerment</span></div>
         <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="assets/femalelawyer.png" alt="Village" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Village Life</span></div>
         <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?w=600&q=80&fit=crop" alt="Landscape" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Landscape</span></div>
-        <!-- Duplicates for seamless loop -->
+        <!-- Duplicates -->
         <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80&fit=crop" alt="Children" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Education</span></div>
         <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80&fit=crop" alt="Community" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Community</span></div>
         <div class="strip-item" style="font-family: 'Montserrat', sans-serif;"><img class="strip-img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&q=80&fit=crop" alt="Foundation" loading="lazy"><span class="strip-label" style="font-family: 'Montserrat', sans-serif;">Foundation</span></div>
@@ -1217,7 +1224,6 @@
 
     <!-- ── GLOBE ── -->
     <section class="globe-section" style="font-family: 'Montserrat', sans-serif;">
-      <div class="section-num" style="font-family: 'Montserrat', sans-serif;">02</div>
       <div class="reveal" style="font-family: 'Montserrat', sans-serif;">
         <div class="section-eyebrow" style="font-family: 'Montserrat', sans-serif;">Our Presence</div>
         <h2 class="section-title" style="font-family: 'Montserrat', sans-serif;">Active <em style="font-family: 'Montserrat', sans-serif;">across</em> the<br>continent</h2>
@@ -1389,7 +1395,7 @@
       el.addEventListener('mouseleave', () => { dot.style.width = '10px'; dot.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(255,225,53,0.7)'; });
     });
 
-    // ── Nav scroll ──
+    // ── Nav scroll (turns yellow like original) ──
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
