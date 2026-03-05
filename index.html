@@ -25,13 +25,13 @@
 
     /* Aptos is a system font on Windows 11+; fallback to similar sans-serif */
     @font-face {
-      font-family: 'Aptos';
-      src: local('Aptos'), local('Aptos Regular');
+      font-family: 'Montserrat';
+      src: local('Montserrat'), local('Montserrat Regular');
       font-weight: 400;
     }
     @font-face {
-      font-family: 'Aptos';
-      src: local('Aptos Bold'), local('Aptos-Bold');
+      font-family: 'Montserrat';
+      src: local('Montserrat Bold'), local('Montserrat-Bold');
       font-weight: 700;
     }
 
@@ -39,7 +39,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Aptos', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Montserrat';
       background: var(--white);
       color: var(--text-dark);
       overflow-x: hidden;
@@ -117,7 +117,7 @@
       display: flex; align-items: center; gap: 0.25rem; list-style: none;
     }
     .nav-links a {
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.78rem;
       font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; color: rgba(255,255,255,0.85);
@@ -222,7 +222,7 @@
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--yellow); color: var(--black);
       padding: 0.5rem 1.25rem; border-radius: 100px;
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.7rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase;
       margin-bottom: 1.5rem;
@@ -241,7 +241,7 @@
 
     /* HERO TITLE */
     .hero-title {
-      font-family: 'aptos';
+      font-family: 'Montserrat';
       font-size: clamp(3.2rem, 8vw, 7rem);
       font-weight: 900; line-height: 0.95;
       letter-spacing: -0.03em;
@@ -261,7 +261,7 @@
     }
 
     .hero-sub {
-            font-family: 'aptos';
+      font-family: 'Montserrat';
 
       font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.8);
       margin-top: 1.5rem; max-width: 440px; line-height: 1.8;
@@ -272,7 +272,7 @@
       display: inline-flex; align-items: center; gap: 12px;
       background: var(--yellow); color: var(--black);
       padding: 1rem 2rem; border-radius: 100px; margin-top: 2rem;
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.85rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
       border: none; cursor: pointer;
@@ -309,11 +309,11 @@
     .stat-bubble:hover .stat-num,
     .stat-bubble:hover .stat-label { color: var(--black); }
     .stat-num {
-      font-family: 'aptos'; font-size: 1.8rem; font-weight: 900;
+            font-family: 'Montserrat'; font-size: 1.8rem; font-weight: 900;
       color: var(--yellow); display: block; line-height: 1;
     }
     .stat-label {
-            font-family: 'aptos';
+      font-family: 'Montserrat';
 
       font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em;
       text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 4px;
@@ -335,7 +335,7 @@
       50% { opacity: 0.3; height: 25px; }
     }
     .scroll-text {
-            font-family: 'aptos';
+      font-family: 'Montserrat';
 
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em;
       text-transform: uppercase; color: rgba(255,225,53,0.8);
@@ -376,7 +376,7 @@
     .ticker-item {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 0 2rem;
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.75rem; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow);
     }
@@ -402,7 +402,7 @@
 
     .section-eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
-      font-family: 'aptos';
+      font-family: 'Montserrat';
       font-size: 0.68rem; font-weight: 800;
       letter-spacing: 0.3em; text-transform: uppercase; color: var(--yellow-deep);
       margin-bottom: 1rem;
@@ -414,7 +414,7 @@
     }
 
     .section-title {
-      font-family: 'aptos';
+      font-family: 'Montserrat';
       font-size: clamp(2.8rem, 5.5vw, 5.5rem);
       font-weight: 900; line-height: 0.95;
       letter-spacing: -0.03em; color: var(--black);
@@ -422,7 +422,7 @@
     }
     /* Italic accent — plain yellow, no gradient text-fill */
     .section-title em {
-      font-family: 'aptos';
+      font-family: 'Montserrat';
       font-style: italic;
       color: var(--yellow);
       -webkit-text-fill-color: var(--yellow);
@@ -468,24 +468,25 @@
       animation: dotBlink 1.5s ease-in-out infinite;
     }
     .form-header-text {
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--black-light);
     }
 
     .form-group { margin-bottom: 1.75rem; }
     .form-label {
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.15em; text-transform: uppercase; color: var(--black-light);
       display: block; margin-bottom: 0.6rem;
     }
     .form-input {
+
       width: 100%;
       background: rgba(255,255,255,0.9);
       border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 14px; padding: 0.95rem 1.25rem;
-      color: var(--black); font-family: 'Aptos', 'Segoe UI', system-ui, sans-serif;
+      color: var(--black);       font-family: 'Montserrat';
       font-size: 0.92rem; font-weight: 400;
       transition: all 0.3s; outline: none;
     }
@@ -508,7 +509,7 @@
     .btn-submit {
       display: inline-flex; align-items: center; gap: 12px;
       padding: 1rem 2.25rem; border-radius: 100px;
-      font-family: 'aptos', ;
+      font-family: 'Montserrat';
       font-size: 0.82rem; font-weight: 800;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--black); border: none; cursor: pointer;
@@ -571,13 +572,13 @@
       box-shadow: 0 4px 20px rgba(255,193,0,0.4);
     }
     .info-card-label {
-      font-family: 'aptos';
+      font-family: 'Montserrat';
       font-size: 0.62rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow-deep);
       margin-bottom: 0.3rem;
     }
     .info-card-main {
-      font-family: 'aptos';
+      font-family: 'Montserrat';
       color: var(--black); line-height: 1.3;
     }
     .info-card-sub { font-size: 0.78rem; color: rgba(0,0,0,0.4); margin-top: 0.2rem; line-height: 1.5; }
@@ -626,7 +627,7 @@
     }
     .strip-label {
       position: absolute; bottom: 12px; left: 12px;
-      font-family: 'aptos';
+      font-family: 'Montserrat';
       font-size: 0.6rem; font-weight: 700;
       letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);
       background: var(--yellow); backdrop-filter: blur(8px);
@@ -734,7 +735,7 @@
       background: rgba(255,255,255,0.8);
       border: 1.5px solid rgba(0,0,0,0.08);
       border-radius: 100px;
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.75rem; font-weight: 600;
       letter-spacing: 0.05em; color: var(--black-mid);
       transition: all 0.35s; cursor: default; backdrop-filter: blur(12px);
@@ -777,7 +778,7 @@
     }
     .region-flag { font-size: 2.8rem; display: block; margin-bottom: 0.75rem; }
     .region-city {
-      font-family: 'aptos'; font-size: 1.35rem; font-weight: 700;
+            font-family: 'Montserrat'; font-size: 1.35rem; font-weight: 700;
       color: var(--black); margin-bottom: 0.4rem;
     }
     .region-email { font-size: 0.68rem; color: rgba(0,0,0,0.4); word-break: break-all; }
@@ -807,12 +808,12 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 50px rgba(0,0,0,0.07);
     }
-    .faq-icon { font-size: 1.6rem; color: var(--yellow-deep); margin-bottom: 1rem; display: block; }
+    .faq-icon {       font-family: 'Montserrat'; font-size: 1.6rem; color: var(--yellow-deep); margin-bottom: 1rem; display: block; }
     .faq-q {
-      font-family: 'aptos'; font-size: 1.2rem; font-weight: 700;
+            font-family: 'Montserrat'; font-size: 1.2rem; font-weight: 700;
       color: var(--black); margin-bottom: 0.6rem; line-height: 1.3;
     }
-    .faq-a { font-size: 0.84rem; font-weight: 300; color: rgba(0,0,0,0.45); line-height: 1.75; }
+    .faq-a {       font-family: 'Montserrat'; font-size: 0.84rem; font-weight: 300; color: rgba(0,0,0,0.45); line-height: 1.75; }
     .faq-email { color: var(--yellow-deep); font-weight: 600; }
 
     /* ─── IMPACT BANNER ─── */
@@ -831,21 +832,21 @@
       );
     }
     .impact-text {
-      font-family: 'aptos'; font-size: clamp(1.8rem, 4vw, 3rem);
+           font-family: 'Montserrat'; font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 900; color: var(--white); line-height: 1.15;
       max-width: 700px; position: relative; z-index: 1;
     }
-    .impact-text em { font-style: italic; color: var(--yellow); }
+    .impact-text em {       font-family: 'Montserrat'; font-style: italic; color: var(--yellow); }
     .impact-stats {
       display: flex; gap: 3rem; margin-top: 2.5rem;
       position: relative; z-index: 1; flex-wrap: wrap;
     }
     .impact-stat-num {
-      font-family: 'aptos'; font-size: 3rem; font-weight: 900;
+            font-family: 'Montserrat';  font-size: 3rem; font-weight: 900;
       color: var(--yellow); line-height: 1; display: block;
     }
     .impact-stat-label {
-            font-family: 'aptos';
+      font-family: 'Montserrat';
 
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
       text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;
@@ -882,13 +883,13 @@
     @media (max-width: 500px) { footer { grid-template-columns: 1fr; } }
 
     .footer-brand p {
-            font-family: 'aptos';
+      font-family: 'Montserrat';
 
       font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.45);
       line-height: 1.8; margin-top: 1rem; max-width: 280px;
     }
     .footer-col-title {
-      font-family: 'Aptos';
+      font-family: 'Montserrat';
       font-size: 0.65rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
       margin-bottom: 1.2rem;
@@ -896,7 +897,7 @@
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.6rem; }
     .footer-col a {
-            font-family: 'aptos';
+      font-family: 'Montserrat';
 
       font-size: 0.82rem; font-weight: 300; color: rgba(0,0,0,0.4);
       text-decoration: none; transition: color 0.2s;
@@ -905,7 +906,7 @@
     .footer-bottom {
       border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 5vw;
       display: flex; justify-content: space-between; align-items: center;
-            font-family: 'aptos';
+      font-family: 'Montserrat';
 
       font-size: 0.72rem; color: rgba(0,0,0,0.3);
       background: #f3f3f3;
@@ -929,7 +930,7 @@
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     .section-num {
-      font-family: 'Playfair Display', serif; font-size: 10rem; font-weight: 900;
+            font-family: 'Montserrat'; font-size: 10rem; font-weight: 900;
       position: absolute; right: 5vw; top: 4vh;
       color: rgba(0,0,0,0.04); pointer-events: none; line-height: 1;
       -webkit-text-stroke: 1px rgba(0,0,0,0.06);
