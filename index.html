@@ -173,7 +173,45 @@
       background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 35%, transparent 60%);
     }
 
-    /* NO sunburst, NO rays — removed */
+    /* ADDED: Sunburst and rays animation */
+    .hero-sunburst {
+      position: absolute; top: -20%; right: -10%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,225,53,0.35) 0%, rgba(255,193,0,0.2) 30%, transparent 70%);
+      z-index: 3; pointer-events: none;
+      animation: sunPulse 4s ease-in-out infinite;
+    }
+    @keyframes sunPulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .hero-rays {
+      position: absolute; top: -20%; right: -10%;
+      width: 700px; height: 700px;
+      background: conic-gradient(from 0deg,
+        transparent 0deg, rgba(255,225,53,0.08) 5deg, transparent 10deg,
+        transparent 25deg, rgba(255,193,0,0.06) 30deg, transparent 35deg,
+        transparent 50deg, rgba(255,225,53,0.08) 55deg, transparent 60deg,
+        transparent 75deg, rgba(255,193,0,0.05) 80deg, transparent 85deg,
+        transparent 100deg, rgba(255,225,53,0.07) 105deg, transparent 110deg,
+        transparent 125deg, rgba(255,193,0,0.08) 130deg, transparent 135deg,
+        transparent 150deg, rgba(255,225,53,0.05) 155deg, transparent 160deg,
+        transparent 175deg, rgba(255,193,0,0.07) 180deg, transparent 185deg,
+        transparent 200deg, rgba(255,225,53,0.08) 205deg, transparent 210deg,
+        transparent 225deg, rgba(255,193,0,0.05) 230deg, transparent 235deg,
+        transparent 250deg, rgba(255,225,53,0.07) 255deg, transparent 260deg,
+        transparent 275deg, rgba(255,193,0,0.08) 280deg, transparent 285deg,
+        transparent 300deg, rgba(255,225,53,0.05) 305deg, transparent 310deg,
+        transparent 325deg, rgba(255,193,0,0.07) 330deg, transparent 335deg,
+        transparent 350deg, rgba(255,225,53,0.08) 355deg, transparent 360deg
+      );
+      z-index: 3; pointer-events: none;
+      animation: raysRotate 30s linear infinite;
+    }
+    @keyframes raysRotate {
+      to { transform: rotate(360deg); }
+    }
 
     .hero-content {
       position: relative; z-index: 10;
@@ -203,7 +241,7 @@
 
     /* HERO TITLE */
     .hero-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'aptos', serif;
       font-size: clamp(3.2rem, 8vw, 7rem);
       font-weight: 900; line-height: 0.95;
       letter-spacing: -0.03em;
@@ -922,6 +960,10 @@
 
     <!-- Minimal bottom fade only — pictures fully visible, no colour overlays -->
     <div class="hero-overlay"></div>
+    
+    <!-- ADDED: Sunburst and rays animation -->
+    <div class="hero-sunburst"></div>
+    <div class="hero-rays"></div>
 
     <!-- Floating stat bubbles -->
     <div class="hero-stats">
